@@ -217,6 +217,7 @@ function render_selected_items()
 			_start_time, _end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
 			
 			--uzmi podatke za sve iteme u trenutnoj vertikalnoj selekciji oko klip grupe clip_group[i]
+			local mono_item = true
 			for j = 0, sel_count - 1 do 
 				
 				--get stuff
@@ -250,11 +251,50 @@ function render_selected_items()
 
 					else -- ako pripadaju istoj grupi
 						MakeItemColorBrighter(_item)
+						
+						--ako su svi mono ili sabrani u mono onda exportuj mono ako vec nije namesteno da se eksportuje mono (NIJE DOBRO AKO IMA NEKIH MONO PANOVANIH FAJLOVA)
+						-- if _take ~= nil then
+							-- local _pcm_source = reaper.GetMediaItemTake_Source(_take)
+							-- local channel_mode = reaper.GetMediaItemTakeInfo_Value(_take, "I_CHANMODE")
+							-- local num_channels = reaper.GetMediaSourceNumChannels(_pcm_source)
+							-- if channel_mode == 0 then 	--ako je namešteno na normal
+								-- if num_channels > 1 then -- a broj kanala je veći od 1
+									-- mono_item = false	 -- onda nije mono item
+								-- else
+									-- --onda je prirodni mono, odlično
+								-- end
+							-- else 						-- ako nije namešteno na normal nego: reverse stereo, Mono(L+R), Mono L, Mono R
+								-- if channel_mode > 1 then  -- ako je Mono(L+R) ili Mono L ili Mono R
+									-- --Znači da je forsiran mono, odlično
+								-- end
+							-- end
+						-- end
 					end
 					
 					
 				--NEAKTIVNO--end
-			end     
+			end   
+			
+			
+			--(NE RADI JER JER SRANJE)
+			-- Msg(new_name)
+			-- Msg(mono_item)
+			-- Msg("==")
+			--da li da eksportuje mono ili stereo
+			-- local output_script_name = "ChangeRenderSettingsToStereo"
+			-- if mono_item == true then
+				-- output_script_name = "ChangeRenderSettingsToMono"
+			-- end
+			-- --get script path
+			-- local info = debug.getinfo(1).source:match("@(.*)") 
+			-- ofni = string.reverse(info)
+			-- idx = string.find(ofni, "\\" )
+			-- htap = string.sub(ofni, idx, -1)
+			-- path = string.reverse(htap)
+			-- --Msg(path);
+			
+			-- batch_path = [["]]..path..output_script_name..[[.ahk"]]
+			-- io.popen(batch_path)
 		----------------------------------------------------------------------------------------------------
 		
 		reaper.Main_OnCommand(41823,0) --File: Add project to render queue, using the most recent render settings
