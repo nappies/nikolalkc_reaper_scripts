@@ -14,11 +14,14 @@ end
 
 
 --colors utility---------------------------------------------------------------------------------------------
-absolute_luminance = 0.9
+luminance_change_amount = 0.3
+absolute_luminance = false --true ako treba da bude na određenu vrednost, false ako treba da bude dodatak na postojeću vrednost
+
+
 function MakeItemColorBrighter(item)
 	local color = reaper.GetDisplayedMediaItemColor(item)
 	local R, G, B = reaper.ColorFromNative(color|0x1000000)
-	local new_r, new_g, new_b = Luminance(absolute_luminance, R, G, B)
+	local new_r, new_g, new_b = Luminance(luminance_change_amount, R, G, B)
 	local con_r, con_g, con_b = Convert_RGB(new_r,new_g,new_b)
 	local new_color = reaper.ColorToNative(con_r,con_g,con_b)|0x1000000
 	ApplyColor_Items(new_color,item)
@@ -41,8 +44,11 @@ end
 
 function Luminance(change, red, green, blue)
   local hue, sat, lum = rgbToHsl(red/255, green/255, blue/255)
-  --lum = lum + change
-  lum = change
+  if absolute_luminance == true then
+	lum = change
+  else 
+    lum = lum + change
+  end
   local r, g, b = hslToRgb(hue, sat, lum)
   if r<=0 then r = 0 end ; if g<=0 then g = 0 end ; if b<=0 then b = 0 end
   if r>=1 then r = 1 end ; if g>=1 then g = 1 end ; if b>=1 then b = 1 end
