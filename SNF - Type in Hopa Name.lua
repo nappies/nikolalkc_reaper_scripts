@@ -9,6 +9,8 @@
  
 --[[
  * Changelog:
+ * v1.5 (2017-09-05)
+	+ last_scene.dat is loaded and saved to environmental variable path %HOPA_NAME% which is set from audio manager
  * v1.4 (2017-06-02)
 	+ Stretch empty item note to fit on write
  * v1.3 (2017-06-01)
@@ -46,9 +48,14 @@ function Main()
 	
 	
 	
+	--read environmental variable
+	hopa_name_path = os.getenv("HOPA_NAME")
+	--Msg(hopa_name_path)
+	
 
 	--procitaj fajl ako ga ima
-	file = io.open("last_scene.dat", "r")
+	file_path = [[]]..hopa_name_path..[[\last_scene.dat]]
+	file = io.open(file_path, "r")
 	if file ~= nil then
 		-- Msg(file:read())
 		last_scene = file:read()
@@ -138,7 +145,8 @@ function Main()
 			reaper.Main_OnCommand(reaper.NamedCommandLookup("_RSb428746958e98560bf16fdec0d9022a5b13465c0"),0) -- fit notes stretch
 		end
 		
-		local file = io.open("last_scene.dat", "w")
+		--Msg(file_path)
+		local file = io.open(file_path, "w")
 		file:write(answer_to_save)
 		file:close()
 	end

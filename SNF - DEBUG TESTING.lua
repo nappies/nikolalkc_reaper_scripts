@@ -93,6 +93,14 @@ function Main()
 	
 	
 	
+	-- --getting environment variable value with Command line
+	-- for sta in io.popen([[echo %HOPA_NAME%]]):lines() do
+		-- Msg(sta)
+	-- end
+	
+	--getting environment variable with lua directly
+	envv = os.getenv("HOPA_NAME")
+	Msg(envv)
 	
 	
 
