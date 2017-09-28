@@ -9,6 +9,8 @@
  
 --[[
  * Changelog:
+ * v1.7 (2017-09-28)
+	+ Added extra width to input window
  * v1.6 (2017-09-11)
 	+ Added support for naming multiple selected empty items with indexes
  * v1.5 (2017-09-05)
@@ -167,7 +169,7 @@ function ShowDialogForNaming(cur_name)
 
 	
 	--USER INPUT
-	retval, result = reaper.GetUserInputs("NAME THE FILE:", 2, "Scene:,File:", scene_name..","..file_name)
+	retval, result = reaper.GetUserInputs("NAME THE FILE:", 2, "Scene:,File:,extrawidth=300", scene_name..","..file_name)
 	answer1, answer2 = result:match("([^,]+),([^,]+)")
 	--Msg("Answer1:"..answer1)
 	--Msg("Answer2:"..answer2)
