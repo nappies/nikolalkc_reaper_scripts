@@ -6,7 +6,7 @@ function Main()
 			local item =  reaper.GetSelectedMediaItem( 0, i )
 			local color = reaper.GetDisplayedMediaItemColor(item)
 			local R, G, B = reaper.ColorFromNative(color|0x1000000)
-			local new_r, new_g, new_b = Luminance(-0.3, R, G, B)
+			local new_r, new_g, new_b = Luminance(-0.1, R, G, B)
 			local con_r, con_g, con_b = Convert_RGB(new_r,new_g,new_b)
 			local new_color = reaper.ColorToNative(con_r,con_g,con_b)|0x1000000
 			ApplyColor_Items(new_color,item)
