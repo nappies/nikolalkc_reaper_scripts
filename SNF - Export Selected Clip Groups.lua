@@ -2,6 +2,7 @@
 --v.03 (2017-10-23)
 	--run lua script after rendering
 	--bounced_sounds_folder variable
+	--make_items_white variable
 --v.02 (2017-08-17)
 	--boje se posvetle kad se eksportuju itemi, ne ode u belo
 --v.01 (nekad)
@@ -17,6 +18,7 @@ end
 
 
 --colors utility---------------------------------------------------------------------------------------------
+make_items_white = true
 bounced_sounds_folder = [[D:\BouncedSounds\]]
 luminance_change_amount = 0.3
 absolute_luminance = false --true ako treba da bude na određenu vrednost, false ako treba da bude dodatak na postojeću vrednost
@@ -260,7 +262,15 @@ function render_selected_items()
 						ov_index = ov_index + 1
 
 					else -- ako pripadaju istoj grupi
-						MakeItemColorBrighter(_item)
+						if make_items_white == true then
+							--da oboji u belo
+							local white = reaper.ColorToNative(255,255,255)|0x1000000
+							ApplyColor_Items(white,_item)
+						else
+						--da posvetli
+							MakeItemColorBrighter(_item) 
+						end
+		
 						
 						--ako su svi mono ili sabrani u mono onda exportuj mono ako vec nije namesteno da se eksportuje mono (NIJE DOBRO AKO IMA NEKIH MONO PANOVANIH FAJLOVA)
 						-- if _take ~= nil then
