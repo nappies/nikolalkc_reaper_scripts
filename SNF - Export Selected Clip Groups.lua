@@ -1,9 +1,12 @@
 --ChangeLog
+--v.03 (2017-10-23)
+	--run lua script after rendering
+	--bounced_sounds_folder variable
 --v.02 (2017-08-17)
 	--boje se posvetle kad se eksportuju itemi, ne ode u belo
 --v.01 (nekad)
 	--eksportovanje klip grupa
---Export selected Clip_groups to D:\BouncedSounds and run Reaper_Move_Sounds.ahk afterwards
+--Export selected Clip_groups to BouncedSounds folder and runs SNF - Move Rendered Sounds To Project.lua
 	--Clip group names must begin with '@' character
 	--Render settings must be set with dummy render to item-name @region and bounds to time selection
 
@@ -14,6 +17,7 @@ end
 
 
 --colors utility---------------------------------------------------------------------------------------------
+bounced_sounds_folder = [[D:\BouncedSounds\]]
 luminance_change_amount = 0.3
 absolute_luminance = false --true ako treba da bude na određenu vrednost, false ako treba da bude dodatak na postojeću vrednost
 
@@ -328,26 +332,31 @@ function post_export_dialog(message_title)
 	-- --When rendering completed======================================================================
 	ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
 	
-Pressing No will open D:\BouncedSounds.]], message_title, 3 )
+Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
 	--Msg(ok)
 	
 	--Yes clicked --run move script=============================
 	if ok == 6 then 
+		--autohotkey script
 		--get script path
-		local info = debug.getinfo(1).source:match("@(.*)") 
-		ofni = string.reverse(info)
-		idx = string.find(ofni, "\\" )
-		htap = string.sub(ofni, idx, -1)
-		path = string.reverse(htap)
-		--Msg(path);
+		-- local info = debug.getinfo(1).source:match("@(.*)") 
+		-- ofni = string.reverse(info)
+		-- idx = string.find(ofni, "\\" )
+		-- htap = string.sub(ofni, idx, -1)
+		-- path = string.reverse(htap)
+		-- --Msg(path);
 		
-		batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
-		os.execute (batch_path)
+		-- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
+		-- os.execute (batch_path)
+		
+		
+		--lua script
+		reaper.Main_OnCommand(reaper.NamedCommandLookup("_RS9cc6317b004b851b7bccd1ac1b78b066b6701111"),0)
 	end
 	
 	--No clicked --open folder==================================
 	if ok == 7 then
-		prog = [[%SystemRoot%\explorer.exe "D:\BouncedSounds"]]
+		prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
 		io.popen(prog)     
 	end
 	--=================================================================================================

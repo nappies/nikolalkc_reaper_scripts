@@ -18,7 +18,7 @@ function Msg(param)
   reaper.ShowConsoleMsg(tostring(param).."\n")
 end
 
-bounced_sounds_folder = "D:\\BouncedSounds\\"
+bounced_sounds_folder = [[D:\BouncedSounds\]]
 sounds_to_move = {}
 game_folders = {}
 game_folder_paths = {}
@@ -26,7 +26,7 @@ last_export_folder = ""
 
 function ScanSoundsToMove()
 	--scan all files in D:\bounced sounds
-	prog2 = [[dir "D:\BouncedSounds\" /a:-d /b]]
+	prog2 = [[dir "]]..bounced_sounds_folder..[[" /a:-d /b]]
 	local idx = 0
 	for sound_file in io.popen(prog2):lines() do
 		--Msg(sound_file)
@@ -201,7 +201,7 @@ function MoveSounds()
 end
 
 function ExecuteMoveFile(original_file,destination_file,full_final_path) --bez ekstenzije, bez ekstenzije, cela staza sa \ na kraju
-	move_prog = [[move /y "D:\BouncedSounds\]]..original_file..[[.ogg" "]]..full_final_path..destination_file..[[.ogg"]]
+	move_prog = [[move /y "]]..bounced_sounds_folder..original_file..[[.ogg" "]]..full_final_path..destination_file..[[.ogg"]]
 	--Msg(move_prog)
 	--io.popen(move_prog)
 	for dir in io.popen(move_prog):lines() do
