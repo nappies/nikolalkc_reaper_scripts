@@ -197,7 +197,7 @@ function Exception(path,sound)
 end
 
 function ExecuteMoveFile(original_file,destination_file,full_final_path,source) --bez ekstenzije, bez ekstenzije, cela staza sa \ na kraju
-	Msg(source)
+	--Msg(source)
 	move_prog = [[move /y "]]..bounced_sounds_folder..original_file..[[.ogg" "]]..full_final_path..destination_file..[[.ogg"]]
 	--Msg(move_prog)
 	--io.popen(move_prog)
@@ -207,7 +207,7 @@ function ExecuteMoveFile(original_file,destination_file,full_final_path,source) 
 	
 	
 	done = os.execute(move_prog)
-	Msg(done)
+	--Msg(done)
 	
 	if done == true then 
 		Msg("_____________________________________________________")
