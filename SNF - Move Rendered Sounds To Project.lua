@@ -1,7 +1,10 @@
 --SNF - Move Rendered Sounds to HOPA project
 
 --[[ChangeLog
-	* v.023 (2017-10-23)
+	* v.04 (2017-10-24)
+		+Exceptioni i errori uradjeni
+		
+	* v.03 (2017-10-23)
 		+Osvnovno radi
 		
 	* v.02 (2017-10-23)
@@ -24,7 +27,7 @@ game_folders = {}
 game_folder_paths = {}
 last_export_folder = ""
 
-function ScanSoundsToMove()
+function ScanSoundsToMove(post)
 	--scan all files in D:\bounced sounds
 	prog2 = [[dir "]]..bounced_sounds_folder..[[" /a:-d /b]]
 	local idx = 0
@@ -52,8 +55,15 @@ function ScanSoundsToMove()
 	end
 	
 	--debug print
-	Msg("\n===============")
-	Msg("Scanning Sounds:\n")
+	if post == true then
+		Msg("\n===============")
+		Msg("("..idx..")".." OGG sounds remaining in "..bounced_sounds_folder)
+		Msg("")
+	else
+		Msg("\n===============")
+		Msg("Scanning Sounds:\n")
+	end
+	--print them
 	for i=0, idx-1 do
 		Msg((i+1)..". "..sounds_to_move[i])
 	end
@@ -125,21 +135,13 @@ function MoveSounds()
 		if filename ~= nil then
 			if folder == "game" then
 				--move it to interface folder
-				Msg("__________________________________")
-				Msg("For:		"..sounds_to_move[i])
-				Msg("Create (interface):	"..filename.."\nIn path:		P:data\\_interface\\_sounds\\\n")
-				ExecuteMoveFile(sounds_to_move[i],filename,[[P:data\_interface\_sounds\]])
+				ExecuteMoveFile(sounds_to_move[i],filename,[[P:data\_interface\_sounds\]],"interface")
 			else
 				if folder == last_export_folder then --ako je isti folder kao prethodni
 					--prebaci u isti folder kao prethodni
-					Msg("__________________________________")
-					Msg("For:		"..sounds_to_move[i])
-					Msg("Create (data):	"..filename.."\nIn path:		"..last_export_folder_path)
-					ExecuteMoveFile(sounds_to_move[i],filename,last_export_folder_path)
-					Msg("")
+					ExecuteMoveFile(sounds_to_move[i],filename,last_export_folder_path,"last")
 				else										 --ako treba da traži folder
-					local folder_found = false
-						
+					
 					--provera dal je _ho folder
 					ho_folder_name = ""
 					
@@ -161,62 +163,70 @@ function MoveSounds()
 					
 					
 					--moveit normalno i stavi taj folder kao poslednji...
+					local folder_found = false
 					for j in pairs(game_folders) do
 						if game_folders[j] == folder then
-							Msg("__________________________________")
-							Msg("For:		"..sounds_to_move[i])
 							path_for_export = game_folder_paths[j]..ho_folder_name..[[\_sounds\]]
-							Msg("Create (data):	"..filename.."\nIn path:		"..path_for_export)
 							last_export_folder = game_folders[j]
 							last_export_folder_path = path_for_export
-
-							ExecuteMoveFile(sounds_to_move[i],filename,path_for_export)
+							ExecuteMoveFile(sounds_to_move[i],filename,path_for_export,"data")
 							folder_found = true
 							break
 						end
+						
 					end
-					Msg(" ")				
-						
-						
-					--exception kad ne nadje folder
-					if folder_found == false then
-						--proveri da li samo ne postoji _sounds folder i napravi ga ako je to slucaj
-					
 
-						--izbaci gresku ako uopste ne postoji folder
-						Msg("ERROR***********************************************")
-						Msg("For:           "..sounds_to_move[i])
-						Msg(folder.." folder does not exist!\nCheck for typos.")
-						Msg("*********************************************************\n")
+					if folder_found == false then
+						Exception((folder..ho_folder_name),sounds_to_move[i])
 					end
-						
+					Msg(" ")										
 				end
 			end		
 		end
-		
-		
-		
-
 	end
 end
 
-function ExecuteMoveFile(original_file,destination_file,full_final_path) --bez ekstenzije, bez ekstenzije, cela staza sa \ na kraju
+function Exception(path,sound)
+	--proveri da li samo ne postoji _sounds folder i napravi ga ako je to slucaj
+	--izbaci gresku ako uopste ne postoji folder
+	Msg("ERROR***********************************************")
+	Msg("For:           "..sound)
+	Msg("Folder does not exist:")
+	Msg(path.."\nCheck for typos or create folder.")
+	Msg("*********************************************************\n")
+end
+
+function ExecuteMoveFile(original_file,destination_file,full_final_path,source) --bez ekstenzije, bez ekstenzije, cela staza sa \ na kraju
+	Msg(source)
 	move_prog = [[move /y "]]..bounced_sounds_folder..original_file..[[.ogg" "]]..full_final_path..destination_file..[[.ogg"]]
 	--Msg(move_prog)
 	--io.popen(move_prog)
-	for dir in io.popen(move_prog):lines() do
-		Msg(dir)
+	-- for dir in io.popen(move_prog):lines() do
+		-- Msg(dir)
+	-- end
+	
+	
+	done = os.execute(move_prog)
+	Msg(done)
+	
+	if done == true then 
+		Msg("_____________________________________________________")
+		Msg("For:		"..original_file)
+		Msg([[Create:		]]..destination_file.."\nIn path:		"..full_final_path)
+		Msg("		(1) files moved.")
+	else
+		Exception(full_final_path,original_file)
 	end
 end
 
 
 
 function Main()
-	ScanSoundsToMove()
+	ScanSoundsToMove(false) --za pocetak
 	ScanFoldersInGameProjectFolder()
 	MoveSounds()
-	
-	Msg(">>>> Moving Completed <<<<")
+	ScanSoundsToMove(true) -- da proveri kolko je ostalo
+	Msg("\n>>>> Moving Completed <<<<")
 end
 
 
