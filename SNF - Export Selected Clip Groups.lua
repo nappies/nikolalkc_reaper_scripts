@@ -1,5 +1,7 @@
 --[[ChangeLog
---v1.0 (2017-20-24)
+--v1.1 (2017-10-30)
+	--dodata podrska za over_hud folder, i napravljen poseban niz za exceptions
+--v1.0 (2017-10-24)
 	--MERGE Move Rendered Sounds To Project i Export Selected Clip Groups, sada su jedna skripta
 --v.03 (2017-10-23)
 	--run lua script after rendering
@@ -54,6 +56,7 @@ sounds_to_move = {}
 game_folders = {}
 game_folder_paths = {}
 last_export_folder = ""
+interface_exceptions = {[[hud]],[[journal]],[[map]],[[over_hud]]}
 
 function ScanSoundsToMove(post)
 	--scan all files in D:\bounced sounds
@@ -110,23 +113,17 @@ function ScanFoldersInGameProjectFolder()
 	prog2 = [[dir "P:\data\_interface\inventory\" /b /s /a:d | findstr /v "\_sounds"]]
 	ScanSpecificFolders(prog2)
 	
-	--exceptions za dodatne foldere, ručno ubačenui
-	game_folder_paths[folder_idx] = [[P:\data\_interface\hud]]
-	game_folders[folder_idx] = [[hud]]
-	folder_idx = folder_idx + 1
-	
-	game_folder_paths[folder_idx] = [[P:\data\_interface\journal]]
-	game_folders[folder_idx] = [[journal]]
-	folder_idx = folder_idx + 1
-	
-	game_folder_paths[folder_idx] = [[P:\data\_interface\map]]
-	game_folders[folder_idx] = [[map]]
-	folder_idx = folder_idx + 1
+	--exceptions za dodatne foldere, ručno ubačeni
+	for f in pairs(interface_exceptions) do
+		game_folder_paths[folder_idx] = [[P:\data\_interface\]]..interface_exceptions[f]
+		game_folders[folder_idx] = interface_exceptions[f]
+		folder_idx = folder_idx + 1
+	end
 	
 	--debug print
 	-- for i = 0, folder_idx - 1 do 
 		-- Msg(game_folder_paths[i])
-		---- Msg(game_folders[i])
+		-- Msg(game_folders[i])
 	-- end
 
 	Msg("Scan completed.")
@@ -607,7 +604,7 @@ Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
 		prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
 		io.popen(prog)     
 	end
-	--=================================================================================================
+	-- --=================================================================================================
 end
 
 
