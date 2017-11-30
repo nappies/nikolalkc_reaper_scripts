@@ -1,4 +1,6 @@
 --[[ChangeLog
+--v1.2 (2017-11-30)
+	--dodata podrska za export u main_menu folder
 --v1.1 (2017-10-30)
 	--dodata podrska za over_hud folder, i napravljen poseban niz za exceptions
 --v1.0 (2017-10-24)
@@ -56,7 +58,7 @@ sounds_to_move = {}
 game_folders = {}
 game_folder_paths = {}
 last_export_folder = ""
-interface_exceptions = {[[hud]],[[journal]],[[map]],[[over_hud]]}
+interface_exceptions = {[[hud]],[[journal]],[[map]],[[over_hud]],[[main_menu]]}
 
 function ScanSoundsToMove(post)
 	--scan all files in D:\bounced sounds
