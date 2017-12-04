@@ -9,6 +9,8 @@
  
 --[[
  * Changelog:
+ * v1.8 (2017-12-04)
+	+ Added -uu and -ii prefixes for faster typing
  * v1.7 (2017-09-28)
 	+ Added extra width to input window
  * v1.6 (2017-09-11)
@@ -184,6 +186,25 @@ function ShowDialogForNaming(cur_name)
 		
 		answer2 =string.gsub(answer2, "\n", "")
 		answer2 =string.gsub(answer2, "\r", "")
+		
+		
+		--funkcionalnost prefiksa za inventory item -i
+		prefix  = string.sub(answer1,0,2)
+		if prefix == "ii" then 
+			chapter = string.sub(answer1,3,3)
+			answer1 = string.sub (answer1, 5,-1)
+			answer1 = [[item_ch]]..chapter..[[_]]..answer1..[[_plus]]
+		end
+		
+		
+		--funkcionalnost prefiksa za use item  -u
+		prefix = string.sub(answer2, 0,2)
+		if prefix == "uu" then 
+			chapter = string.sub(answer2,3,3)
+			answer2 = string.sub (answer2, 5,-1)
+			answer2 = [[use_item_ch]]..chapter..[[_]]..answer2
+		end
+		
 		final_name = "@"..answer1..[[:
 ]]..answer2
 
