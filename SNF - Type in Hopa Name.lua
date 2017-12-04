@@ -9,6 +9,8 @@
  
 --[[
  * Changelog:
+ * v1.9 (2017-12-04)
+	+ Added support for ce chapter prefix naming -iic or -uuc
  * v1.8 (2017-12-04)
 	+ Added -uu and -ii prefixes for faster typing
  * v1.7 (2017-09-28)
@@ -193,7 +195,14 @@ function ShowDialogForNaming(cur_name)
 		if prefix == "ii" then 
 			chapter = string.sub(answer1,3,3)
 			answer1 = string.sub (answer1, 5,-1)
-			answer1 = [[item_ch]]..chapter..[[_]]..answer1..[[_plus]]
+			
+			if chapter == "c" then
+				chapter = "ce"
+			else
+				chapter = [[ch]]..chapter
+			end
+			
+			answer1 = [[item_]]..chapter..[[_]]..answer1..[[_plus]]
 		end
 		
 		
@@ -202,7 +211,13 @@ function ShowDialogForNaming(cur_name)
 		if prefix == "uu" then 
 			chapter = string.sub(answer2,3,3)
 			answer2 = string.sub (answer2, 5,-1)
-			answer2 = [[use_item_ch]]..chapter..[[_]]..answer2
+			
+			if chapter == "c" then
+				chapter = "ce"
+			else
+				chapter = [[ch]]..chapter
+			end
+			answer2 = [[use_item_]]..chapter..[[_]]..answer2
 		end
 		
 		final_name = "@"..answer1..[[:
