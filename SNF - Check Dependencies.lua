@@ -12,6 +12,8 @@
  
 --[[
  * Changelog:
+ * v1.2 (2017-12-14)
+	+ Removed exception for videos, they are now also copied
  * v1.1 (2017-05-26)
 	+ Support for unsaved projects
 	+ Added exception for empty items and rpr files
@@ -124,14 +126,14 @@ function CheckDependencies()
 				else 																										--file is not in SFX library, NEEDS TO BE MOVED IF AUDIO
 				
 					--proveri da li je video
-					filetype = reaper.GetMediaSourceType(src[i],"")
-					if filetype == "VIDEO" then	
+					--filetype = reaper.GetMediaSourceType(src[i],"")
+					--if filetype == "VIDEO" then	
 						--skip this file
-					else
+					--else
 						Msg(name[i].."   --- SHOULD BE COPIED INTO PROJECT FOLDER")
 						relocate_item[relocate_item_count] = item[i]
 						relocate_item_count = relocate_item_count + 1				
-					end
+					--end
 				end
 			end
 		end
@@ -167,10 +169,10 @@ function CheckDependencies()
 						reduced_file_path2 = string.sub(file_path,0,3) 																
 						if reduced_file_path2 ~= s_drive then							
 							--COPYYYYY after video check
-							filetype = reaper.GetMediaSourceType(src[i],"")
-							if filetype == "VIDEO" then	
+							--filetype = reaper.GetMediaSourceType(src[i],"")
+							--if filetype == "VIDEO" then	
 								--skip this file
-							else
+							--else
 								-- kopiraj fajl u folder projekta
 								new_path = project_path..[[Assets\]]..filename[i]
 								prog = [[xcopy ]]..[["]]..filepath[i]..[[" "]]..project_path..[[Assets\"]]
@@ -179,7 +181,7 @@ function CheckDependencies()
 								--zameni source
 								reaper.BR_SetTakeSourceFromFile2(take[i],new_path,false,true)	
 								reaper.Main_OnCommand(40047,0) --build any missing peaks
-							end
+							--end
 						end
 					end
 				end
