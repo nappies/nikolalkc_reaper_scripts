@@ -1,6 +1,6 @@
 --[[
  * ReaScript Name:  --Check Dependencies
- * Description: Checks for source of all audio files in project and if they are not from S: partition copies files in project directory
+ * Description: Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory
  * Instructions: 
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
@@ -12,6 +12,8 @@
  
 --[[
  * Changelog:
+ * v1.3 (2017-12-21)
+	+ Replaced S: partition with Q: partition
  * v1.2 (2017-12-14)
 	+ Removed exception for videos, they are now also copied
  * v1.1 (2017-05-26)
@@ -119,7 +121,7 @@ function CheckDependencies()
 			if reduced_file_path == project_path then																		--@check if file is in project folder
 				project_item_count = project_item_count + 1																	--it is somewhere in project folder
 			else 																											--NOT IN PROJECT FOLDER
-				s_drive = [[S:\]]
+				s_drive = [[Q:\]]
 				reduced_file_path2 = string.sub(file_path,0,3) 																--3 zato sto s_drive ima len 3
 				if reduced_file_path2 == s_drive then 																		--@check if file is on virtual paritition S:\
 					s_drive_item_count = s_drive_item_count + 1																--its ok, dont move file
@@ -140,7 +142,7 @@ function CheckDependencies()
 		-- Msg("===========================================================================")
 		-- Msg(audio_idx.." non MIDI items.")
 		-- Msg(project_item_count.." items located inside project folder.")
-		-- Msg(s_drive_item_count.." items located on virtutal S drive")
+		-- Msg(s_drive_item_count.." items located on virtutal Q drive")
 		-- Msg(relocate_item_count.." items that should be copied into project folder")
 		
 		
@@ -150,7 +152,7 @@ function CheckDependencies()
 		
 		message = audio_idx..[[ non MIDI items.
 	]]..project_item_count..[[ items located inside project folder.
-	]]..s_drive_item_count..[[ items located on virtual S drive.
+	]]..s_drive_item_count..[[ items located on virtual Q drive.
 	]]..relocate_item_count..[[ ITEMS THAT SHOULD BE COPIED INTO PROJECT FOLDER.
 
 	Do you want to copy ]]..relocate_item_count..[[ files to project folder and replace item source?]]
@@ -165,7 +167,7 @@ function CheckDependencies()
 					ln = string.len(project_path)
 					reduced_file_path = string.sub(file_path,0,ln) 															
 					if reduced_file_path ~= project_path then																																												
-						s_drive = [[S:\]]
+						s_drive = [[Q:\]]
 						reduced_file_path2 = string.sub(file_path,0,3) 																
 						if reduced_file_path2 ~= s_drive then							
 							--COPYYYYY after video check
@@ -193,7 +195,7 @@ function CheckDependencies()
 			reaper.Main_OnCommand(40026,0) --File: Save project 
 			-- Msg(audio_idx.." non MIDI items.")
 			-- Msg(project_item_count.." items located inside project folder.")
-			-- Msg(s_drive_item_count.." items located on virtutal S drive")
+			-- Msg(s_drive_item_count.." items located on virtutal Q drive")
 			-- Msg(relocate_item_count.." items that should be copied into project folder")
 		end
 		
