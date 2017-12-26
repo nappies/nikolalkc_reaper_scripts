@@ -12,6 +12,8 @@
  
 --[[
  * Changelog:
+ * v1.5 (2017-12-26)
+	+ If there are hidden tracks, show them before save, indluce files from them, and hide them after saving, works with TCP and MCP linked
  * v1.4 (2017-12-26)
 	+ Overwrite all new for XCOPY
  * v1.3 (2017-12-21)
@@ -48,6 +50,7 @@ s_drive_item_count = 0
 project_item_count = 0
 relocate_item_count = 0
 video_item_count = 0
+initially_visible_tracks = {}
 
 function CheckDependencies() 
 	
@@ -56,8 +59,29 @@ function CheckDependencies()
 	if project_path_and_filename ~= "" then
 		project_path = GetPath(project_path_and_filename,"\\")						--store project path
 
+		--remember visible tracks and show all tracks***************************************
+		
+		reaper.Main_OnCommand(40296,0) -- select all tracks
+		
+		--create array from currently visible tracks
+		selected_tracks_count = reaper.CountSelectedTracks(0)
+		for i = 0, selected_tracks_count -1 do
+			initially_visible_tracks[i] = reaper.GetSelectedTrack(0,i)
+			local track_name = ""
+			retval, track_name = reaper.GetTrackName( initially_visible_tracks[i],track_name  )
+			--Msg(track_name)
+		end
+		
+		
+		--show all tracks
+		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWSTL_SHOWALL"),0) 		--SWS: Show all tracks
+		--******************************************************************************************
+		
+		
 		--Select all items
 		reaper.Main_OnCommand(40182,0) 																						--Item: Select all items
+		
+		
 		
 		--get stuff from items
 		selected_count = reaper.CountSelectedMediaItems(0)
@@ -203,13 +227,30 @@ function CheckDependencies()
 		
 		
 		
+		
+		--**********************************************************************
+		--show only previoulsy visible tracks
+		reaper.Main_OnCommand(40297,0) --unselect all tracks
+		for i = 0, selected_tracks_count -1 do
+			reaper.SetTrackSelected( initially_visible_tracks[i], true )
+		end
+		
+		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_TOGTRACKSEL"),0) 		--SWS: Invert track selection
+		
+		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWSTL_HIDE"),0) 		--SWS: Hide Selected tracks
+		--***********************************************************************
+		
+		
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
+		reaper.Main_OnCommand(40026,0) --File: Save project 
 	else
 		--Msg("NOT SAVED")
 		reaper.Main_OnCommand(40026,0) -- save project
 	end
 	
 	
+	
+
 end
 
 function GetPath(str,sep)
