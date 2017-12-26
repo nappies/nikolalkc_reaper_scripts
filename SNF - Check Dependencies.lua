@@ -12,6 +12,8 @@
  
 --[[
  * Changelog:
+ * v1.4 (2017-12-26)
+	+ Overwrite all new for XCOPY
  * v1.3 (2017-12-21)
 	+ Replaced S: partition with Q: partition
  * v1.2 (2017-12-14)
@@ -149,9 +151,9 @@ function CheckDependencies()
 		
 		if relocate_item_count > 0 then
 		
+		--TODO: provera da li treba da li ima vise istih fajlova
 		
-		message = audio_idx..[[ non MIDI items.
-	]]..project_item_count..[[ items located inside project folder.
+		message = [[	]]..project_item_count..[[ items located inside project folder.
 	]]..s_drive_item_count..[[ items located on virtual Q drive.
 	]]..relocate_item_count..[[ ITEMS THAT SHOULD BE COPIED INTO PROJECT FOLDER.
 
@@ -177,7 +179,7 @@ function CheckDependencies()
 							--else
 								-- kopiraj fajl u folder projekta
 								new_path = project_path..[[Assets\]]..filename[i]
-								prog = [[xcopy ]]..[["]]..filepath[i]..[[" "]]..project_path..[[Assets\"]]
+								prog = [[xcopy ]]..[["]]..filepath[i]..[[" "]]..project_path..[[Assets\" /y /d]]
 								os.execute(prog)
 							
 								--zameni source
