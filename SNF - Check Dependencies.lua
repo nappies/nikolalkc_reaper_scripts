@@ -12,6 +12,8 @@
  
 --[[
  * Changelog:
+ * v1.6 (2017-12-27)
+	+ Checking for offline files started, disabled, because it is too slow *********
  * v1.5 (2017-12-26)
 	+ If there are hidden tracks, show them before save, indluce files from them, and hide them after saving, works with TCP and MCP linked
  * v1.4 (2017-12-26)
@@ -51,6 +53,8 @@ project_item_count = 0
 relocate_item_count = 0
 video_item_count = 0
 initially_visible_tracks = {}
+unavailable_source_files = {}
+usf_INDEX = 0
 
 function CheckDependencies() 
 	
@@ -111,13 +115,29 @@ function CheckDependencies()
 						parent = reaper.GetMediaSourceParent(src[audio_idx])
 						filepath[audio_idx] = reaper.GetMediaSourceFileName(parent,"")
 					
-						--reaper.ShowConsoleMsg("Parent Path:   ")
-						--Msg(filepath[audio_idx])
+						-- reaper.ShowConsoleMsg("Parent Path:   ")
+						-- Msg(filepath[audio_idx])
 					else
-						--reaper.ShowConsoleMsg("Filepath:   ")
-						--Msg(filepath[audio_idx])		
+						-- reaper.ShowConsoleMsg("Filepath:   ")
+						-- Msg(filepath[audio_idx])		
 					end
 					
+					
+					
+					--proveri da li postoji fajl na toj adresi, da nije slucajno offline
+					--**********************************************************************************
+					-- prog = [[if not exist "]]..filepath[audio_idx]..[[" exit /b 1]]
+					-- ret = os.execute(prog)
+					-- if ret == nil then
+						-- Msg([[FILE DOES NOT EXIST AT THIS LOCATION: 	]]..filepath[audio_idx])
+						
+						-- --dodaj fajl path u niz unavailable_source_files
+						-- unavailable_source_files[usf_INDEX] = filepath[audio_idx]
+						-- usf_INDEX = usf_INDEX + 1
+					-- end
+					--**********************************************************************************
+
+				
 					
 					--make filename
 					rid = string.reverse(filepath[audio_idx])
@@ -133,6 +153,8 @@ function CheckDependencies()
 					--Msg(" ")
 					
 				end
+			else 
+				--Msg("FILE NIL") --empty item
 			end
 		end
 		
@@ -158,9 +180,23 @@ function CheckDependencies()
 					--if filetype == "VIDEO" then	
 						--skip this file
 					--else
-						Msg(name[i].."   --- SHOULD BE COPIED INTO PROJECT FOLDER")
-						relocate_item[relocate_item_count] = item[i]
-						relocate_item_count = relocate_item_count + 1				
+					
+						--proveri dal nije već offline
+						local is_offline = false
+						for j in pairs(unavailable_source_files) do
+							--Msg(j..[[----]]..unavailable_source_files[j]..[[---]]..file_path[i])
+							if unavailable_source_files[j] == filepath[i] then
+								is_offline = true
+								break
+							end
+						end
+						
+						if is_offline == false then
+							Msg(name[i].."   --- SHOULD BE COPIED INTO PROJECT FOLDER")
+							relocate_item[relocate_item_count] = item[i]
+							relocate_item_count = relocate_item_count + 1			
+						end
+					
 					--end
 				end
 			end

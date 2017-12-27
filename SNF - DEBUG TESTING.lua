@@ -99,12 +99,46 @@ function Main()
 	-- end
 	
 	--getting environment variable with lua directly
-	envv = os.getenv("HOPA_NAME")
-	Msg(envv)
+	-- envv = os.getenv("HOPA_NAME")
+	-- Msg(envv)
 	
+	--print take source state
+	-- item = reaper.GetSelectedMediaItem( 0, 0)
+	-- fs = reaper.SNM_CreateFastString("")               -- create a new "fast string"
+	-- local STATE =  reaper.SNM_GetSetSourceState(item, -1, fs, false) -- get take1 source
+	-- local str = reaper.SNM_GetFastString( fs )
+	-- Msg(STATE)
+	-- Msg(str)
+	
+	
+
 	
 
 end
 
+	
+--function to print return of program in batch	
+function os.capture(cmd, raw)
+    local handle = assert(io.popen(cmd, 'r'))
+    local output = assert(handle:read('*a'))
+    
+    handle:close()
+    
+    if raw then 
+        return output 
+    end
+   
+    output = string.gsub(
+        string.gsub(
+            string.gsub(output, '^%s+', ''), 
+            '%s+$', 
+            ''
+        ), 
+        '[\n\r]+',
+        ' '
+    )
+   
+   return output
+end
 
 Main()
