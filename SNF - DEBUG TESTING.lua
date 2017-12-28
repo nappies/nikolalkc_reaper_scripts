@@ -111,6 +111,12 @@ function Main()
 	-- Msg(STATE)
 	-- Msg(str)
 
+  item = reaper.GetSelectedMediaItem( 0, 0 )
+  local strNeedBig = ""
+  retval, strNeedBig = reaper.GetItemStateChunk( item, strNeedBig, false )
+  Msg(retval)
+  Msg(strNeedBig)
+
 
 
 
