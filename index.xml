@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc scripts" commit="e9b43a94a187e5712bee4d973eca85cec35879f2">
+<index version="1" name="nikolalkc scripts" commit="1279bf1ca293ef0409ea6a06cde88cf3f586dce2">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="nikolalkc Copy item automation using empty item">
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
@@ -111,6 +111,10 @@ Check it out
       <version name="1.3" author="nikolalkc" time="2017-12-28T22:21:02Z">
         <changelog><![CDATA[+ Link added]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/e9b43a94a187e5712bee4d973eca85cec35879f2/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
+      </version>
+      <version name="1.4" author="nikolalkc" time="2017-12-28T23:15:00Z">
+        <changelog><![CDATA[+ INFO ADDED]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/1279bf1ca293ef0409ea6a06cde88cf3f586dce2/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Triple Zoom Out.lua" type="script" desc="Triple zoom out">
