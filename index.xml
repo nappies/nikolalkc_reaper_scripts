@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc scripts" commit="f800d676c7203983f2afb5a99d0efe85bfd05025">
+<index version="1" name="nikolalkc scripts" commit="f1fbfc3f9859e37441ae815065a6265601b7806b">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="nikolalkc Copy item automation using empty item">
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
@@ -56,6 +56,12 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/GameAudioEditing/nikolalkc_Relative%20Mousewheel%20Gain.lua</source>
       </version>
     </reapack>
+    <reapack name="nikolalkc_Select Next Track For Importing.lua" type="script" desc="Triple zoom out">
+      <version name="1.1" author="nikolalkc" time="2017-12-28T21:47:23Z">
+        <changelog><![CDATA[+ Support for horizontal zoom center to edit cursor]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Select%20Next%20Track%20For%20Importing.lua</source>
+      </version>
+    </reapack>
     <reapack name="nikolalkc_Toggle Global Automation LatchPreview-TrimRead.lua" type="script" desc="Toggle Global Automation LatchPreview-TrimRead">
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
@@ -78,6 +84,18 @@
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Trim%20Item%20From%20Right%20And%20Preserve%20Fadeout%20(ProTools%20-%20S).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Triple Zoom In.lua" type="script" desc="Triple zoom in">
+      <version name="1.1" author="nikolalkc" time="2017-12-28T21:47:23Z">
+        <changelog><![CDATA[+ Support for horizontal zoom center to edit cursor]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Triple Zoom Out.lua" type="script" desc="Triple zoom out">
+      <version name="1.1" author="nikolalkc" time="2017-12-28T21:47:23Z">
+        <changelog><![CDATA[+ Support for horizontal zoom center to edit cursor]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Triple%20Zoom%20Out.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Type in HOPA Name.lua" type="script" desc="Type In Hopa Name">
