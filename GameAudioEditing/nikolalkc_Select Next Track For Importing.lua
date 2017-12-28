@@ -4,6 +4,7 @@
   * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5.0 pre 40
+ * Version: 1.1
 ]]
 
 --[[
