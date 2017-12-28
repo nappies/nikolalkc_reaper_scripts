@@ -1,10 +1,10 @@
 --[[
- * ReaScript Name: SNF - Paste item automation using empty item
- * Description:
- * Instructions:
+ * ReaScript Name: Paste item automation using empty item
+ * Description: This script pastes the automation values for all envelopes copied with empty item
+ * Instructions:Use first Copy Item Automation Using Empty Item and then select where you want to paste setting and
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.0 pre 40
+ * REAPER: 5+
  * Extensions: SWS
  * Version: 1.0
 ]]

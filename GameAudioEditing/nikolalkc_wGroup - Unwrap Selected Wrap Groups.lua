@@ -1,7 +1,7 @@
 --[[
- * ReaScript Name:
- * Description:
- * Instructions:
+ * ReaScript Name:wGroup - Unwrap Selected Wrap Group(s)
+ * Description: Deletes empty midi items for selected Wrap Groups and ungroups items so they can be independently edited.
+ * Instructions: Select your wGroup and run the script.
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5+
@@ -11,7 +11,7 @@
 
 --[[
  * Changelog:
- * v1.0 (201x-xx-xx)
+ * v1.0 (2017-12-28)
 	+ Initial Release
 --]]
 
@@ -25,14 +25,14 @@ array_of_items_to_unselect = {}
 reaper.Undo_BeginBlock()
 
 reaper.Main_OnCommand( 40034, 0 ) --Item grouping: Select all items in groups
-reaper.Main_OnCommand( 40033, 0 ) --ungroup
+reaper.Main_OnCommand( 40033, 0 ) --Ungroup
 
 selected_count = reaper.CountSelectedMediaItems(0)
 --Msg("COUNT:"..selected_count)
 if	selected_count > 0  then
 	for i = 0, selected_count - 1 do
 		--Msg("I:"..i)
-		--dodeli im vrednosti
+		--assign values
 		item = reaper.GetSelectedMediaItem(0,i)
 		take = reaper.GetMediaItemTake(item, 0)
 		if take ~= nil then
@@ -71,5 +71,5 @@ if	selected_count > 0  then
 
 	reaper.Main_OnCommand( 40697, 0 ) --delete
 	reaper.UpdateArrange()
-	reaper.Undo_EndBlock("SNF: Destroy ClipGroup (delete emtpy midi items)", -1)
+	reaper.Undo_EndBlock("nikolalkc: Unwrap selected wGroup(s).", -1)
 end

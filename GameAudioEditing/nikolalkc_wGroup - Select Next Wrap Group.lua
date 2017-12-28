@@ -1,10 +1,10 @@
 --[[
- * ReaScript Name: SNF - Rename next clip group
- * Description: Goes to first next vertical or horizontal snf clip group and opens item properties for first empty midi item
- * Instructions: Bind it to shortcut RIGHT and just press button
+ * ReaScript Name: Select Next wGroup
+ * Description: Goes to first next wGroup in timeline and selects it
+ * Instructions: Bind it to shortcut RIGHT and just press button (NOTE: It still needs improvements)
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.0 pre 40
+ * REAPER: 5+
  * Extensions: SWS
  * Version: 1.0
 ]]
@@ -68,7 +68,7 @@ function FindNext()
 
 	SelectFirst()
 	CheckItemPos()
-	--Msg(" nije isto")
+	--Msg("It's not same")
 end
 
 function SelectFirst()

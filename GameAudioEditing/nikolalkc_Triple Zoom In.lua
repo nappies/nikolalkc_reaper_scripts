@@ -1,9 +1,9 @@
 --[[
  * ReaScript Name: Triple zoom in
- * Description: Pt like zoom in
+ * Description: Pro Tools like zoom in
   * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.0 pre 40
+ * REAPER: 5+
 ]]
 
 --[[

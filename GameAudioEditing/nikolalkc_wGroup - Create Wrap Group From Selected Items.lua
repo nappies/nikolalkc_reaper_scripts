@@ -1,7 +1,7 @@
 --[[
- * ReaScript Name: nikolalkc_Create Wrap Group From Selected Items
- * Description:
- * Instructions:
+ * ReaScript Name: Create Wrap Group From Selected Items
+ * Description: Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
+ * Instructions: Create item selection and run the script
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5+
@@ -39,7 +39,7 @@ last_selected_track = nil
 
 --MAIN==========================================
 function Main()
-	reaper.ShowConsoleMsg("") --počisti ekran
+	reaper.ShowConsoleMsg("") --Clear Screen
 
 	reaper.Main_OnCommand(40290,0) --Time selection: Set time selection to items
 	track = reaper.GetTrack(0,1)
@@ -50,17 +50,17 @@ function Main()
 	selected_count = reaper.CountSelectedMediaItems(0)
 	--Msg(selected_count)
 
-	--nadji pocetak i kraj selekcije
+	--Find selection start and end
 	selectionStart, selectionEnd =  reaper.GetSet_LoopTimeRange(0,0,0,0,0)
 	 --Msg("SelectionStart:")
 	 --Msg(selectionStart)
 	 --Msg("SelectionEnd:")
 	 --Msg(selectionEnd)
 
-	--protrci kroz sve selektovane iteme
+	--run thru all selected items
 	for i = 0, selected_count - 1 do
 
-		--dodeli im vrednosti
+		--get the values
 		item[i] = reaper.GetSelectedMediaItem(0,i)
 		take[i] = reaper.GetMediaItemTake(item[i], 0)
 		if take[i] ~= nil then
@@ -81,7 +81,7 @@ function Main()
 		--Msg(end_pos[i])
 		--Msg("===")
 
-		--izracunaj prvu i poslednju traku
+		--calculate first and last track
 		item_track[i] = reaper.GetMediaItem_Track(item[i])
 		track_number = reaper.GetMediaTrackInfo_Value(item_track[i], "IP_TRACKNUMBER" )
 		--Msg(track_number)
@@ -97,22 +97,22 @@ function Main()
 
 
 
-		--popuni praznine
+		--fill the gaps
 		if i > 0 then
 			if item_track[i] == item_track[i-1] then
-				empty_midi = reaper.CreateNewMIDIItemInProj(item_track[i], end_pos[i-1], start_pos[i], qnInOptional ) --izmedju item na istoj traci
+				empty_midi = reaper.CreateNewMIDIItemInProj(item_track[i], end_pos[i-1], start_pos[i], qnInOptional ) --between items of same track
 				midi_items[midi_idx] = empty_midi
 				midi_idx = midi_idx + 1
 			else
-				a = reaper.CreateNewMIDIItemInProj(item_track[i-1], end_pos[i-1], selectionEnd,qnInOptional) -- na kraju unutrasnje trake
+				a = reaper.CreateNewMIDIItemInProj(item_track[i-1], end_pos[i-1], selectionEnd,qnInOptional) -- at the end of inner tracks
 				midi_items[midi_idx] = a
 				midi_idx = midi_idx + 1
 
-				b = reaper.CreateNewMIDIItemInProj(item_track[i], selectionStart, start_pos[i],qnInOptional) -- na pocetku unutrasnje trake
+				b = reaper.CreateNewMIDIItemInProj(item_track[i], selectionStart, start_pos[i],qnInOptional) --at the start of inner tracks
 				midi_items[midi_idx] = b
 				midi_idx = midi_idx + 1
 
-				--ako ima praznih traka izmedju, popuni ih cele
+				--fill completely empty tracks
 				track_a_idx =  reaper.GetMediaTrackInfo_Value( item_track[i-1], "IP_TRACKNUMBER" )
 				track_b_idx =  reaper.GetMediaTrackInfo_Value( item_track[i], "IP_TRACKNUMBER" )
 
@@ -129,7 +129,7 @@ function Main()
 			end
 		else
 			if selectionStart ~= start_pos[i] then
-				c = reaper.CreateNewMIDIItemInProj(item_track[i], selectionStart, start_pos[i], qnInOptional) -- za pocetak prve trake
+				c = reaper.CreateNewMIDIItemInProj(item_track[i], selectionStart, start_pos[i], qnInOptional) --for start of first track
 				midi_items[midi_idx] = c
 				midi_idx = midi_idx + 1
 			end
@@ -137,7 +137,7 @@ function Main()
 
 		if i == selected_count - 1 then
 			if end_pos[i] ~= selectionEnd then
-				d = reaper.CreateNewMIDIItemInProj(item_track[i], end_pos[i], selectionEnd, qnInOptional) -- za kraj poslednje trake
+				d = reaper.CreateNewMIDIItemInProj(item_track[i], end_pos[i], selectionEnd, qnInOptional) -- for end of last track
 				midi_items[midi_idx] = d
 				midi_idx = midi_idx + 1
 			end
@@ -196,7 +196,7 @@ end
 --EXECUTION======================================
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh( 1 )
-Main() -- odradi funkciju
+Main() -- run script
 reaper.PreventUIRefresh( -1 )
 reaper.Undo_EndBlock("Make Clip Group From Selection (With Emtpy Midi Items)", -1)
 reaper.UpdateArrange()

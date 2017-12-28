@@ -3,7 +3,7 @@
  * Description: Renames take name in format @input1:input2 based on input strings from user (replaces spaces with underscore)
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.0 pre 40
+ * REAPER: 5+
  * Version: 1.4
 ]]
 
@@ -58,7 +58,7 @@ function Main()
 	--Msg(hopa_name_path)
 
 
-	--PROCITAJ FAJL U KOM JE SACUVANO IME PRETHODNOG IMENOVANJA +++++++++++++++++++++++++
+	--Read data config file in which the last name is saved+++++++++++++++++++++++++
 	file_path = [[]]..hopa_name_path..[[\last_scene.dat]]
 	file = io.open(file_path, "r")
 	if file ~= nil then
@@ -87,38 +87,38 @@ function Main()
 			cur_item = reaper.GetSelectedMediaItem(0,i)
 			cur_take = reaper.GetMediaItemTake(cur_item, 0)
 			if cur_take == nil then
-				--ovaj je prazan, dodaj ga u niz praznih
+				--this one is empty, add it to array of empty items
 				empty_items[idx] = cur_item
 				idx = idx + 1
 			else
-				--nije prazan, preskoči
+				--not empty, skip
 			end
 
 		end
 
-		--SETUJ DA TREBA NIZ DA SE IMENUJE
+		--SET ARRAY FOR NAMING
 		if idx > 1 then
-			--NIZ U KOME IMA VIŠE EMPTY ITEMA
+			--ARRAY WITH EMPTY MORE EMPTY ITEMS
 			array_naming = true
 			item_is_empty = true
 		else
-			--NIZ U KOJEM IMA SAMO JEDAN ili NULA EMPTY ITEMa
-			--Msg("šta se dešava ako selektujemo više, a ima samo jedan empty item??*????")
+			--ARRAY WITH ONE OR ZERO EMTPY ITEMS
+			--Msg("What happens if we select more, but there is just one empy item??*????")
 			if idx == 1 then
-				cur_item = empty_items[0]   -- kad ima jedan empty item
+				cur_item = empty_items[0]   --when there is only one empty item
 			else
-				cur_item = reaper.GetSelectedMediaItem(0,0) -- samo prvi, ili sve ????
+				cur_item = reaper.GetSelectedMediaItem(0,0) -- just first, or all?
 			end
 		end
 
 	else
-		--TREBA SAMO SELEKTOVANI ITEM DA SE IMENUJE, BIO ON TAKE ILI EMPTY ITEM, KASNIJE SE BIRA KOJI
+		--SELECTED ITEM SHOULD BE NAMED, WHETER IT'S EMPTY MIDI OR EMPTY ITEM, LATER DECIDEDs
 		empty_items[0] = reaper.GetSelectedMediaItem(0,0)
 		cur_item = empty_items[0]
 	end
 	--================================================================================================
 
-	--IMENOVANJE NIZA SELEKTOVANIH ITEMA
+	--NAMING OF ARRAY OF SELECTED ITEMS
 	if array_naming == true then
 		first_item = empty_items[0]
 		input_name = reaper.ULT_GetMediaItemNote( first_item )
@@ -127,17 +127,17 @@ function Main()
 			SetNameForItem(empty_items[i], user_input, final_name, true,i)
 		end
 	else
-		--IMENOVANJE SAMO JEDNOG SELEKTOVANOG ITEMa
+		--NAMING JUST ONE SELECTED ITEM
 
 		cur_take = reaper.GetMediaItemTake(cur_item, 0)
 
 		item_is_empty = false
 		if cur_take == nil then
-			--setuj da treba empty item da se imenuje
+			--set emtpy item for naming
 			item_is_empty = true
 			cur_name =  reaper.ULT_GetMediaItemNote( cur_item )
 		else
-			--setuj da treba običan tejk da imenuje
+			--set regular take to be named (audio or midi)
 			cur_name = reaper.GetTakeName(cur_take)
 		end
 
@@ -154,14 +154,14 @@ function ShowDialogForNaming(cur_name)
 			scene_name, file_name = cur_name:match("([^,]+):([^,]+)")
 
 			if scene_name ~= nil then
-				--kul tebra
+				--it's fine
 			else
 				scene_name = cur_name
 				file_name = ""
 			end
 
 
-			--ako je @ na pocetku skini
+			--if there is @ prefix
 			first_char = string.sub(scene_name, 0, 1)
 			if first_char == "@" then
 				scene_name = string.gsub(scene_name, "%@", "")
@@ -177,9 +177,9 @@ function ShowDialogForNaming(cur_name)
 	answer1, answer2 = result:match("([^,]+),([^,]+)")
 	--Msg("Answer1:"..answer1)
 	--Msg("Answer2:"..answer2)
-	--proveri da li su oba polja upisana
+	--check if both fields are filled
 	if answer1 ~= nil and answer2 ~= nil then                --ako jesu onda iseckaj i sastavi
-		--Msg("Oba polja su popunjena!")
+		--Msg("Both fields are filled")
 		answer1 = string.gsub(answer1, "% ", "_")
 		answer2 = string.gsub(answer2, "% ", "_")
 
@@ -190,7 +190,7 @@ function ShowDialogForNaming(cur_name)
 		answer2 =string.gsub(answer2, "\r", "")
 
 
-		--funkcionalnost prefiksa za inventory item -i
+		--snippet logic for inventory plus item  (ii2)
 		prefix  = string.sub(answer1,0,2)
 		if prefix == "ii" then
 			chapter = string.sub(answer1,3,3)
@@ -206,7 +206,7 @@ function ShowDialogForNaming(cur_name)
 		end
 
 
-		--funkcionalnost prefiksa za use item  -u
+		--snippet logic for use item (uu2)
 		prefix = string.sub(answer2, 0,2)
 		if prefix == "uu" then
 			chapter = string.sub(answer2,3,3)
@@ -225,14 +225,14 @@ function ShowDialogForNaming(cur_name)
 
 		answer_to_save = answer1
 	else
-		--Msg("Nisu oba polja popunjena!")
+		--Msg("both fields are NOT filled!")
 		--Msg(result)
-		if result == "," then          --ako nisu uopste popunjena onda nek bude prazno
-			--Msg("Oba polja su prazna")
+		if result == "," then                                      --if nothing typed, leave it emtpy
+			--Msg("both fields are empty")
 			final_name = ""
-		else                                                       --ako je jedno polje popunjeno stavi @
-			--Msg("Nisu Oba polja prazna")
-			cut_result = string.gsub(result, "%,", "")  --izvadi zarez
+		else                                                       --if one field is filled, put @ prefix
+			--Msg("at least one field is not empty")
+			cut_result = string.gsub(result, "%,", "")  --remove comma (,) character
 			cut_result = string.gsub(cut_result, "% ", "_")
 			answer_to_save = cut_result
 			final_name = "@"..cut_result
@@ -259,7 +259,7 @@ function SetNameForItem(cur_item,retval,final_name,item_is_empty,index_to_add)
 				final_name = final_name.."_"..zero..index_to_add
 			end
 			reaper.ULT_SetMediaItemNote( cur_item, final_name)
-			reaper.Main_OnCommand(reaper.NamedCommandLookup("_RSb428746958e98560bf16fdec0d9022a5b13465c0"),0) -- fit notes stretch (ovo radi  na sve selektovane iteme)
+			reaper.Main_OnCommand(reaper.NamedCommandLookup("_RSb428746958e98560bf16fdec0d9022a5b13465c0"),0) -- fit notes stretch (for all selected items HEDA SCRIPT)
 		end
 
 		--Msg(file_path)

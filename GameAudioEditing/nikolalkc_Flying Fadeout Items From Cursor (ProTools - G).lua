@@ -1,5 +1,5 @@
 --[[
- * ReaScript Name:
+ * ReaScript Name:Flying Fadeout Items From Cursor (ProTools - G)
  * Description:
  * Instructions:
  * Author: nikolalkc
@@ -11,7 +11,7 @@
 
 --[[
  * Changelog:
- * v1.0 (201x-xx-xx)
+ * v1.0 (2017-12-28)
 	+ Initial Release
 --]]
 --for flying cursor (no need for clicking)

@@ -1,37 +1,30 @@
 --[[
- * ReaScript Name:
- * Description:
- * Instructions:
+ * ReaScript Name:Export Selected HOPA Sounds And Move Them To Project Folder
+ * Description:Renders selected @named wGroups to desired folder and after that moves them to HOPA Project _sounds folders
+ * Instructions: Make item or Time selection, Time selection has priority, then run the script
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5+
  * Extensions: SWS
- * Version: 1.0
+ * Version: 1.2
 ]]
-
---[[
- * Changelog:
- * v1.0 (201x-xx-xx)
-	+ Initial Release
---]]
 
 
 --[[ChangeLog
 --v1.2 (2017-11-30)
-	--dodata podrska za export u main_menu folder
+	--support added for main_menu export folder
 --v1.1 (2017-10-30)
-	--dodata podrska za over_hud folder, i napravljen poseban niz za exceptions
+	--support fo over_hud folder, special array for exceptions created
 --v1.0 (2017-10-24)
-	--MERGE Move Rendered Sounds To Project i Export Selected Clip Groups, sada su jedna skripta
+	--MERGE Move Rendered Sounds To Project & Export Selected Clip Groups, they are now one script
 --v.03 (2017-10-23)
 	--run lua script after rendering
 	--bounced_sounds_folder variable
 	--make_items_white variable
 --v.02 (2017-08-17)
-	--boje se posvetle kad se eksportuju itemi, ne ode u belo
---v.01 (nekad)
-	--eksportovanje klip grupa
---Export selected Clip_groups to BouncedSounds folder and runs SNF - Move Rendered Sounds To Project.lua
+	--colors become lighter after exporting, not white
+--v.01 (old)
+  --Export selected Wrap Groups to BouncedSounds folder and runs SNF - Move Rendered Sounds To Project.lua
 	--Clip group names must begin with '@' character
 	--Render settings must be set with dummy render to item-name @region and bounds to time selection
 ]]
@@ -47,7 +40,7 @@ end
 --colors---------------------------------------------------------------------------------------------
 make_items_white = true
 luminance_change_amount = 0.3
-absolute_luminance = false --true ako treba da bude na određenu vrednost, false ako treba da bude dodatak na postojeću vrednost
+absolute_luminance = false --true for absolute, false for increment
 
 
 --[[MOVE RENDERED SOUNDS TO PROJECT START+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -60,16 +53,16 @@ absolute_luminance = false --true ako treba da bude na određenu vrednost, false
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 HISTORY
 * v04 (2017-10-24)
-	+Exceptioni i errori uradjeni
+	+Exceptions i errori done
 
 * v03 (2017-10-23)
-	+Osvnovno radi
+	+Basics work
 
 * v02 (2017-10-23)
-	+Ho Logika
+	+Ho Logics
 
 * v01 (2017-10-23)
-	+Prekucavanje skripti
+	+retyping
 ]]
 
 sounds_to_move = {}
@@ -99,7 +92,7 @@ function ScanSoundsToMove(post)
 		--Msg(dir_name)
 
 
-		if extension == "ogg" then	--ako je ogg, dodaj ga u listu za premestanje
+		if extension == "ogg" then	--if ogg, add it to  moving list
 			sounds_to_move[idx] = dir_name
 			idx = idx + 1
 		end
@@ -133,7 +126,7 @@ function ScanFoldersInGameProjectFolder()
 	prog2 = [[dir "P:\data\_interface\inventory\" /b /s /a:d | findstr /v "\_sounds"]]
 	ScanSpecificFolders(prog2)
 
-	--exceptions za dodatne foldere, ručno ubačeni
+	--exceptions za dodatne foldere, manually added
 	for f in pairs(interface_exceptions) do
 		game_folder_paths[folder_idx] = [[P:\data\_interface\]]..interface_exceptions[f]
 		game_folders[folder_idx] = interface_exceptions[f]
@@ -171,7 +164,7 @@ end
 function MoveSounds()
 	Msg("\n===============")
 	Msg("Moving Sounds...\n")
-	--za svaki zvuk
+	--for every sound
 	for i in pairs(sounds_to_move) do
 		folder,filename = SeparateFolderAndFileName(sounds_to_move[i])
 
@@ -180,12 +173,12 @@ function MoveSounds()
 				--move it to interface folder
 				ExecuteMoveFile(sounds_to_move[i],filename,[[P:data\_interface\_sounds\]],"interface")
 			else
-				if folder == last_export_folder then --ako je isti folder kao prethodni
+				if folder == last_export_folder then --if same folder as last
 					--prebaci u isti folder kao prethodni
 					ExecuteMoveFile(sounds_to_move[i],filename,last_export_folder_path,"last")
-				else										 --ako treba da traži folder
+				else										 --if it should search folder
 
-					--provera dal je _ho folder
+					--check if HO folder
 					ho_folder_name = ""
 
 					is_ho_normal = string.sub (folder,-3,-1)
@@ -194,18 +187,18 @@ function MoveSounds()
 						folder = string.sub(folder,1, -4)
 						--Msg("HO:"..folder)
 					else
-						-- provera dal je  _ho_second ili _ho_nesto
+						-- check if ho_second or ho_something
 						is_ho_other = string.find(folder,'_ho_')
 						if is_ho_other ~= nil then
 							ho_folder_name = string.sub(folder, is_ho_other, -1)
-							folder = string.sub(folder,0,-(string.len(ho_folder_name)+1)) 	--oduzmi ho deo iz folder imena
-							ho_folder_name = "\\"..string.sub(ho_folder_name,2,-1) 			--ovo se koristi posle sa prefiskom \
+							folder = string.sub(folder,0,-(string.len(ho_folder_name)+1)) 	--remove ho part from name
+							ho_folder_name = "\\"..string.sub(ho_folder_name,2,-1) 			--this is later used with prefix \
 						end
 					end
 
 
 
-					--moveit normalno i stavi taj folder kao poslednji...
+					--move it normal and set folder as last
 					local folder_found = false
 					for j in pairs(game_folders) do
 						if game_folders[j] == folder then
@@ -230,8 +223,8 @@ function MoveSounds()
 end
 
 function Exception(path,sound)
-	--proveri da li samo ne postoji _sounds folder i napravi ga ako je to slucaj
-	--izbaci gresku ako uopste ne postoji folder
+	--check if _sounds does not exist and create it if that's the case
+	--error if there is no folder at all
 	Msg("ERROR***********************************************")
 	Msg("For:           "..sound)
 	Msg("Folder does not exist:")
@@ -239,7 +232,7 @@ function Exception(path,sound)
 	Msg("*********************************************************\n")
 end
 
-function ExecuteMoveFile(original_file,destination_file,full_final_path,source) --bez ekstenzije, bez ekstenzije, cela staza sa \ na kraju
+function ExecuteMoveFile(original_file,destination_file,full_final_path,source) --no extension, no extension, whole path with \ at the end
 	--Msg(source)
 	move_prog = [[move /y "]]..bounced_sounds_folder..original_file..[[.ogg" "]]..full_final_path..destination_file..[[.ogg"]]
 	--Msg(move_prog)
@@ -263,10 +256,10 @@ function ExecuteMoveFile(original_file,destination_file,full_final_path,source) 
 end
 
 function MOVE_RENDERED_SOUNDS_TO_PROJECT()
-	ScanSoundsToMove(false) --za pocetak
+	ScanSoundsToMove(false) --for start
 	ScanFoldersInGameProjectFolder()
 	MoveSounds()
-	ScanSoundsToMove(true) -- da proveri kolko je ostalo
+	ScanSoundsToMove(true) -- to check how many remained after moving
 	Msg("\n>>>> Moving Completed <<<<")
 end
 
@@ -386,25 +379,25 @@ selected_count = nil
 --Main FUN==================================================================================================================================================================
 function Main()
 	reaper.Undo_BeginBlock()
-	--proveri kolika je selekcija vremenska
+	--check time selection
 	start_time, end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
 	delta_time = end_time - start_time
 
-	if delta_time > 0 then     --ako ima vremenske selekcije
+	if delta_time > 0 then     --there is time selection
 		--export
 		reaper.Main_OnCommand(40717,0) --Item: Select all items in current time selection
 		selected_count = reaper.CountSelectedMediaItems(0)
 		render_selected_items()
 		post_export_dialog()
 
-	else --ako nema vremenske selekcije
+	else --no time selection
 
 		--check item selection
 		selected_count = reaper.CountSelectedMediaItems(0)
-		if selected_count == 0 then --ako ni jedan item nije selektovan
+		if selected_count == 0 then --no items selected
 			--Msg("No items selected. You must select at least one item, or make time selection")
 			post_export_dialog("No Items Selected!")
-		else --ako je selektovan bar jedan item
+		else --if at least one item selected
 			--export
 			render_selected_items()
 			post_export_dialog()
@@ -437,7 +430,7 @@ function render_selected_items()
 			clip_group[cg_index] = item[i]
 			cg_index = cg_index + 1
 
-			--oboj name item u belo
+			--color item to white
 			-- local white = reaper.ColorToNative(255,255,255)|0x1000000
 			-- reaper.SetMediaItemInfo_Value( item[i], "I_CUSTOMCOLOR", white)
 			--Msg(name[i])
@@ -469,7 +462,7 @@ function render_selected_items()
 			name = string.gsub (name, "\r", "")
 		end
 		local changed_name = string.sub(name, 2)
-		local new_name = string.gsub(changed_name, "%:", "-") --da zameni dve tacke sa crticom
+		local new_name = string.gsub(changed_name, "%:", "-") --replace : with -
 		local red = reaper.ColorToNative(255,0,0)|0x1000000
 
 
@@ -477,14 +470,14 @@ function render_selected_items()
 		local marker_index = reaper.AddProjectMarker2( 0, 1, item_pos, item_end, new_name, 0, red )
 
 
-		--Sacuvaj mute state i mutiraj sve iteme koji nisu deo klip grupe koja treba da se renderuje
+		--save vertical mute state and mute all items which should not be rendered
 			reaper.Main_OnCommand(40717,0) --Item: Select all items in current time selection
 			sel_count = reaper.CountSelectedMediaItems(0)
 
-			-- uzmi time selection start i end time
+			-- get time selection start and end time
 			_start_time, _end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
 
-			--uzmi podatke za sve iteme u trenutnoj vertikalnoj selekciji oko klip grupe clip_group[i]
+			--take info from all items in vertical selection
 			local mono_item = true
 			for j = 0, sel_count - 1 do
 
@@ -505,58 +498,58 @@ function render_selected_items()
 				local _item_end = _item_pos + _item_len
 				local _current_group_id = reaper.GetMediaItemInfo_Value(_item,"I_GROUPID")
 
-				--NEKATIVNO----ako je overlap item
-				--NEAKTIVNO--if _item_pos < _start_time or _item_end > _end_time then
+				--INACTIVE -- if overlap item
+				--INACTIVE--if _item_pos < _start_time or _item_end > _end_time then
 
 
-					--ako ne pripada istoj klip grupi (TODO proveriti dal treba posebno da stoji i gornji uslov koji je neaktivan, a ne nestovano)
+					--if it does not belong to same group_id(TODO check if upper part should be standalone and not nested in here and deactivated)
 					if _current_group_id ~= group_id then
-						--sacuvaj mute state i mutiraj ga
+						--save mute state and mute items
 						overlapping_items[ov_index] = _item
 						overlapping_items_mute_state[ov_index] = reaper.GetMediaItemInfo_Value(_item, "B_MUTE")--get mute
 						reaper.SetMediaItemInfo_Value(_item, "B_MUTE", 1 )--mute that item
 						ov_index = ov_index + 1
 
-					else -- ako pripadaju istoj grupi
+					else -- if belongs to same group
 						if make_items_white == true then
-							--da oboji u belo
+							--color to white
 							local white = reaper.ColorToNative(255,255,255)|0x1000000
 							ApplyColor_Items(white,_item)
 						else
-						--da posvetli
+						--make item color brighter
 							MakeItemColorBrighter(_item)
 						end
 
 
-						--ako su svi mono ili sabrani u mono onda exportuj mono ako vec nije namesteno da se eksportuje mono (NIJE DOBRO AKO IMA NEKIH MONO PANOVANIH FAJLOVA)
+						--if they are all mono, set mono export, if not then stereo export (WARNING: daes not consider take envelopes, and it doesn't work)
 						-- if _take ~= nil then
 							-- local _pcm_source = reaper.GetMediaItemTake_Source(_take)
 							-- local channel_mode = reaper.GetMediaItemTakeInfo_Value(_take, "I_CHANMODE")
 							-- local num_channels = reaper.GetMediaSourceNumChannels(_pcm_source)
-							-- if channel_mode == 0 then 	--ako je namešteno na normal
-								-- if num_channels > 1 then -- a broj kanala je veći od 1
-									-- mono_item = false	 -- onda nije mono item
+							-- if channel_mode == 0 then 	--if normal
+								-- if num_channels > 1 then -- number of channels larger than 1
+									-- mono_item = false	 -- it's not mono
 								-- else
-									-- --onda je prirodni mono, odlično
+									-- --natural mono file
 								-- end
-							-- else 						-- ako nije namešteno na normal nego: reverse stereo, Mono(L+R), Mono L, Mono R
-								-- if channel_mode > 1 then  -- ako je Mono(L+R) ili Mono L ili Mono R
-									-- --Znači da je forsiran mono, odlično
+							-- else 						-- if not normal, but: reverse stereo, Mono(L+R), Mono L, Mono R
+								-- if channel_mode > 1 then  -- ife Mono(L+R) or Mono L or Mono R
+									-- --forced mono, great
 								-- end
 							-- end
 						-- end
 					end
 
 
-				--NEAKTIVNO--end
+				--INACTIVE--end
 			end
 
 
-			--(NE RADI JER JER SRANJE)
+			--(DOES NOT WORK -- IT"S SHIT)
 			-- Msg(new_name)
 			-- Msg(mono_item)
 			-- Msg("==")
-			--da li da eksportuje mono ili stereo
+			--Export mono or stereo
 			-- local output_script_name = "ChangeRenderSettingsToStereo"
 			-- if mono_item == true then
 				-- output_script_name = "ChangeRenderSettingsToMono"
@@ -575,13 +568,13 @@ function render_selected_items()
 
 		reaper.Main_OnCommand(41823,0) --File: Add project to render queue, using the most recent render settings
 
-		--Vrati stari mute state itemima koji nisu deo klip grupe koja treba da se renderuje
+		--recall old mute state
 			for j = 0, ov_index - 1 do
 				reaper.SetMediaItemInfo_Value(overlapping_items[j], "B_MUTE", overlapping_items_mute_state[j])--mute that item
 			end
 		----------------------------------------------------------------
 
-		--brisanje regije
+		--delete temp region
 		reaper.DeleteProjectMarker( 0, marker_index, true )
 
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items

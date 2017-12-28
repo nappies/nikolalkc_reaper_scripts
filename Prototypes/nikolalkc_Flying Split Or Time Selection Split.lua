@@ -1,6 +1,6 @@
 --[[
- * ReaScript Name:
- * Description:
+ * ReaScript Name:Flying Split Or Time Selection Split
+ * Description:Not sure, must check
  * Instructions:
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts

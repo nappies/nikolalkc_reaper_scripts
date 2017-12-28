@@ -1,12 +1,11 @@
 --[[
  * ReaScript Name:  --Check Dependencies
  * Description: Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory
- * Instructions:
+ * Instructions: Use it with your Saving shortcut, replace default (CTRL+S)
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
- * REAPER: 5.0 pre 40
- * Extensions:
- * Version: 1.0
+ * REAPER: 5+
+ * Version: 1.7
 ]]
 
 --[[
@@ -97,7 +96,7 @@ function CheckDependencies()
 			if cur_take ~= nil then
 				is_midi = reaper.TakeIsMIDI(cur_take)
 
-				if is_midi == false then																							--ako nije MIDI take
+				if is_midi == false then																							--if not MIDI take
 					item[audio_idx] = reaper.GetSelectedMediaItem(0,i)
 					take[audio_idx] = reaper.GetMediaItemTake(item[audio_idx], 0)
 					name[audio_idx] =  reaper.GetTakeName(take[audio_idx])
@@ -125,13 +124,14 @@ function CheckDependencies()
 
 
 
-					--proveri da li postoji fajl na toj adresi, da nije slucajno offline
+
+          --check if there is file at given path, if is non existent, put it in array
 					--**********************************************************************************
           ret = reaper.file_exists(filepath[audio_idx])
 					if ret == false then
 						Msg([[FILE DOES NOT EXIST AT THIS LOCATION: 	]]..filepath[audio_idx])
 
-						--dodaj fajl path u niz unavailable_source_files
+						--add file to array of offline files
 						unavailable_source_files[usf_INDEX] = filepath[audio_idx]
 						usf_INDEX = usf_INDEX + 1
 					end
@@ -164,24 +164,24 @@ function CheckDependencies()
 			file_path = GetPath(filepath[i],"\\")
 
 			ln = string.len(project_path)
-			reduced_file_path = string.sub(file_path,0,ln) 																	--napravi string iste duzine kao i project path (da proveri dal nije unutar nekog foldera u projektu)
+			reduced_file_path = string.sub(file_path,0,ln) 																	--make string with same length as project file, to check if file is somewhere deeper in project folder
 
-			if reduced_file_path == project_path then																		--@check if file is in project folder
+			if reduced_file_path == project_path then																		  --@check if file is in project folder
 				project_item_count = project_item_count + 1																	--it is somewhere in project folder
-			else 																											--NOT IN PROJECT FOLDER
+			else 																											                     --NOT IN PROJECT FOLDER
 				s_drive = [[Q:\]]
-				reduced_file_path2 = string.sub(file_path,0,3) 																--3 zato sto s_drive ima len 3
-				if reduced_file_path2 == s_drive then 																		--@check if file is on virtual paritition S:\
+				reduced_file_path2 = string.sub(file_path,0,3) 																--3 because Q:\ drive is of length of 3
+				if reduced_file_path2 == s_drive then 																  		--@check if file is on virtual paritition S:\
 					s_drive_item_count = s_drive_item_count + 1																--its ok, dont move file
-				else 																										--file is not in SFX library, NEEDS TO BE MOVED IF AUDIO
+				else 																										                   --file is not in SFX library, NEEDS TO BE MOVED IF AUDIO
 
-					--proveri da li je video
+					--check if video
 					--filetype = reaper.GetMediaSourceType(src[i],"")
 					--if filetype == "VIDEO" then
 						--skip this file
 					--else
 
-						--proveri dal nije već offline
+						--check if offline
 						local is_offline = false
 						for j in pairs(unavailable_source_files) do
 							--Msg(j..[[----]]..unavailable_source_files[j]..[[---]]..file_path[i])
@@ -237,12 +237,12 @@ function CheckDependencies()
 							--if filetype == "VIDEO" then
 								--skip this file
 							--else
-								-- kopiraj fajl u folder projekta
+								--copy file to project folder and skip overwriting
 								new_path = project_path..[[Assets\]]..filename[i]
 								prog = [[xcopy ]]..[["]]..filepath[i]..[[" "]]..project_path..[[Assets\" /y /d]]
 								os.execute(prog)
 
-								--zameni source
+								--replace source
 								reaper.BR_SetTakeSourceFromFile2(take[i],new_path,false,true)
 								reaper.Main_OnCommand(40047,0) --build any missing peaks
 							--end

@@ -1,7 +1,7 @@
 --[[
- * ReaScript Name:
- * Description:
- * Instructions:
+* ReaScript Name:Trim item from left and preserve fadein
+* Description: Cuts left part of item where mouse cursor is positioned and shortens lenth of fadein, like Pro Tools
+* Instructions: Hover your mouse over item and run the script
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5+
@@ -11,7 +11,7 @@
 
 --[[
  * Changelog:
- * v1.0 (201x-xx-xx)
+ * v1.0 (201x-12-28)
 	+ Initial Release
 --]]
 --Trim item from left side and preserve fadein
@@ -29,7 +29,7 @@ function Main()
 
 	selected_item = reaper.GetSelectedMediaItem(0,0)
 	if selected_item == nil then
-		--Msg("PRAZNO")
+		--Msg("Nothing selected")
 	else
 		--get stuff
 		item_pos = reaper.GetMediaItemInfo_Value(selected_item,"D_POSITION")
@@ -44,17 +44,17 @@ function Main()
 		cursor_end_delta = item_end - cursor_pos
 
 		--do stuff
-		--ako si na fadein delu
+		--mouse cursor at fadein part
 		if fadein_len > cursor_delta then
 			new_fadein_time = fadein_len - cursor_delta
 			reaper.SetMediaItemInfo_Value(selected_item,"D_FADEINLEN",new_fadein_time)
 			reaper.Main_OnCommand(41305, 0) --Trim left edge of item to edit cursor
 		else
-			--ako si na fadeout delu
+			--mouse cursor at fadeout part
 			if fadeout_len > cursor_end_delta then
 				reaper.Main_OnCommand(40510, 0) --Item: Fade items out from cursor
-			 --ako si na sredini klipa
-			else
+
+			else --mouse cursor at middle of item
 				reaper.SetMediaItemInfo_Value(selected_item,"D_FADEINLEN",0)
 				reaper.Main_OnCommand(41305, 0) --Trim left edge of item to edit cursor
 			end

@@ -1,5 +1,5 @@
 --[[
- * ReaScript Name:
+ * ReaScript Name:Flying Fadein Items To Cursor (ProTools - D)
  * Description:
  * Instructions:
  * Author: nikolalkc
@@ -11,7 +11,7 @@
 
 --[[
  * Changelog:
- * v1.0 (201x-xx-xx)
+ * v1.0 (2017-12-28)
 	+ Initial Release
 --]]
 --for flying cursor (no need for clicking)

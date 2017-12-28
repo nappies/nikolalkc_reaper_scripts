@@ -1,19 +1,17 @@
 --[[
- * ReaScript Name: Triple zoom out
- * Description: Pt like zoom out
+ * ReaScript Name:Select Clip Group Title Items
+ * Description: NOTE:DOES NOT WORK GOOD FOR BIG PROJECTS, STILL IN DEVELOPMENT
   * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.0 pre 40
+ * REAPER: 5+
+ * Version 1.1
 ]]
 
 --[[
  * Changelog:
-	* v1.1 (2017-06-13)
-		+ Support for horizontal zoom center to edit cursor
-	* v1.0 (2017-05-31)
+	* v1.0 (2017-12-28)
 		+ Initial Release
 ]]
---Select Clip Group Title Items
 
 function Msg(param)
   reaper.ShowConsoleMsg(tostring(param).."\n")

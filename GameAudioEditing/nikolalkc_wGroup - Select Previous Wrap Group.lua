@@ -1,10 +1,10 @@
 --[[
- * ReaScript Name: nikolalkc_Rename next Wrap group
- * Description: Goes to first next vertical or horizontal snf clip group and opens item properties for first empty midi item
- * Instructions: Bind it to shortcut RIGHT and just press button
+ * ReaScript Name: Select Previous wGroup
+ * Description: Goes to first previous wGroup in timeline and selects it for renaming
+ * Instructions: Bind it to shortcut RIGHT and just press button (NOTE: It still needs improvements)
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.0 pre 40
+ * REAPER: 5+
  * Extensions: SWS
  * Version: 1.0
 ]]
@@ -26,6 +26,8 @@ end
 
 prev_group_id = nil
 last_item = ""
+
+
 --MAIN FUNCTION
 function Main()
 
@@ -68,7 +70,7 @@ function FindNext()
 
 	SelectFirst()
 	CheckItemPos()
-	--Msg(" nije isto")
+	--Msg("It's not same!")
 end
 
 function SelectFirst()

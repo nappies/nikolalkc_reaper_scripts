@@ -1,26 +1,8 @@
 --[[
- * ReaScript Name: Triple zoom out
- * Description: Pt like zoom out
-  * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.0 pre 40
-]]
-
---[[
- * Changelog:
-	* v1.1 (2017-06-13)
-		+ Support for horizontal zoom center to edit cursor
-	* v1.0 (2017-05-31)
-		+ Initial Release
-]]
-
-
-
-
---[[
- * ReaScript Name: SNF - RELATIVE MOUSEWHEEL GAIN
+ * ReaScript Name: RELATIVE MOUSEWHEEL GAIN
  * Description: Changes gain to selected items with scroll of mouse
  * Author: nikolalkc
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5.52
  * Version: 1.0
 ]]
@@ -57,10 +39,10 @@ function run()
 				if item ~= nil then
 					vol = reaper.GetMediaItemInfo_Value(item, "D_VOL")
 					--reaper.ShowConsoleMsg(vol.."\n")
-					if val > 0 then --ako je plus
+					if val > 0 then --if positive value
 						local new_vol = vol*1.2
 						 reaper.SetMediaItemInfo_Value(item, "D_VOL", new_vol )
-					else --ako je minus
+					else --if it's negative value
 						local new_vol = vol/1.2
 						reaper.SetMediaItemInfo_Value( item, "D_VOL", new_vol )
 					end
@@ -76,7 +58,7 @@ end
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh( 1 )
-run() -- odradi funkciju
+run() -- run script
 reaper.PreventUIRefresh( -1 )
 reaper.Undo_EndBlock("Mousewheel Item Gain", -1)
 reaper.UpdateArrange()

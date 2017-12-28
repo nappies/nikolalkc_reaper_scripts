@@ -1,7 +1,7 @@
 --[[
- * ReaScript Name:
- * Description:
- * Instructions:
+ * ReaScript Name:nikolalkc_Move Edit Cursor To Item Start
+ * Description:Moves edit cursor to begining of selected item
+ * Instructions: select item and run script
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5+
@@ -11,7 +11,7 @@
 
 --[[
  * Changelog:
- * v1.0 (201x-xx-xx)
+ * v1.0 (2017-12-28)
 	+ Initial Release
 --]]
 --Select Item Under MouseCursor and Move EditCursor to Item Start
@@ -26,7 +26,7 @@ function Main()
 	selected_item = reaper.GetSelectedMediaItem(0,0)
 
 	if selected_item == nil then
-		--Msg("PRAZNO")
+		--Msg("nothing selected")
 	else
 		item_pos = reaper.GetMediaItemInfo_Value(selected_item,"D_POSITION")
 		cursor_pos =  reaper.GetCursorPosition()

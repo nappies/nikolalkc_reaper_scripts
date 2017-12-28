@@ -1,6 +1,6 @@
 --[[
- * ReaScript Name:
- * Description:
+ * ReaScript Name:nikolalkc_Make Item Colors Brighter
+ * Description:this is copied from REANOIR
  * Instructions:
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
@@ -11,7 +11,7 @@
 
 --[[
  * Changelog:
- * v1.0 (201x-xx-xx)
+ * v1.0 (2017-12-28)
 	+ Initial Release
 --]]
 --COLORS==========================
@@ -22,7 +22,7 @@ function Main()
 			local item =  reaper.GetSelectedMediaItem( 0, i )
 			local color = reaper.GetDisplayedMediaItemColor(item)
 			local R, G, B = reaper.ColorFromNative(color|0x1000000)
-			local new_r, new_g, new_b = Luminance(0.1, R, G, B)
+			local new_r, new_g, new_b = Luminance(0.9, R, G, B)
 			local con_r, con_g, con_b = Convert_RGB(new_r,new_g,new_b)
 			local new_color = reaper.ColorToNative(con_r,con_g,con_b)|0x1000000
 			ApplyColor_Items(new_color,item)
@@ -51,9 +51,10 @@ end
 
 function Luminance(change, red, green, blue)
   local hue, sat, lum = rgbToHsl(red/255, green/255, blue/255)
-  lum = lum + change
+  --lum = lum + change
+  lum = change
   local r, g, b = hslToRgb(hue, sat, lum)
-  if r<=0 then r = 0 end ; if g<=0 then g = 0 end ; if b<=0 then b = 0 end
+  if r<=0 then r = 0 end ; if g<=0 then g = 0 end ; if b<=0 then b = 0 end				--test
   if r>=1 then r = 1 end ; if g>=1 then g = 1 end ; if b>=1 then b = 1 end
   return r, g, b
 end
@@ -111,7 +112,7 @@ end
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh( 1 )
-Main() -- odradi funkciju
+Main() -- run script
 reaper.PreventUIRefresh( -1 )
 reaper.Undo_EndBlock("Make Item Colors Brighter", -1)
 reaper.UpdateArrange()

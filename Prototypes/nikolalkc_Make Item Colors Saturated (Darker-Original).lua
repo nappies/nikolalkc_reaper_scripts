@@ -1,6 +1,6 @@
 --[[
- * ReaScript Name:
- * Description:
+ * ReaScript Name:nikolalkc_Make Item Colors Saturated (Darker-Original)
+ * Description:THIS IS COPIED FROM REANOIR
  * Instructions:
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
@@ -11,7 +11,7 @@
 
 --[[
  * Changelog:
- * v1.0 (201x-xx-xx)
+ * v1.0 (2017-12-28)
 	+ Initial Release
 --]]
 --COLORS==========================
@@ -111,7 +111,7 @@ end
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh( 1 )
-Main() -- odradi funkciju
+Main() -- run script
 reaper.PreventUIRefresh( -1 )
 reaper.Undo_EndBlock("Make Item Colors Brighter", -1)
 reaper.UpdateArrange()

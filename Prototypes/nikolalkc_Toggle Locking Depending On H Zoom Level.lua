@@ -1,12 +1,10 @@
 --[[
- * ReaScript Name: SNF = Toggle Locking depending on h zoom level
+ * ReaScript Name: Toggle Locking depending on h zoom level
  * Description: if zoom level is less than 90, locking is enabled, else is disabled
  * Instructions: Run script afrer zooming, enable parameters for locking: item edges, item fade/volume handles, item stretch markers, item envelopes, track envelopes
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * File URL:
- * REAPER: 5.0 pre 40
- * Extensions:
+ * REAPER: 5+
  * Version: 1.0
 ]]
 
