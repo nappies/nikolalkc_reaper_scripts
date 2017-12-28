@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc scripts" commit="db972519b5edc45741645c6c76f22a6c121b0a59">
+<index version="1" name="nikolalkc scripts" commit="b7d26c49d111af5f44d2a3980cbef3f48486e681">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="nikolalkc Copy item automation using empty item">
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
@@ -98,7 +98,7 @@
       </metadata>
       <version name="1.1" author="nikolalkc" time="2017-12-28T21:47:23Z">
         <changelog><![CDATA[+ Support for horizontal zoom center to edit cursor]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db972519b5edc45741645c6c76f22a6c121b0a59/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b7d26c49d111af5f44d2a3980cbef3f48486e681/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Triple Zoom Out.lua" type="script" desc="Triple zoom out">
