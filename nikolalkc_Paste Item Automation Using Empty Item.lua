@@ -1,14 +1,14 @@
 --[[
  * ReaScript Name: SNF - Paste item automation using empty item
- * Description: 
- * Instructions: 
+ * Description:
+ * Instructions:
  * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5.0 pre 40
  * Extensions: SWS
  * Version: 1.0
 ]]
- 
+
 --[[
  * Changelog:
  * v1.0 (2017-06-26)
@@ -28,7 +28,7 @@ function Main()
 	reaper.Main_OnCommand(40058,0) --Item: Paste items/tracks
 	reaper.Main_OnCommand(40290,0) --set time selection to items
 	reaper.Main_OnCommand(40697,0) --Remove items/tracks/envelope points (depending on focus)
-	
+
 end
 
 
@@ -40,7 +40,3 @@ Main()
 reaper.PreventUIRefresh( -1 )
 reaper.UpdateArrange()
 reaper.Undo_EndBlock("Paste item automation using empty item", -1)
-
-
-
-

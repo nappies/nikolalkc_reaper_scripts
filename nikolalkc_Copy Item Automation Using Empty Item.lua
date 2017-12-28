@@ -1,14 +1,14 @@
 --[[
- * ReaScript Name: SNF - Copy item automation using empty item
- * Description: 
- * Instructions: 
+ * ReaScript Name: nikolalkc Copy item automation using empty item
+ * Description:
+ * Instructions:
  * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5.0 pre 40
  * Extensions: SWS
  * Version: 1.0
 ]]
- 
+
 --[[
  * Changelog:
  * v1.0 (2017-06-26)
@@ -33,16 +33,16 @@ function Main()
 	if selected_count == 1 then
 		if delta_time > 0 then
 			--idi dalje
-		else 
+		else
 			reaper.Main_OnCommand(40290,0) --set time selection to items
-		end	
-		
+		end
+
 		reaper.Main_OnCommand(40142,0) --Insert empty item
 		cur_item = reaper.GetSelectedMediaItem(0,0)
 		reaper.ULT_SetMediaItemNote( cur_item, "[AUTO]")
 		reaper.Main_OnCommand(40699,0) --Cut items
 		reaper.Main_OnCommand(40020,0) --Time selection: Remove time selection and loop points
-	else 
+	else
 		retva = reaper.ShowMessageBox("You must select (only) one item.","Copy Item Automation Error",0)
 	end
 end
@@ -56,6 +56,3 @@ Main()
 reaper.PreventUIRefresh( -1 )
 reaper.Undo_EndBlock("SNF - Copy item automation using empty item)", -1)
 reaper.UpdateArrange()
-
-
-

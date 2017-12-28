@@ -1,3 +1,19 @@
+--[[
+ * ReaScript Name:
+ * Description:
+ * Instructions:
+ * Author: nikolalkc
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ * REAPER: 5+
+ * Extensions: SWS
+ * Version: 1.0
+]]
+
+--[[
+ * Changelog:
+ * v1.0 (201x-xx-xx)
+	+ Initial Release
+--]]
 --Select Item Under MouseCursor and Move EditCursor to Item Start
 
 function Msg(param)
@@ -16,7 +32,7 @@ function Main()
 		cursor_pos =  reaper.GetCursorPosition()
 		Msg("Item position:"..item_pos)
 		Msg("\nCursor position:"..cursor_pos)
-		
+
 		delta = cursor_pos - item_pos
 		reaper.MoveEditCursor(-delta, 0)
 	end

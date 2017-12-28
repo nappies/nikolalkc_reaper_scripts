@@ -1,4 +1,19 @@
---SNF - Unwrap Selected Clip Groups
+--[[
+ * ReaScript Name:
+ * Description:
+ * Instructions:
+ * Author: nikolalkc
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ * REAPER: 5+
+ * Extensions: SWS
+ * Version: 1.0
+]]
+
+--[[
+ * Changelog:
+ * v1.0 (201x-xx-xx)
+	+ Initial Release
+--]]
 
 function Msg(param)
   reaper.ShowConsoleMsg(tostring(param).."\n")
@@ -47,7 +62,7 @@ if	selected_count > 0  then
 		end
 
 	end
-	
+
 	--unselect
 	for i=0, array_index -1 do
 		reaper.SetMediaItemSelected( array_of_items_to_unselect[i], 0 )

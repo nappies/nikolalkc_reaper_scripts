@@ -1,3 +1,20 @@
+--[[
+ * ReaScript Name:
+ * Description:
+ * Instructions:
+ * Author: nikolalkc
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ * REAPER: 5+
+ * Extensions: SWS
+ * Version: 1.0
+]]
+
+--[[
+ * Changelog:
+ * v1.0 (201x-xx-xx)
+	+ Initial Release
+--]]
+
 --TOGGLE GLOBAL AUTOMATION OVERRIDE FROM LATCH-PREVIEW TO TRIM-READ AND VICEVERSA
 --0 - Trim Read
 --1 - Read

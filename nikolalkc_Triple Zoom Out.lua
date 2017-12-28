@@ -2,10 +2,10 @@
  * ReaScript Name: Triple zoom out
  * Description: Pt like zoom out
   * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5.0 pre 40
 ]]
- 
+
 --[[
  * Changelog:
 	* v1.1 (2017-06-13)
@@ -28,12 +28,12 @@ end
 --MAIN FUNCTION
 function Main()
 	reaper.PreventUIRefresh( 1 )
-	
+
 	reaper.Main_OnCommand(reaper.NamedCommandLookup("_WOL_SETHZOOMC_EDITCUR"),0) --SWS/wol: Options - Set "Horizontal zoom center" to "Edit cursor"
 	reaper.Main_OnCommand(1011,0) --zoom out horizontal
 	reaper.Main_OnCommand(1011,0) --zoom out horizontal
 	reaper.Main_OnCommand(1011,0) --zoom out horizontal
-	
+
 	reaper.PreventUIRefresh( -1 )
 end
 --RUN

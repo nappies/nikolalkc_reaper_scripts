@@ -1,8 +1,24 @@
+--[[
+ * ReaScript Name:
+ * Description:
+ * Instructions:
+ * Author: nikolalkc
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ * REAPER: 5+
+ * Extensions: SWS
+ * Version: 1.0
+]]
+
+--[[
+ * Changelog:
+ * v1.0 (201x-xx-xx)
+	+ Initial Release
+--]]
 --COLORS==========================
-function Main() 
+function Main()
 	local selitems = reaper.CountSelectedMediaItems(0)
 	if selitems > 0 then
-		for i = 0, selitems - 1 do 
+		for i = 0, selitems - 1 do
 			local item =  reaper.GetSelectedMediaItem( 0, i )
 			local color = reaper.GetDisplayedMediaItemColor(item)
 			local R, G, B = reaper.ColorFromNative(color|0x1000000)
@@ -16,21 +32,21 @@ end
 
 
 function Convert_RGB(ConvertRed,ConvertGreen,ConvertBlue)
-	red = math.floor(ConvertRed*255 ) 
+	red = math.floor(ConvertRed*255 )
 	green = math.floor(ConvertGreen*255 )
 	blue =  math.floor(ConvertBlue*255 )
-	ConvertedRGB = reaper.ColorToNative (red, green, blue)    
+	ConvertedRGB = reaper.ColorToNative (red, green, blue)
 	return red, green, blue
-end 
+end
 
-    
+
 function hex2rgb(hex)
 	  hex = hex:gsub("#","")
 	  hex2rgbR = tonumber("0x"..hex:sub(1,2))
 	  hex2rgbG = tonumber("0x"..hex:sub(3,4))
 	  hex2rgbB = tonumber("0x"..hex:sub(5,6))
-end    
-    
+end
+
 
 
 function Luminance(change, red, green, blue)
@@ -63,8 +79,8 @@ function rgbToHsl(r, g, b) -- values in-out 0-1
       end
       return h, s, l or 1
 end
-    
-    
+
+
 function hslToRgb(h, s, l) -- values in-out 0-1
   local r, g, b
   if s == 0 then
@@ -88,7 +104,7 @@ function hslToRgb(h, s, l) -- values in-out 0-1
   return r,g,b
 end
 
-function ApplyColor_Items(new_color,item)    
+function ApplyColor_Items(new_color,item)
 	reaper.SetMediaItemInfo_Value(item,"I_CUSTOMCOLOR",new_color)
 	reaper.UpdateItemInProject(item)
 end

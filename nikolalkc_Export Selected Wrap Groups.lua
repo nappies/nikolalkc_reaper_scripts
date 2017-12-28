@@ -1,3 +1,21 @@
+--[[
+ * ReaScript Name:
+ * Description:
+ * Instructions:
+ * Author: nikolalkc
+ * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ * REAPER: 5+
+ * Extensions: SWS
+ * Version: 1.0
+]]
+
+--[[
+ * Changelog:
+ * v1.0 (201x-xx-xx)
+	+ Initial Release
+--]]
+
+
 --[[ChangeLog
 --v1.2 (2017-11-30)
 	--dodata podrska za export u main_menu folder
@@ -43,10 +61,10 @@ absolute_luminance = false --true ako treba da bude na određenu vrednost, false
 HISTORY
 * v04 (2017-10-24)
 	+Exceptioni i errori uradjeni
-	
+
 * v03 (2017-10-23)
 	+Osvnovno radi
-	
+
 * v02 (2017-10-23)
 	+Ho Logika
 
@@ -67,7 +85,7 @@ function ScanSoundsToMove(post)
 	for sound_file in io.popen(prog2):lines() do
 		--Msg(sound_file)
 		--create array
-		
+
 		--remove extension from file name
 		rid = string.reverse(sound_file)
 		--Msg(rid)
@@ -79,14 +97,14 @@ function ScanSoundsToMove(post)
 		--Msg(extension)
 		dir_name = string.reverse(rid_name)
 		--Msg(dir_name)
-		
-		
+
+
 		if extension == "ogg" then	--ako je ogg, dodaj ga u listu za premestanje
 			sounds_to_move[idx] = dir_name
 			idx = idx + 1
 		end
 	end
-	
+
 	--debug print
 	if post == true then
 		Msg("\n===============")
@@ -106,7 +124,7 @@ function ScanFoldersInGameProjectFolder()
 	Msg("\n===============")
 	Msg("Scanning folders...\n")
 	folder_idx = 0
-	
+
 	--list all directories in folder P:\data and exclude:  .svn _prefabs _resources _savegames _sounds===========================================================================================
 	prog1 = [[dir "P:\data\" /b /s /a:d | findstr /v "\_interface"| findstr /v "\.svn"|findstr /v "\_prefabs"| findstr /v "\_resources"| findstr /v "\_savegames"| findstr /v "\_sounds"]]
 	ScanSpecificFolders(prog1)
@@ -114,16 +132,16 @@ function ScanFoldersInGameProjectFolder()
 	--TODO: za interface posebna logika
 	prog2 = [[dir "P:\data\_interface\inventory\" /b /s /a:d | findstr /v "\_sounds"]]
 	ScanSpecificFolders(prog2)
-	
+
 	--exceptions za dodatne foldere, ručno ubačeni
 	for f in pairs(interface_exceptions) do
 		game_folder_paths[folder_idx] = [[P:\data\_interface\]]..interface_exceptions[f]
 		game_folders[folder_idx] = interface_exceptions[f]
 		folder_idx = folder_idx + 1
 	end
-	
+
 	--debug print
-	-- for i = 0, folder_idx - 1 do 
+	-- for i = 0, folder_idx - 1 do
 		-- Msg(game_folder_paths[i])
 		-- Msg(game_folders[i])
 	-- end
@@ -131,14 +149,14 @@ function ScanFoldersInGameProjectFolder()
 	Msg("Scan completed.")
 end
 
-function ScanSpecificFolders(prog) 
-	for dir in io.popen(prog):lines() do 
+function ScanSpecificFolders(prog)
+	for dir in io.popen(prog):lines() do
 		--get folder name
 		rid = string.reverse(dir)
 		index1 = string.find(rid, "\\" )
 		rid_name = string.sub(rid, 0, index1-1)
 		dir_name = string.reverse(rid_name)
-			
+
 		game_folders[folder_idx] = dir_name
 		game_folder_paths[folder_idx] = dir
 		folder_idx = folder_idx + 1
@@ -156,7 +174,7 @@ function MoveSounds()
 	--za svaki zvuk
 	for i in pairs(sounds_to_move) do
 		folder,filename = SeparateFolderAndFileName(sounds_to_move[i])
-		
+
 		if filename ~= nil then
 			if folder == "game" then
 				--move it to interface folder
@@ -166,16 +184,16 @@ function MoveSounds()
 					--prebaci u isti folder kao prethodni
 					ExecuteMoveFile(sounds_to_move[i],filename,last_export_folder_path,"last")
 				else										 --ako treba da traži folder
-					
+
 					--provera dal je _ho folder
 					ho_folder_name = ""
-					
+
 					is_ho_normal = string.sub (folder,-3,-1)
 					if is_ho_normal == "_ho" then
 						ho_folder_name = [[\ho]]
 						folder = string.sub(folder,1, -4)
 						--Msg("HO:"..folder)
-					else  
+					else
 						-- provera dal je  _ho_second ili _ho_nesto
 						is_ho_other = string.find(folder,'_ho_')
 						if is_ho_other ~= nil then
@@ -185,8 +203,8 @@ function MoveSounds()
 						end
 					end
 
-					
-					
+
+
 					--moveit normalno i stavi taj folder kao poslednji...
 					local folder_found = false
 					for j in pairs(game_folders) do
@@ -198,15 +216,15 @@ function MoveSounds()
 							folder_found = true
 							break
 						end
-						
+
 					end
 
 					if folder_found == false then
 						Exception((folder..ho_folder_name),sounds_to_move[i])
 					end
-					Msg(" ")										
+					Msg(" ")
 				end
-			end		
+			end
 		end
 	end
 end
@@ -229,12 +247,12 @@ function ExecuteMoveFile(original_file,destination_file,full_final_path,source) 
 	-- for dir in io.popen(move_prog):lines() do
 		-- Msg(dir)
 	-- end
-	
-	
+
+
 	done = os.execute(move_prog)
 	--Msg(done)
-	
-	if done == true then 
+
+	if done == true then
 		Msg("_____________________________________________________")
 		Msg("For:		"..original_file)
 		Msg([[Create:		]]..destination_file.."\nIn path:		"..full_final_path)
@@ -274,13 +292,13 @@ function MakeItemColorBrighter(item)
 end
 
 function Convert_RGB(ConvertRed,ConvertGreen,ConvertBlue)
-	red = math.floor(ConvertRed*255 ) 
+	red = math.floor(ConvertRed*255 )
 	green = math.floor(ConvertGreen*255 )
 	blue =  math.floor(ConvertBlue*255 )
-	ConvertedRGB = reaper.ColorToNative (red, green, blue)    
+	ConvertedRGB = reaper.ColorToNative (red, green, blue)
 	return red, green, blue
-end 
- 
+end
+
 function hex2rgb(hex)
 	  hex = hex:gsub("#","")
 	  hex2rgbR = tonumber("0x"..hex:sub(1,2))
@@ -292,7 +310,7 @@ function Luminance(change, red, green, blue)
   local hue, sat, lum = rgbToHsl(red/255, green/255, blue/255)
   if absolute_luminance == true then
 	lum = change
-  else 
+  else
     lum = lum + change
   end
   local r, g, b = hslToRgb(hue, sat, lum)
@@ -320,7 +338,7 @@ function rgbToHsl(r, g, b) -- values in-out 0-1
       end
       return h, s, l or 1
 end
-    
+
 function hslToRgb(h, s, l) -- values in-out 0-1
   local r, g, b
   if s == 0 then
@@ -344,7 +362,7 @@ function hslToRgb(h, s, l) -- values in-out 0-1
   return r,g,b
 end
 
-function ApplyColor_Items(new_color,item)    
+function ApplyColor_Items(new_color,item)
 	reaper.SetMediaItemInfo_Value(item,"I_CUSTOMCOLOR",new_color)
 	reaper.UpdateItemInProject(item)
 end
@@ -367,7 +385,7 @@ selected_count = nil
 
 --Main FUN==================================================================================================================================================================
 function Main()
-	reaper.Undo_BeginBlock()     
+	reaper.Undo_BeginBlock()
 	--proveri kolika je selekcija vremenska
 	start_time, end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
 	delta_time = end_time - start_time
@@ -378,13 +396,13 @@ function Main()
 		selected_count = reaper.CountSelectedMediaItems(0)
 		render_selected_items()
 		post_export_dialog()
-		
+
 	else --ako nema vremenske selekcije
-		
+
 		--check item selection
 		selected_count = reaper.CountSelectedMediaItems(0)
-		if selected_count == 0 then --ako ni jedan item nije selektovan               
-			--Msg("No items selected. You must select at least one item, or make time selection")          
+		if selected_count == 0 then --ako ni jedan item nije selektovan
+			--Msg("No items selected. You must select at least one item, or make time selection")
 			post_export_dialog("No Items Selected!")
 		else --ako je selektovan bar jedan item
 			--export
@@ -411,32 +429,32 @@ function render_selected_items()
 			name[i] = string.gsub (name[i], "\n", "")
 			name[i] = string.gsub (name[i], "\r", "")
 		end
-		
-		
+
+
 		--make new array with items that begin with '@'
-		local first_string = string.sub(name[i], 1, 1)          
-		if first_string == "@" then 
+		local first_string = string.sub(name[i], 1, 1)
+		if first_string == "@" then
 			clip_group[cg_index] = item[i]
 			cg_index = cg_index + 1
-			
+
 			--oboj name item u belo
-			-- local white = reaper.ColorToNative(255,255,255)|0x1000000          
+			-- local white = reaper.ColorToNative(255,255,255)|0x1000000
 			-- reaper.SetMediaItemInfo_Value( item[i], "I_CUSTOMCOLOR", white)
 			--Msg(name[i])
 		end
 	end
-	
-	
+
+
 	--Msg("Clip Groups:"..cg_index)
 	reaper.Main_OnCommand(40289,0) --Item: Unselect all items
-	
+
 	--run through new array and add items to render queue
-	for i = 0, cg_index - 1 do 
+	for i = 0, cg_index - 1 do
 		reaper.SetMediaItemSelected( clip_group[i], 1 )
 		reaper.Main_OnCommand(40290,0) --Time selection: Set time selection to items
-		
-		
-		--get stuff 
+
+
+		--get stuff
 		local item_pos = reaper.GetMediaItemInfo_Value(clip_group[i],"D_POSITION")
 		local item_len = reaper.GetMediaItemInfo_Value(clip_group[i],"D_LENGTH")
 		local group_id = reaper.GetMediaItemInfo_Value(clip_group[i],"I_GROUPID")
@@ -452,45 +470,45 @@ function render_selected_items()
 		end
 		local changed_name = string.sub(name, 2)
 		local new_name = string.gsub(changed_name, "%:", "-") --da zameni dve tacke sa crticom
-		local red = reaper.ColorToNative(255,0,0)|0x1000000          
-		
-		
+		local red = reaper.ColorToNative(255,0,0)|0x1000000
+
+
 		--create region with same name as clip group
 		local marker_index = reaper.AddProjectMarker2( 0, 1, item_pos, item_end, new_name, 0, red )
-		
-		
+
+
 		--Sacuvaj mute state i mutiraj sve iteme koji nisu deo klip grupe koja treba da se renderuje
 			reaper.Main_OnCommand(40717,0) --Item: Select all items in current time selection
 			sel_count = reaper.CountSelectedMediaItems(0)
-			
+
 			-- uzmi time selection start i end time
 			_start_time, _end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
-			
+
 			--uzmi podatke za sve iteme u trenutnoj vertikalnoj selekciji oko klip grupe clip_group[i]
 			local mono_item = true
-			for j = 0, sel_count - 1 do 
-				
+			for j = 0, sel_count - 1 do
+
 				--get stuff
 				local _item = reaper.GetSelectedMediaItem(0,j)
 				local _take = reaper.GetMediaItemTake(_item, 0)
 				local _name = ""
 				if _take ~= nil then
-					_name =  reaper.GetTakeName(_take)     
+					_name =  reaper.GetTakeName(_take)
 				else
 					_name = reaper.ULT_GetMediaItemNote(_item)
 					_name = string.gsub (_name, "\n", "")
 					_name = string.gsub (_name, "\r", "")
 				end
-				
+
 				local _item_pos = reaper.GetMediaItemInfo_Value(_item,"D_POSITION")
 				local _item_len = reaper.GetMediaItemInfo_Value(_item,"D_LENGTH")
 				local _item_end = _item_pos + _item_len
 				local _current_group_id = reaper.GetMediaItemInfo_Value(_item,"I_GROUPID")
-				
-				--NEKATIVNO----ako je overlap item 
+
+				--NEKATIVNO----ako je overlap item
 				--NEAKTIVNO--if _item_pos < _start_time or _item_end > _end_time then
-					
-					
+
+
 					--ako ne pripada istoj klip grupi (TODO proveriti dal treba posebno da stoji i gornji uslov koji je neaktivan, a ne nestovano)
 					if _current_group_id ~= group_id then
 						--sacuvaj mute state i mutiraj ga
@@ -506,10 +524,10 @@ function render_selected_items()
 							ApplyColor_Items(white,_item)
 						else
 						--da posvetli
-							MakeItemColorBrighter(_item) 
+							MakeItemColorBrighter(_item)
 						end
-		
-						
+
+
 						--ako su svi mono ili sabrani u mono onda exportuj mono ako vec nije namesteno da se eksportuje mono (NIJE DOBRO AKO IMA NEKIH MONO PANOVANIH FAJLOVA)
 						-- if _take ~= nil then
 							-- local _pcm_source = reaper.GetMediaItemTake_Source(_take)
@@ -528,12 +546,12 @@ function render_selected_items()
 							-- end
 						-- end
 					end
-					
-					
+
+
 				--NEAKTIVNO--end
-			end   
-			
-			
+			end
+
+
 			--(NE RADI JER JER SRANJE)
 			-- Msg(new_name)
 			-- Msg(mono_item)
@@ -544,67 +562,67 @@ function render_selected_items()
 				-- output_script_name = "ChangeRenderSettingsToMono"
 			-- end
 			-- --get script path
-			-- local info = debug.getinfo(1).source:match("@(.*)") 
+			-- local info = debug.getinfo(1).source:match("@(.*)")
 			-- ofni = string.reverse(info)
 			-- idx = string.find(ofni, "\\" )
 			-- htap = string.sub(ofni, idx, -1)
 			-- path = string.reverse(htap)
 			-- --Msg(path);
-			
+
 			-- batch_path = [["]]..path..output_script_name..[[.ahk"]]
 			-- io.popen(batch_path)
 		----------------------------------------------------------------------------------------------------
-		
+
 		reaper.Main_OnCommand(41823,0) --File: Add project to render queue, using the most recent render settings
-		
+
 		--Vrati stari mute state itemima koji nisu deo klip grupe koja treba da se renderuje
-			for j = 0, ov_index - 1 do 
+			for j = 0, ov_index - 1 do
 				reaper.SetMediaItemInfo_Value(overlapping_items[j], "B_MUTE", overlapping_items_mute_state[j])--mute that item
 			end
 		----------------------------------------------------------------
-		
+
 		--brisanje regije
 		reaper.DeleteProjectMarker( 0, marker_index, true )
-		
+
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
 		reaper.Main_OnCommand(40020,0) --Time selection: Remove time selection and loop points
 	end
-	
+
 	reaper.Main_OnCommand(41207,0) --render all
-	
+
 end
 
 function post_export_dialog(message_title)
 	if message_title == nil then message_title = [[Rendering Completed]] end
 	-- --When rendering completed======================================================================
 	ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
-	
+
 Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
 	--Msg(ok)
-	
+
 	--Yes clicked --run move script=============================
-	if ok == 6 then 
+	if ok == 6 then
 		--autohotkey script
 		--get script path
-		-- local info = debug.getinfo(1).source:match("@(.*)") 
+		-- local info = debug.getinfo(1).source:match("@(.*)")
 		-- ofni = string.reverse(info)
 		-- idx = string.find(ofni, "\\" )
 		-- htap = string.sub(ofni, idx, -1)
 		-- path = string.reverse(htap)
 		-- --Msg(path);
-		
+
 		-- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
 		-- os.execute (batch_path)
-		
-		
+
+
 		--move script
 		MOVE_RENDERED_SOUNDS_TO_PROJECT()
 	end
-	
+
 	--No clicked --open folder==================================
 	if ok == 7 then
 		prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
-		io.popen(prog)     
+		io.popen(prog)
 	end
 	-- --=================================================================================================
 end

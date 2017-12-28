@@ -4,7 +4,6 @@
  * Instructions:
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
- * File URL:
  * REAPER: 5.0 pre 40
  * Extensions:
  * Version: 1.0
