@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index version="1" name="nikolalkc scripts" commit="f800d676c7203983f2afb5a99d0efe85bfd05025">
+  <category name="GameAudioEditing">
+    <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="nikolalkc Copy item automation using empty item">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ First Version]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Copy%20Item%20Automation%20Using%20Empty%20Item.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Export Selected HOPA Sounds And Move Them To Project Folder.lua" type="script" desc="Export Selected HOPA Sounds And Move Them To Project Folder">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Export%20Selected%20HOPA%20Sounds%20And%20Move%20Them%20To%20Project%20Folder.lua</source>
+      </version>
+      <version name="1.2" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/GameAudioEditing/nikolalkc_Export%20Selected%20HOPA%20Sounds%20And%20Move%20Them%20To%20Project%20Folder.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Flying Fadein Items To Cursor (ProTools - D).lua" type="script" desc="Flying Fadein Items To Cursor (ProTools - D)">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Flying%20Fadein%20Items%20To%20Cursor%20(ProTools%20-%20D).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Flying Fadeout Items From Cursor (ProTools - G).lua" type="script" desc="Flying Fadeout Items From Cursor (ProTools - G)">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Flying%20Fadeout%20Items%20From%20Cursor%20(ProTools%20-%20G).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_MHG Check Dependencies.lua" type="script" desc="--Check Dependencies">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_MHG%20Check%20Dependencies.lua</source>
+      </version>
+      <version name="1.7" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Check for offline files and skip them for copying]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/GameAudioEditing/nikolalkc_MHG%20Check%20Dependencies.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Move Edit Cursor To Item Start.lua" type="script" desc="nikolalkc_Move Edit Cursor To Item Start">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Move%20Edit%20Cursor%20To%20Item%20Start.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Paste Item Automation Using Empty Item.lua" type="script" desc="Paste item automation using empty item">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ First Version]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Paste%20Item%20Automation%20Using%20Empty%20Item.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Relative Mousewheel Gain.lua" type="script" desc="RELATIVE MOUSEWHEEL GAIN">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/GameAudioEditing/nikolalkc_Relative%20Mousewheel%20Gain.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Toggle Global Automation LatchPreview-TrimRead.lua" type="script" desc="Toggle Global Automation LatchPreview-TrimRead">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Toggle%20Global%20Automation%20LatchPreview-TrimRead.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Toggle width envelope for selected track.lua" type="script" desc="Toggle width envelope for selected track">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Toggle%20width%20envelope%20for%20selected%20track.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Trim Item From Left And Preserve Fadein (ProTools - A).lua" type="script" desc="Trim item from left and preserve fadein">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Trim%20Item%20From%20Left%20And%20Preserve%20Fadein%20(ProTools%20-%20A).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Trim Item From Right And Preserve Fadeout (ProTools - S).lua" type="script" desc="Trim item from right and preserve fadeout">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Trim%20Item%20From%20Right%20And%20Preserve%20Fadeout%20(ProTools%20-%20S).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Type in HOPA Name.lua" type="script" desc="Type In Hopa Name">
+      <version name="1.4" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Stretch empty item note to fit on write]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Type%20in%20HOPA%20Name.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_wGroup - Create Wrap Group From Selected Items.lua" type="script" desc="Create Wrap Group From Selected Items">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Create%20Wrap%20Group%20From%20Selected%20Items.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_wGroup - Select Next Wrap Group.lua" type="script" desc="Select Next wGroup">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ First Version]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Select%20Next%20Wrap%20Group.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_wGroup - Select Previous Wrap Group.lua" type="script" desc="Select Previous wGroup">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ First Version]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Select%20Previous%20Wrap%20Group.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_wGroup - Unwrap Selected Wrap Groups.lua" type="script" desc="wGroup - Unwrap Selected Wrap Group(s)">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Unwrap%20Selected%20Wrap%20Groups.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Prototypes">
+    <reapack name="nikolalkc_Flying Split Or Time Selection Split.lua" type="script" desc="Flying Split Or Time Selection Split">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Flying%20Split%20Or%20Time%20Selection%20Split.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Item Luminance ADD.lua" type="script" desc="nikolalkc_Item Luminance ADD">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Item%20Luminance%20ADD.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_List Of All Wrap Groups.lua" type="script" desc="SNF - Rename next clip group">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T11:29:31Z">
+        <changelog><![CDATA[+ First Version]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/3a131e233e4e018e7ddbd7404347a367bd68d8ab/Prototypes/nikolalkc_List%20Of%20All%20Wrap%20Groups.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Make Item Colors Brighter.lua" type="script" desc="nikolalkc_Make Item Colors Brighter">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Make%20Item%20Colors%20Brighter.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Make Item Colors Saturated (Darker-Original).lua" type="script" desc="nikolalkc_Make Item Colors Saturated (Darker-Original)">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Make%20Item%20Colors%20Saturated%20(Darker-Original).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_MHG Debug Testing.lua" type="script">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_MHG%20Debug%20Testing.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Mousewheel Trim.lua" type="script">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Mousewheel%20Trim.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_Toggle Locking Depending On H Zoom Level.lua" type="script" desc="Toggle Locking depending on h zoom level">
+      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Toggle%20Locking%20Depending%20On%20H%20Zoom%20Level.lua</source>
+      </version>
+    </reapack>
+  </category>
+</index>
