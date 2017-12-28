@@ -12,6 +12,8 @@
 
 --[[
 	* Changelog:
+  * v1.2 (2017-12-28)
+    + About section added
 	* v1.1 (2017-06-13)
 		+ Support for horizontal zoom center to edit cursor
 	* v1.0 (2017-05-31)
