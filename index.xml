@@ -204,8 +204,14 @@ Check it out
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 ##Game Audio Scripts\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Set of scripts developed for game audio editing.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Game Audio Scripts (nikolalkc)\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Set of scripts developed for game audio editing. You will learn:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab What are wGroups\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to create them\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to name them\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to edit them\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to quickly export them\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to move files to destination folders\sa180\par}
 }
 ]]></description>
   </metadata>
