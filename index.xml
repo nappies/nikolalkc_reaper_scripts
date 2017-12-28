@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc scripts" commit="f1fbfc3f9859e37441ae815065a6265601b7806b">
+<index version="1" name="nikolalkc scripts" commit="d73c5efd668935e060394ac9dc338c401bb0b522">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="nikolalkc Copy item automation using empty item">
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
@@ -87,6 +87,15 @@
       </version>
     </reapack>
     <reapack name="nikolalkc_Triple Zoom In.lua" type="script" desc="Triple zoom in">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This function zooms in like pro tools software.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.1" author="nikolalkc" time="2017-12-28T21:47:23Z">
         <changelog><![CDATA[+ Support for horizontal zoom center to edit cursor]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
