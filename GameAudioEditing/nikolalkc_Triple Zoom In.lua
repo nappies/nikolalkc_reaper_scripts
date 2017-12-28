@@ -5,7 +5,9 @@
  * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  * REAPER: 5+
  * Version: 1.1
- about: This function zooms in like pro tools software.
+ * About:
+    This function zooms in like pro tools software.
+    TEST
 ]]
 
 --[[
