@@ -6,10 +6,10 @@
   REAPER: 5+
   Version: 1.2
   About:
-    # Header Line
+    # Triple Zoom In
 
-    Hello *World*
-    [This is a link](https://google.com)
+    Zooms more like *Protools* when *T* key pressed.
+    [Check it out](https://www.pro-tools-expert.com/home-page/2016/6/6/zooming-shortcuts)
 ]]
 
 --[[
