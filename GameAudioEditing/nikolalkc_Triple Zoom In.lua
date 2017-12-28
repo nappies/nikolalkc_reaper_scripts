@@ -4,7 +4,7 @@
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+
-  Version: 1.3
+  Version: 1.4
   About:
     # Triple Zoom In
 
@@ -14,6 +14,8 @@
 
 --[[
 	* Changelog:
+	* v1.4 (2017-12-29)
+	  + INFO ADDED
   * v1.3 (2017-12-28)
     + Link added
   * v1.2 (2017-12-28)
