@@ -1,17 +1,19 @@
 --[[
  * ReaScript Name:  --Check Dependencies
  * Description: Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory
- * Instructions: 
+ * Instructions:
  * Author: nikolalkc
  * Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
- * File URL: 
+ * File URL:
  * REAPER: 5.0 pre 40
- * Extensions: 
+ * Extensions:
  * Version: 1.0
 ]]
- 
+
 --[[
  * Changelog:
+ * v1.7 (2017-12-28)
+  + Check for offline files and skip them for copying
  * v1.6 (2017-12-27)
 	+ Checking for offline files started, disabled, because it is too slow *********
  * v1.5 (2017-12-26)
@@ -39,7 +41,7 @@ function Msg(param)
 end
 
 --MEAT
-item = {} 
+item = {}
 take = {}
 name = {}
 src = {}
@@ -56,17 +58,17 @@ initially_visible_tracks = {}
 unavailable_source_files = {}
 usf_INDEX = 0
 
-function CheckDependencies() 
-	
+function CheckDependencies()
+
 	--Get Project Path
-	retval, project_path_and_filename = reaper.EnumProjects(-1, "")	
+	retval, project_path_and_filename = reaper.EnumProjects(-1, "")
 	if project_path_and_filename ~= "" then
 		project_path = GetPath(project_path_and_filename,"\\")						--store project path
 
 		--remember visible tracks and show all tracks***************************************
-		
+
 		reaper.Main_OnCommand(40296,0) -- select all tracks
-		
+
 		--create array from currently visible tracks
 		selected_tracks_count = reaper.CountSelectedTracks(0)
 		for i = 0, selected_tracks_count -1 do
@@ -75,97 +77,96 @@ function CheckDependencies()
 			retval, track_name = reaper.GetTrackName( initially_visible_tracks[i],track_name  )
 			--Msg(track_name)
 		end
-		
-		
+
+
 		--show all tracks
 		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWSTL_SHOWALL"),0) 		--SWS: Show all tracks
 		--******************************************************************************************
-		
-		
+
+
 		--Select all items
 		reaper.Main_OnCommand(40182,0) 																						--Item: Select all items
-		
-		
-		
+
+
+
 		--get stuff from items
 		selected_count = reaper.CountSelectedMediaItems(0)
 		for i = 0, selected_count -1 do
 			cur_item = reaper.GetSelectedMediaItem(0,i)
 			cur_take = reaper.GetMediaItemTake(cur_item, 0)
-			
+
 			if cur_take ~= nil then
 				is_midi = reaper.TakeIsMIDI(cur_take)
-				
+
 				if is_midi == false then																							--ako nije MIDI take
 					item[audio_idx] = reaper.GetSelectedMediaItem(0,i)
 					take[audio_idx] = reaper.GetMediaItemTake(item[audio_idx], 0)
-					name[audio_idx] =  reaper.GetTakeName(take[audio_idx])		
+					name[audio_idx] =  reaper.GetTakeName(take[audio_idx])
 					src[audio_idx] = reaper.GetMediaItemTake_Source(take[audio_idx])
 					filepath[audio_idx] = reaper.GetMediaSourceFileName(src[audio_idx],"")
-					
+
 					-- reaper.ShowConsoleMsg("Name:     ")
 					-- Msg(name[audio_idx])
-					
+
 					-- reaper.ShowConsoleMsg("Src:         ")
 					-- Msg(src[audio_idx])
-					
 
 
-					if filepath[audio_idx] == "" or filepath[audio_idx] == nil then 
+
+					if filepath[audio_idx] == "" or filepath[audio_idx] == nil then
 						parent = reaper.GetMediaSourceParent(src[audio_idx])
 						filepath[audio_idx] = reaper.GetMediaSourceFileName(parent,"")
-					
+
 						-- reaper.ShowConsoleMsg("Parent Path:   ")
 						-- Msg(filepath[audio_idx])
 					else
 						-- reaper.ShowConsoleMsg("Filepath:   ")
-						-- Msg(filepath[audio_idx])		
+						-- Msg(filepath[audio_idx])
 					end
-					
-					
-					
+
+
+
 					--proveri da li postoji fajl na toj adresi, da nije slucajno offline
 					--**********************************************************************************
-					-- prog = [[if not exist "]]..filepath[audio_idx]..[[" exit /b 1]]
-					-- ret = os.execute(prog)
-					-- if ret == nil then
-						-- Msg([[FILE DOES NOT EXIST AT THIS LOCATION: 	]]..filepath[audio_idx])
-						
-						-- --dodaj fajl path u niz unavailable_source_files
-						-- unavailable_source_files[usf_INDEX] = filepath[audio_idx]
-						-- usf_INDEX = usf_INDEX + 1
-					-- end
+          ret = reaper.file_exists(filepath[audio_idx])
+					if ret == false then
+						Msg([[FILE DOES NOT EXIST AT THIS LOCATION: 	]]..filepath[audio_idx])
+
+						--dodaj fajl path u niz unavailable_source_files
+						unavailable_source_files[usf_INDEX] = filepath[audio_idx]
+						usf_INDEX = usf_INDEX + 1
+					end
 					--**********************************************************************************
 
-				
-					
+
+
 					--make filename
 					rid = string.reverse(filepath[audio_idx])
 					--reaper.ShowConsoleMsg("Rid:")
 					--Msg(rid)
-					
+
 					index1 = string.find(rid, "\\" )
-					
+
 					rid_name = string.sub(rid, 0, index1-1)
 					filename[audio_idx] = string.reverse(rid_name)
 					--Msg(filename[i])
 					audio_idx = audio_idx +1
 					--Msg(" ")
-					
+
 				end
-			else 
+			else
 				--Msg("FILE NIL") --empty item
 			end
 		end
-		
+
 		-- --Check for all selected items
 		--Msg("Status:===========================================================================")
 		for i = 0, audio_idx -1 do
 			file_path = GetPath(filepath[i],"\\")
-			
+
 			ln = string.len(project_path)
 			reduced_file_path = string.sub(file_path,0,ln) 																	--napravi string iste duzine kao i project path (da proveri dal nije unutar nekog foldera u projektu)
-			
+
 			if reduced_file_path == project_path then																		--@check if file is in project folder
 				project_item_count = project_item_count + 1																	--it is somewhere in project folder
 			else 																											--NOT IN PROJECT FOLDER
@@ -174,13 +175,13 @@ function CheckDependencies()
 				if reduced_file_path2 == s_drive then 																		--@check if file is on virtual paritition S:\
 					s_drive_item_count = s_drive_item_count + 1																--its ok, dont move file
 				else 																										--file is not in SFX library, NEEDS TO BE MOVED IF AUDIO
-				
+
 					--proveri da li je video
 					--filetype = reaper.GetMediaSourceType(src[i],"")
-					--if filetype == "VIDEO" then	
+					--if filetype == "VIDEO" then
 						--skip this file
 					--else
-					
+
 						--proveri dal nije već offline
 						local is_offline = false
 						for j in pairs(unavailable_source_files) do
@@ -190,13 +191,13 @@ function CheckDependencies()
 								break
 							end
 						end
-						
+
 						if is_offline == false then
 							Msg(name[i].."   --- SHOULD BE COPIED INTO PROJECT FOLDER")
 							relocate_item[relocate_item_count] = item[i]
-							relocate_item_count = relocate_item_count + 1			
+							relocate_item_count = relocate_item_count + 1
 						end
-					
+
 					--end
 				end
 			end
@@ -206,13 +207,13 @@ function CheckDependencies()
 		-- Msg(project_item_count.." items located inside project folder.")
 		-- Msg(s_drive_item_count.." items located on virtutal Q drive")
 		-- Msg(relocate_item_count.." items that should be copied into project folder")
-		
-		
-		
+
+
+
 		if relocate_item_count > 0 then
-		
+
 		--TODO: provera da li treba da li ima vise istih fajlova
-		
+
 		message = [[	]]..project_item_count..[[ items located inside project folder.
 	]]..s_drive_item_count..[[ items located on virtual Q drive.
 	]]..relocate_item_count..[[ ITEMS THAT SHOULD BE COPIED INTO PROJECT FOLDER.
@@ -227,65 +228,65 @@ function CheckDependencies()
 				for i = 0, audio_idx -1 do
 					file_path = GetPath(filepath[i],"\\")
 					ln = string.len(project_path)
-					reduced_file_path = string.sub(file_path,0,ln) 															
-					if reduced_file_path ~= project_path then																																												
+					reduced_file_path = string.sub(file_path,0,ln)
+					if reduced_file_path ~= project_path then
 						s_drive = [[Q:\]]
-						reduced_file_path2 = string.sub(file_path,0,3) 																
-						if reduced_file_path2 ~= s_drive then							
+						reduced_file_path2 = string.sub(file_path,0,3)
+						if reduced_file_path2 ~= s_drive then
 							--COPYYYYY after video check
 							--filetype = reaper.GetMediaSourceType(src[i],"")
-							--if filetype == "VIDEO" then	
+							--if filetype == "VIDEO" then
 								--skip this file
 							--else
 								-- kopiraj fajl u folder projekta
 								new_path = project_path..[[Assets\]]..filename[i]
 								prog = [[xcopy ]]..[["]]..filepath[i]..[[" "]]..project_path..[[Assets\" /y /d]]
 								os.execute(prog)
-							
+
 								--zameni source
-								reaper.BR_SetTakeSourceFromFile2(take[i],new_path,false,true)	
+								reaper.BR_SetTakeSourceFromFile2(take[i],new_path,false,true)
 								reaper.Main_OnCommand(40047,0) --build any missing peaks
 							--end
 						end
 					end
 				end
-				reaper.Main_OnCommand(40026,0) --File: Save project 
-			else 
-				reaper.Main_OnCommand(40026,0) --File: Save project 
+				reaper.Main_OnCommand(40026,0) --File: Save project
+			else
+				reaper.Main_OnCommand(40026,0) --File: Save project
 			end
 		else
-			reaper.Main_OnCommand(40026,0) --File: Save project 
+			reaper.Main_OnCommand(40026,0) --File: Save project
 			-- Msg(audio_idx.." non MIDI items.")
 			-- Msg(project_item_count.." items located inside project folder.")
 			-- Msg(s_drive_item_count.." items located on virtutal Q drive")
 			-- Msg(relocate_item_count.." items that should be copied into project folder")
 		end
-		
-		
-		
-		
+
+
+
+
 		--**********************************************************************
 		--show only previoulsy visible tracks
 		reaper.Main_OnCommand(40297,0) --unselect all tracks
 		for i = 0, selected_tracks_count -1 do
 			reaper.SetTrackSelected( initially_visible_tracks[i], true )
 		end
-		
+
 		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_TOGTRACKSEL"),0) 		--SWS: Invert track selection
-		
+
 		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWSTL_HIDE"),0) 		--SWS: Hide Selected tracks
 		--***********************************************************************
-		
-		
+
+
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
-		reaper.Main_OnCommand(40026,0) --File: Save project 
+		reaper.Main_OnCommand(40026,0) --File: Save project
 	else
 		--Msg("NOT SAVED")
 		reaper.Main_OnCommand(40026,0) -- save project
 	end
-	
-	
-	
+
+
+
 
 end
 
@@ -298,8 +299,7 @@ end
 --MAIN FUNCTION
 function Main()
 	CheckDependencies()
-	reaper.UpdateArrange()	
+	reaper.UpdateArrange()
 end
 --RUN
 Main()
-
