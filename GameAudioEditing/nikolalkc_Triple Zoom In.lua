@@ -4,8 +4,8 @@
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+
-  Version: 1.1
-  @about
+  Version: 1.2
+  About:
     # Header Line
 
     Hello *World*
@@ -13,12 +13,12 @@
 ]]
 
 --[[
-	Changelog:
-  v1.2 (2017-12-28)
+	* Changelog:
+  * v1.2 (2017-12-28)
     + About section added
-	v1.1 (2017-06-13)
+	* v1.1 (2017-06-13)
 		+ Support for horizontal zoom center to edit cursor
-	v1.0 (2017-05-31)
+	* v1.0 (2017-05-31)
 		+ Initial Release
 ]]
 
