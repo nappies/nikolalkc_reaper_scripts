@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc scripts" commit="1279bf1ca293ef0409ea6a06cde88cf3f586dce2">
+<index version="1" name="nikolalkc scripts" commit="d7277ea2567631af1a527273ce7580675c01c7f5">
   <category name="GameAudioEditing">
-    <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="nikolalkc Copy item automation using empty item">
+    <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Copy item automation using empty item">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Copy item automation using empty item\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This script simulates ProTools' option to copy all plugin parameters.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ First Version]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Copy%20Item%20Automation%20Using%20Empty%20Item.lua</source>
@@ -150,56 +160,6 @@ Check it out
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Unwrap%20Selected%20Wrap%20Groups.lua</source>
-      </version>
-    </reapack>
-  </category>
-  <category name="Prototypes">
-    <reapack name="nikolalkc_Flying Split Or Time Selection Split.lua" type="script" desc="Flying Split Or Time Selection Split">
-      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Flying%20Split%20Or%20Time%20Selection%20Split.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_Item Luminance ADD.lua" type="script" desc="nikolalkc_Item Luminance ADD">
-      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Item%20Luminance%20ADD.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_List Of All Wrap Groups.lua" type="script" desc="SNF - Rename next clip group">
-      <version name="1.0" author="nikolalkc" time="2017-12-28T11:29:31Z">
-        <changelog><![CDATA[+ First Version]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/3a131e233e4e018e7ddbd7404347a367bd68d8ab/Prototypes/nikolalkc_List%20Of%20All%20Wrap%20Groups.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_Make Item Colors Brighter.lua" type="script" desc="nikolalkc_Make Item Colors Brighter">
-      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Make%20Item%20Colors%20Brighter.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_Make Item Colors Saturated (Darker-Original).lua" type="script" desc="nikolalkc_Make Item Colors Saturated (Darker-Original)">
-      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Make%20Item%20Colors%20Saturated%20(Darker-Original).lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG Debug Testing.lua" type="script">
-      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_MHG%20Debug%20Testing.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_Mousewheel Trim.lua" type="script">
-      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Mousewheel%20Trim.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_Toggle Locking Depending On H Zoom Level.lua" type="script" desc="Toggle Locking depending on h zoom level">
-      <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/Prototypes/nikolalkc_Toggle%20Locking%20Depending%20On%20H%20Zoom%20Level.lua</source>
       </version>
     </reapack>
   </category>
