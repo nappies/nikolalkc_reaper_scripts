@@ -1,12 +1,12 @@
 --[[
- * ReaScript Name:Export Selected HOPA Sounds And Move Them To Project Folder
- * Description:Renders selected @named wGroups to desired folder and after that moves them to HOPA Project _sounds folders
- * Instructions: Make item or Time selection, Time selection has priority, then run the script
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5+
- * Extensions: SWS
- * Version: 1.2
+  ReaScript Name:Export Selected HOPA Sounds And Move Them To Project Folder
+  Description:Renders selected @named wGroups to desired folder and after that moves them to HOPA Project _sounds folders
+  Instructions: Make item or Time selection, Time selection has priority, then run the script
+  Author: nikolalkc
+  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+  REAPER: 5+
+  Extensions: SWS
+  Version: 1.2
 ]]
 
 
