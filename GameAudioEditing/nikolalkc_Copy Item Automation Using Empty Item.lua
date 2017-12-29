@@ -1,12 +1,14 @@
 --[[
- * ReaScript Name: nikolalkc Copy item automation using empty item
- * Description:
- * Instructions:
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.0 pre 40
- * Extensions: SWS
- * Version: 1.0
+  Description:Copy item automation using empty item
+  Instructions:
+  Author: nikolalkc
+  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+  REAPER: 5+
+  Extensions: SWS
+  Version: 1.0
+  About:
+    # Copy item automation using empty item
+      This script simulates ProTools' option to copy all plugin parameters.
 ]]
 
 --[[
