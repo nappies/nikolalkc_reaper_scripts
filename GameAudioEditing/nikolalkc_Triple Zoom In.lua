@@ -1,6 +1,5 @@
 --[[
   ReaScript Name: Triple zoom in
-  Description: Pro Tools like zoom in
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+

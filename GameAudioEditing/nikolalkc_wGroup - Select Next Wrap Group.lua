@@ -1,12 +1,13 @@
 --[[
   ReaScript Name:wGroup -  Select Next Wrap Group
-  Description: Goes to first next wGroup in timeline and selects it
-  Instructions: Bind it to shortcut RIGHT and just press button (NOTE: It still needs improvements)
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+
   Extensions: SWS
   Version: 1.0
+  About:
+    Goes to first next wGroup in timeline and selects it
+    Instructions: Bind it to shortcut RIGHT and just press button (NOTE: It still needs improvements)
 ]]
 
 --[[

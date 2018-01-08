@@ -1,12 +1,13 @@
 --[[
 	ReaScript Name:wGroup - Create Wrap Group From Selected Items
-	Description: Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
-	Instructions: Create item selection and run the script
 	Author: nikolalkc
 	Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
 	REAPER: 5+
 	Extensions: SWS
 	Version: 1.0
+	About:
+		Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
+		Instructions: Create item selection and run the script
 ]]
 
 

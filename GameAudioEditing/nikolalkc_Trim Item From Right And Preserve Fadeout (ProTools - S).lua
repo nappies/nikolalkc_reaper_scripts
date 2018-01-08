@@ -1,12 +1,13 @@
 --[[
   ReaScript Name:Trim item from right and preserve fadeout
-  Description: Cuts right part of item where mouse cursor is positioned and shortens lenth of fadeout, like Pro Tools
-  Instructions: Hover your mouse over item and run the script
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+
   Extensions: SWS
   Version: 1.0
+  About:
+    Cuts right part of item where mouse cursor is positioned and shortens lenth of fadeout, like Pro Tools
+    Instructions: Hover your mouse over item and run the script
 ]]
 
 --[[

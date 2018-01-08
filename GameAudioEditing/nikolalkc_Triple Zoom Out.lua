@@ -1,10 +1,11 @@
 --[[
   ReaScript Name: Triple zoom out
-  Description: Pro Tools like zoom out
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+
   Version: 1.1
+  About:
+    Pro Tools like zoom out
 ]]
 
 --[[

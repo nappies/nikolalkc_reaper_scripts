@@ -1,10 +1,11 @@
 --[[
   ReaScript Name: Triple zoom out
-  Description: Pt like zoom out
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5.0 pre 40
   Version: 1.1
+  About:
+    Pt like zoom out
 ]]
 
 --[[

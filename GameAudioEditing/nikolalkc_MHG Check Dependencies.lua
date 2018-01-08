@@ -1,11 +1,12 @@
 --[[
  ReaScript Name:  MHG Check Dependencies
- Description: Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory
- Instructions: Use it with your Saving shortcut, replace default (CTRL+S)
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
  REAPER: 5+
  Version: 1.7
+ About:
+  Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory
+  Instructions: Use it with your Saving shortcut, replace default (CTRL+S)
 ]]
 
 --[[

@@ -1,12 +1,13 @@
 --[[
 	ReaScript Name:Move Edit Cursor To Item Start
-	Description:Moves edit cursor to begining of selected item
-	Instructions: select item and run script
 	Author: nikolalkc
 	Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
 	REAPER: 5+
 	Extensions: SWS
 	Version: 1.0
+	About:
+		Moves edit cursor to begining of selected item
+		Instructions: select item and run script
 ]]
 
 --[[
