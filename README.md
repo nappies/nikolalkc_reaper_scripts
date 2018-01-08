@@ -14,9 +14,9 @@ CONTAINS:
     - Other useful scripts
 
 ### wGroups - Game audio editing scripts for REAPER
+![Creating](https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/02 - creating.gif)
 
-Set of scripts developed for game audio editing.
-Primarily wGroups, but also bunch of other small scripts.
+
 
 
 ### Fly editing - Fastest way of editing audio in REAPER
