@@ -1,13 +1,16 @@
 
-## NIKOLALKC REAPER SCRIPTS
+# Game Audio Editing Scripts
+
+Set of custom REAPER Lua scripts developed specifically for game audio design workflow.
+
 CONTAINS:
 
     - wGroups
-    
+
     - Fly editing
-    
+
     - Mousewheel Gain
-    
+
     - Other useful scripts
 
 ### wGroups - Game audio editing scripts for REAPER
