@@ -9,14 +9,16 @@ Summary:
 - Mousewheel Gain
 - Other useful scripts
 
-### wGroups - Game audio editing scripts for REAPER
+## wGroups - Game audio editing scripts for REAPER
+
+wGroups are my own invention. It' short for Wrap Groups. Wraping is a special way of grouping items in one compact and clean container that acts as group. It can be moved, edited, copied and named, just like a normal group, but with benefits of quick exporting and renaming workflow.
 ![Creating](https://raw.githubusercontent.com/nikolalkc/nikolalkc_reaper_scripts/master/WikiImages/02%20-%20creating.gif)
 
 
 
 
-### Fly editing - Fastest way of editing audio in REAPER
+## Fly editing - Fastest way of editing audio in REAPER
 
-### Mousewheel Gain - Quickly change item gain on multiple items
+## Mousewheel Gain - Quickly change item gain on multiple items
 
-### Other useful scripts
+## Other useful scripts
