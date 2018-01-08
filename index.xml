@@ -330,16 +330,31 @@ Check it out
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Game Audio Scripts (nikolalkc)\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Set of scripts developed for game audio editing. You will learn:\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab What are wGroups\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to create them\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to name them\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to edit them\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to quickly export them\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab How to move files to destination folders\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 For years, I've used ProTools for sound design for short animated films, advertisements and student exercises. I have always been a big fan of ASDG sound editing workflow and today I use such a montage in REAPER. In addition, ProTools had another convenient option that meant a lot to me when I started working on audio for video games. The Clip Group feature. By using clip groups, it is possible to pack multiple clips from several different tracks into a single non-destructive container. This container can be named, moved, edited and copied to other places inside your project.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 However, Protools was never meant for creating a large number of separate sound assets, and that always gave me a frustration. When the studio I work at started developing a new game inside Unreal Engine, my colleagues and I got this book http://gameaudioimplementation.com. In this book, the authors recommended REAPER as their main weapon for sound design for video games, highlighting its favorable price, batch file processing and the possibility of extending DAW's functionality by adding/writing additional scripts and extensions (btw, I highly recommend that book to everyone interested in the subject). From that moment on, my life has changed forever. In less than a month, Protools was in the trashcan, and my new passion and obsession was born. I immediately did my best to customize the workflow inside REAPER to that needed by me and colleagues in the studio, and now I want to share it with everyone. The process of sound design for video games is different from other linear media primarily because it is necessary to prepare a large number of separate sound files that are appropriately named and hierarchically structured inside your game. I hope to introduce a solution to this problem.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Game audio editing in REAPER\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Set of custom REAPER Lua scripts developed specifically for game audio design workflow. This will help primarily to game audio designers, but also to anyone who wants to improve their workflow inside REAPER. If you are one of those guys/girls still using ProTools for game audio you should stop right now and download {\field{\*\fldinst{HYPERLINK "https://www.reaper.fm/download.php"}}{\fldrslt{\ul
+REAPER
+}}}
+. Try it, evaluation period lasts 60 days and there are no limitations.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Summary:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab wGroups\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Fly editing\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Mousewheel Gain\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Other useful scripts\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 {\field{\*\fldinst{HYPERLINK "https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups"}}{\fldrslt{\ul
+wGroups - Game audio editing scripts for REAPER
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 wGroups are my own invention. It' short for Wrap Groups. Wraping is a special way of grouping items in one compact and clean container that acts as group. It can be moved, edited, copied and named, just like a normal group, but with benefits of quick exporting and renaming workflow. {\field{\*\fldinst{HYPERLINK "https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups"}}{\fldrslt{\ul
+READ MORE
+}}}
+ {\cf1 [image: https://raw.githubusercontent.com/nikolalkc/nikolalkc_reaper_scripts/master/WikiImages/02%20-%20creating.gif]\cf0}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Fly editing - Fastest way of editing audio in REAPER\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\cf1 [image: https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/08-flying.gif?raw=true]\cf0}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Mousewheel Gain - Quickly change item gain on multiple items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\cf1 [image: https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/07-gain.gif?raw=true]\cf0}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Copy all envelopes (at once)\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\cf1 [image: https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/09-emtpy_auto.gif?raw=true]\cf0}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Other useful scripts\par}
 }
 ]]></description>
   </metadata>
