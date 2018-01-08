@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc scripts" commit="d7277ea2567631af1a527273ce7580675c01c7f5">
+<index version="1" name="nikolalkc scripts" commit="171f244673f92b42c2beff1ddfad9f8e7a1a4d1d">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Copy item automation using empty item">
       <metadata>
@@ -8,7 +8,7 @@
 \widowctrl\hyphauto
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Copy item automation using empty item\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 This script simulates ProTools' option to copy all plugin parameters.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This script simulates ProTools' option to copy all plugin parameters. WARNING: Beware of items with automation clips. Check your preferences and test behavior of this script for your configuration.\par}
 }
 ]]></description>
       </metadata>
@@ -18,6 +18,15 @@
       </version>
     </reapack>
     <reapack name="nikolalkc_Export Selected HOPA Sounds And Move Them To Project Folder.lua" type="script" desc="Export Selected HOPA Sounds And Move Them To Project Folder">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Export%20Selected%20HOPA%20Sounds%20And%20Move%20Them%20To%20Project%20Folder.lua</source>
@@ -27,18 +36,45 @@
       </version>
     </reapack>
     <reapack name="nikolalkc_Flying Fadein Items To Cursor (ProTools - D).lua" type="script" desc="Flying Fadein Items To Cursor (ProTools - D)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Use this script to create fadein on item under mouse cursor. Fadein is created from start of item to mouse cursor position.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Flying%20Fadein%20Items%20To%20Cursor%20(ProTools%20-%20D).lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Flying Fadeout Items From Cursor (ProTools - G).lua" type="script" desc="Flying Fadeout Items From Cursor (ProTools - G)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Use this script to create fadeout to item under mouse cursor. Fadeout is created from mouse position to the end of item.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Flying%20Fadeout%20Items%20From%20Cursor%20(ProTools%20-%20G).lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_MHG Check Dependencies.lua" type="script" desc="--Check Dependencies">
+    <reapack name="nikolalkc_MHG Check Dependencies.lua" type="script" desc="MHG Check Dependencies">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: This script is developed for Mad Head Games projects only. Use parts of it for your own purposes. Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory Instructions: Use it with your Saving shortcut, replace default (CTRL+S)\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_MHG%20Check%20Dependencies.lua</source>
@@ -48,49 +84,121 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/GameAudioEditing/nikolalkc_MHG%20Check%20Dependencies.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Move Edit Cursor To Item Start.lua" type="script" desc="nikolalkc_Move Edit Cursor To Item Start">
+    <reapack name="nikolalkc_Move Edit Cursor To Item Start.lua" type="script" desc="Move Edit Cursor To Item Start">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Moves edit cursor to begining of selected item Instructions: select item and run script\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Move%20Edit%20Cursor%20To%20Item%20Start.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Paste Item Automation Using Empty Item.lua" type="script" desc="Paste item automation using empty item">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script pastes the automation values for all envelopes copied with empty item. Instructions:Use nikolalkc_Copy Item Automation Using Empty Item first and then select where you want to paste envelopes and run this script. WARNING: Beware of items with automation clips. Check your preferences and test behavior of this script for your configuration.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ First Version]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Paste%20Item%20Automation%20Using%20Empty%20Item.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Relative Mousewheel Gain.lua" type="script" desc="RELATIVE MOUSEWHEEL GAIN">
+    <reapack name="nikolalkc_Relative Mousewheel Gain.lua" type="script" desc="Relative Mousewheel Gain">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Changes gain of selected items with scroll of mouse Instructions: First you must have at least on item selected. Then assign this script to some relative command (mousewheel/osc). The use your scroll or whatever to change gain of selected items. If none is selected, gain change will be applied only to item under mouse cursor.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T14:46:37Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/GameAudioEditing/nikolalkc_Relative%20Mousewheel%20Gain.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Select Next Track For Importing.lua" type="script" desc="Triple zoom out">
+    <reapack name="nikolalkc_Select Next Track For Importing.lua" type="script" desc="Select Next Track For Importing">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Assign this script to a key in MediaExporer Section of ActionList. After running this script. Edit cursor goes back to start of selected item. After that next track is selected. This allows you to double click on item in media exploerer and it will be imported one track under last selected item, rather than selected item's track. NOTE: Depends on Script: nikolalkc - Move Edit Cursor To Item Start.lua, change your ID if it doesn't work.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.1" author="nikolalkc" time="2017-12-28T21:47:23Z">
         <changelog><![CDATA[+ Support for horizontal zoom center to edit cursor]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Select%20Next%20Track%20For%20Importing.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Toggle Global Automation LatchPreview-TrimRead.lua" type="script" desc="Toggle Global Automation LatchPreview-TrimRead">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 TOGGLE GLOBAL AUTOMATION OVERRIDE FROM LATCH-PREVIEW TO TRIM-READ AND VICEVERSA Instructions:With a press of your shortcut key switch between this two global automation modes\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Toggle%20Global%20Automation%20LatchPreview-TrimRead.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Toggle width envelope for selected track.lua" type="script" desc="Toggle width envelope for selected track">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 It shows or hides width envelope for selected track(s) Instructions: You must have width envelope enabled for selected track in order to use this script\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Toggle%20width%20envelope%20for%20selected%20track.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Trim Item From Left And Preserve Fadein (ProTools - A).lua" type="script" desc="Trim item from left and preserve fadein">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Cuts left part of item where mouse cursor is positioned and shortens lenth of fadein, like Pro Tools Instructions: Hover your mouse over item and run the script\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Trim%20Item%20From%20Left%20And%20Preserve%20Fadein%20(ProTools%20-%20A).lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Trim Item From Right And Preserve Fadeout (ProTools - S).lua" type="script" desc="Trim item from right and preserve fadeout">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Cuts right part of item where mouse cursor is positioned and shortens lenth of fadeout, like Pro Tools Instructions: Hover your mouse over item and run the script\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Trim%20Item%20From%20Right%20And%20Preserve%20Fadeout%20(ProTools%20-%20S).lua</source>
@@ -128,35 +236,89 @@ Check it out
       </version>
     </reapack>
     <reapack name="nikolalkc_Triple Zoom Out.lua" type="script" desc="Triple zoom out">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Pro Tools like zoom out (R)\par}
+}
+]]></description>
+      </metadata>
       <version name="1.1" author="nikolalkc" time="2017-12-28T21:47:23Z">
         <changelog><![CDATA[+ Support for horizontal zoom center to edit cursor]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Triple%20Zoom%20Out.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Type in HOPA Name.lua" type="script" desc="Type In Hopa Name">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Renames take name in format @input1:input2 based on input strings from user (replaces spaces with underscore)\par}
+}
+]]></description>
+      </metadata>
       <version name="1.4" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Stretch empty item note to fit on write]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Type%20in%20HOPA%20Name.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_wGroup - Create Wrap Group From Selected Items.lua" type="script" desc="Create Wrap Group From Selected Items">
+    <reapack name="nikolalkc_wGroup - Create Wrap Group From Selected Items.lua" type="script" desc="wGroup - Create Wrap Group From Selected Items">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming Instructions: Create item selection and run the script\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Create%20Wrap%20Group%20From%20Selected%20Items.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_wGroup - Select Next Wrap Group.lua" type="script" desc="Select Next wGroup">
+    <reapack name="nikolalkc_wGroup - Select Next Wrap Group.lua" type="script" desc="wGroup -  Select Next Wrap Group">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Goes to first next wGroup in timeline and selects it Instructions: Bind it to shortcut RIGHT and just press button (NOTE: It still needs improvements)\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ First Version]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Select%20Next%20Wrap%20Group.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_wGroup - Select Previous Wrap Group.lua" type="script" desc="Select Previous wGroup">
+    <reapack name="nikolalkc_wGroup - Select Previous Wrap Group.lua" type="script" desc="wGroup - Select Previous Wrap Group">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Goes to first previous wGroup in timeline and selects it for renaming Instructions: Bind it to shortcut RIGHT and just press button (NOTE: It still needs improvements)\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ First Version]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Select%20Previous%20Wrap%20Group.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_wGroup - Unwrap Selected Wrap Groups.lua" type="script" desc="wGroup - Unwrap Selected Wrap Group(s)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Deletes empty midi items for selected Wrap Groups and ungroups items so they can be independently edited. Instructions: Select your wGroup and run the script.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Unwrap%20Selected%20Wrap%20Groups.lua</source>
