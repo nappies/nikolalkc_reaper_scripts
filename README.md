@@ -24,4 +24,7 @@ wGroups are my own invention. It' short for Wrap Groups. Wraping is a special wa
 ## Mousewheel Gain - Quickly change item gain on multiple items
 ![Gain](https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/07-gain.gif?raw=true)
 
+## Copy all envelopes (at once)
+![Copy](https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/09-emtpy_auto.gif?raw=true)
+
 ## Other useful scripts
