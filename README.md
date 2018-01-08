@@ -9,7 +9,7 @@ Summary:
 - Mousewheel Gain
 - Other useful scripts
 
-## [wGroups - Game audio editing scripts for REAPER] (https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups)
+## [wGroups - Game audio editing scripts for REAPER](https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups)
 
 wGroups are my own invention. It' short for Wrap Groups. Wraping is a special way of grouping items in one compact and clean container that acts as group. It can be moved, edited, copied and named, just like a normal group, but with benefits of quick exporting and renaming workflow.
 [READ MORE](https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups)
