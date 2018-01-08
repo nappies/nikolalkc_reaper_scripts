@@ -1,9 +1,13 @@
 
 # NIKOLALKC REAPER SCRIPTS
-  CONTAINS:
+CONTAINS:
+
     1. wGroups
+    
     2. Fly editing
+    
     3. Mousewheel Gain
+    
     4. Other useful scripts
 
 ## wGroups - Game audio editing scripts for REAPER
