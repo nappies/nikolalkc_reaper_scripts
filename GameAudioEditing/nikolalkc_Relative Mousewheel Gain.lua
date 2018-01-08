@@ -1,10 +1,10 @@
 --[[
- * ReaScript Name: RELATIVE MOUSEWHEEL GAIN
- * Description: Changes gain to selected items with scroll of mouse
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5.52
- * Version: 1.0
+  ReaScript Name: Relative Mousewheel Gain
+  Description: Changes gain to selected items with scroll of mouse
+  Author: nikolalkc
+  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+  REAPER: 5.52
+  Version: 1.0
 ]]
 
 --[[

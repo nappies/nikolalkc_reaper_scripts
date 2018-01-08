@@ -1,10 +1,10 @@
 --[[
- * ReaScript Name: Type In Hopa Name
- * Description: Renames take name in format @input1:input2 based on input strings from user (replaces spaces with underscore)
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5+
- * Version: 1.4
+ ReaScript Name: Type In Hopa Name
+ Description: Renames take name in format @input1:input2 based on input strings from user (replaces spaces with underscore)
+ Author: nikolalkc
+ Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ REAPER: 5+
+ Version: 1.4
 ]]
 
 --[[

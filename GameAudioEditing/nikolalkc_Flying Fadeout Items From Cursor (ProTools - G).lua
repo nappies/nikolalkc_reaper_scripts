@@ -1,12 +1,12 @@
 --[[
- * ReaScript Name:Flying Fadeout Items From Cursor (ProTools - G)
- * Description:
- * Instructions:
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5+
- * Extensions: SWS
- * Version: 1.0
+  ReaScript Name:Flying Fadeout Items From Cursor (ProTools - G)
+  Description:
+  Instructions:
+  Author: nikolalkc
+  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+  REAPER: 5+
+  Extensions: SWS
+  Version: 1.0
 ]]
 
 --[[

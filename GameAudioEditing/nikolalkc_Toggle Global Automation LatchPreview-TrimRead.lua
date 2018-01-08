@@ -1,11 +1,11 @@
 --[[
- * ReaScript Name: Toggle Global Automation LatchPreview-TrimRead
- * Description: TOGGLE GLOBAL AUTOMATION OVERRIDE FROM LATCH-PREVIEW TO TRIM-READ AND VICEVERSA
- * Instructions:With a press of your shortcut key switch between this two global automation modes
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5+
- * Version: 1.0
+  ReaScript Name: Toggle Global Automation LatchPreview-TrimRead
+  Description: TOGGLE GLOBAL AUTOMATION OVERRIDE FROM LATCH-PREVIEW TO TRIM-READ AND VICEVERSA
+  Instructions:With a press of your shortcut key switch between this two global automation modes
+  Author: nikolalkc
+  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+  REAPER: 5+
+  Version: 1.0
 ]]
 
 --[[

@@ -1,12 +1,12 @@
 --[[
- * ReaScript Name:wGroup - Unwrap Selected Wrap Group(s)
- * Description: Deletes empty midi items for selected Wrap Groups and ungroups items so they can be independently edited.
- * Instructions: Select your wGroup and run the script.
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5+
- * Extensions: SWS
- * Version: 1.0
+ ReaScript Name:wGroup - Unwrap Selected Wrap Group(s)
+ Description: Deletes empty midi items for selected Wrap Groups and ungroups items so they can be independently edited.
+ Instructions: Select your wGroup and run the script.
+ Author: nikolalkc
+ Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ REAPER: 5+
+ Extensions: SWS
+ Version: 1.0
 ]]
 
 --[[

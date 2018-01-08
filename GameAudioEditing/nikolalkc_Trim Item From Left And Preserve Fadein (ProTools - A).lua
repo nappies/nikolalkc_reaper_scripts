@@ -1,12 +1,12 @@
 --[[
-* ReaScript Name:Trim item from left and preserve fadein
-* Description: Cuts left part of item where mouse cursor is positioned and shortens lenth of fadein, like Pro Tools
-* Instructions: Hover your mouse over item and run the script
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5+
- * Extensions: SWS
- * Version: 1.0
+  ReaScript Name:Trim item from left and preserve fadein
+  Description: Cuts left part of item where mouse cursor is positioned and shortens lenth of fadein, like Pro Tools
+  Instructions: Hover your mouse over item and run the script
+  Author: nikolalkc
+  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+  REAPER: 5+
+  Extensions: SWS
+  Version: 1.0
 ]]
 
 --[[

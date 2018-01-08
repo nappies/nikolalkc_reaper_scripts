@@ -1,12 +1,12 @@
 --[[
- * ReaScript Name: Select Previous wGroup
- * Description: Goes to first previous wGroup in timeline and selects it for renaming
- * Instructions: Bind it to shortcut RIGHT and just press button (NOTE: It still needs improvements)
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5+
- * Extensions: SWS
- * Version: 1.0
+  ReaScript Name:wGroup - Select Previous Wrap Group
+  Description: Goes to first previous wGroup in timeline and selects it for renaming
+  Instructions: Bind it to shortcut RIGHT and just press button (NOTE: It still needs improvements)
+  Author: nikolalkc
+  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+  REAPER: 5+
+  Extensions: SWS
+  Version: 1.0
 ]]
 
 --[[

@@ -1,12 +1,12 @@
 --[[
- * ReaScript Name: Toggle width envelope for selected track
- * Description:It show or hides width envelope for selected track(s)
- * Instructions: You must have width envelope enabled for selected track in order to use this script
- * Author: nikolalkc
- * Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
- * REAPER: 5+
- * Extensions: SWS
- * Version: 1.0
+  ReaScript Name: Toggle width envelope for selected track
+  Description:It show or hides width envelope for selected track(s)
+  Instructions: You must have width envelope enabled for selected track in order to use this script
+  Author: nikolalkc
+  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+  REAPER: 5+
+  Extensions: SWS
+  Version: 1.0
 ]]
 
 --[[
