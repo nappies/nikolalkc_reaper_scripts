@@ -6,6 +6,9 @@
   Version: 1.0
   About:
     Changes gain of selected items with scroll of mouse
+    Instructions: First you must have at least on item selected. Then assign this script to some relative command (mousewheel/osc).
+    The use your scroll or whatever to change gain of selected items. If none is selected, gain change will be applied only to item
+    under mouse cursor.
 ]]
 
 --[[

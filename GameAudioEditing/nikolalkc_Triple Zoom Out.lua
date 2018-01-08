@@ -5,7 +5,7 @@
   REAPER: 5+
   Version: 1.1
   About:
-    Pro Tools like zoom out
+    Pro Tools like zoom out (R)
 ]]
 
 --[[

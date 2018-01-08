@@ -1,11 +1,14 @@
 --[[
-  ReaScript Name: Triple zoom out
+  ReaScript Name: Select Next Track For Importing
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5.0 pre 40
   Version: 1.1
   About:
-    Pt like zoom out
+    Assign this script to a key in MediaExporer Section of ActionList. After running this script. Edit cursor goes back to start of selected item.
+    After that next track is selected. This allows you to double click on item in media exploerer and it will be imported one track under last selected item,
+    rather than selected item's track.
+    NOTE: Depends on Script: nikolalkc - Move Edit Cursor To Item Start.lua, change your ID if it doesn't work.
 ]]
 
 --[[

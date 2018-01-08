@@ -7,6 +7,7 @@
   Extensions: SWS
   Version: 1.0
   About:
+    Use this script to create fadein on item under mouse cursor. Fadein is created from start of item to mouse cursor position.
 ]]
 
 --[[

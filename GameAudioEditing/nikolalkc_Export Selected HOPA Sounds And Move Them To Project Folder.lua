@@ -6,8 +6,8 @@
   Extensions: SWS
   Version: 1.2
   About:
-    Renders selected @named wGroups to desired folder and after that moves them to HOPA Project _sounds folders
-    Instructions: Make item or Time selection, Time selection has priority, then run the script
+    Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
+    Instructions: Make item or time selection, time selection has priority, then run the script
 ]]
 
 

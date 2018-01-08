@@ -5,6 +5,7 @@
  REAPER: 5+
  Version: 1.7
  About:
+  NOTE: This script is developed for Mad Head Games projects only. Use parts of it for your own purposes.
   Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory
   Instructions: Use it with your Saving shortcut, replace default (CTRL+S)
 ]]

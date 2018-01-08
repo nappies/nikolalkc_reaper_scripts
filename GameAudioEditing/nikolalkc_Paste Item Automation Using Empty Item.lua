@@ -6,8 +6,9 @@
   Extensions: SWS
   Version: 1.0
   About:
-    This script pastes the automation values for all envelopes copied with empty item
-    Instructions:Use first Copy Item Automation Using Empty Item and then select where you want to paste setting and
+    This script pastes the automation values for all envelopes copied with empty item.
+    Instructions:Use nikolalkc_Copy Item Automation Using Empty Item first and then select where you want to paste envelopes and run this script.
+    WARNING: Beware of items with automation clips. Check your preferences and test behavior of this script for your configuration.
 ]]
 
 --[[

@@ -7,6 +7,7 @@
   Extensions: SWS
   Version: 1.0
   About:
+    Use this script to create fadeout to item under mouse cursor. Fadeout is created from mouse position to the end of item.
 ]]
 
 --[[

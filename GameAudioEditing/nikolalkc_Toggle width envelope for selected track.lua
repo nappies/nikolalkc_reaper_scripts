@@ -6,7 +6,7 @@
   Extensions: SWS
   Version: 1.0
   About:
-    It show or hides width envelope for selected track(s)
+    It shows or hides width envelope for selected track(s)
     Instructions: You must have width envelope enabled for selected track in order to use this script
 ]]
 
