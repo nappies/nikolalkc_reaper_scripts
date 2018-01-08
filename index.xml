@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc scripts" commit="171f244673f92b42c2beff1ddfad9f8e7a1a4d1d">
+<index version="1" name="nikolalkc_reaper_scripts" commit="171f244673f92b42c2beff1ddfad9f8e7a1a4d1d">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Copy item automation using empty item">
       <metadata>
