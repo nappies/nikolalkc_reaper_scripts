@@ -5,7 +5,7 @@ Set of custom REAPER Lua scripts developed specifically for game audio design wo
 
 Summary:
 - [wGroups](#wgroups---game-audio-editing-scripts-for-reaper)
-- Fly editing
+- [Fly editing](#Fly-editing---Fastest-way-of-editing-audio-in-REAPER)
 - Mousewheel Gain
 - Other useful scripts
 
