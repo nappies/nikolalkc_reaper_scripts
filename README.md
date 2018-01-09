@@ -8,7 +8,7 @@ Summary:
 - [Fly editing](#fly-editing---fastest-way-of-editing-audio-in-reaper)
 - [Mousewheel Gain](#mousewheel-gain---quickly-change-item-gain-on-multiple-items)
 - [Copy all envelopes at once](#copy-all-envelopes-at-once)
-- [Other useful scripts](#other-useful-scripts)
+- [Auto fadeout baked reverb](#auto-fadeout-baked-reverb)
 
 ## wGroups - Best way to organize and export sounds for games
 
@@ -28,4 +28,5 @@ wGroups are my own invention. It' short for Wrap Groups. Wraping is a special wa
 ## Copy all envelopes at once
 ![Copy](https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/09-emtpy_auto.gif?raw=true)
 
-## Other useful scripts
+## Auto fadeout baked reverb
+![Fadeout Rev](https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/fadeout_rev.gif?raw=true)
