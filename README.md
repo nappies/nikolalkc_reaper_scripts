@@ -7,6 +7,7 @@ Summary:
 - [wGroups](#wgroups---game-audio-editing-scripts-for-reaper)
 - [Fly editing](#fly-editing---fastest-way-of-editing-audio-in-reaper)
 - [Mousewheel Gain](#mousewheel-gain---quickly-change-item-gain-on-multiple-items)
+- [Copy all envelopes](#copy-all-envelopes-(at-once))
 - [Other useful scripts](#other-useful-scripts)
 
 ## wGroups - Game audio editing scripts for REAPER
