@@ -17,9 +17,9 @@ Summary:
 [READ MORE](https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups)
 
 
-### Fly editing - Fastest way of editing audio in REAPER
+### Fly editing - Fastest way of editing audio
   ProTools is not industry standard in film industry for no reason. Among other things it has great editing concept which is based around using edit cursor for deciding edit position and combination of keys for cuting and creating fades. I improved this concept in REAPER and I think that there is no better faster and more eficient way of editing audio, once you get used to it. [READ MORE](https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/Fly-Editing)
-### Mousewheel Gain - Quickly change item gain on multiple items
+### Mousewheel Gain - Quickly change gain on multiple items
 ### Copy all envelopes at once
 ### Auto fadeout baked reverb
 ### Hand Tool - Move items securely
