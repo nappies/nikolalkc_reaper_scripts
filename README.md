@@ -6,10 +6,10 @@ Set of custom PC (OSX not yet tested) REAPER Lua scripts developed specifically 
 Summary:
 - [wGroups](#wgroups)
 - [Fly editing](#fly-editing---fastest-way-of-editing-audio-in-reaper)
-- [Mousewheel Gain](#mousewheel-gain---quickly-change-item-gain-on-multiple-items)
+- [Mousewheel Gain](#mousewheel-gain)
 - [Copy all envelopes at once](#copy-all-envelopes-at-once)
 - [Auto fadeout baked reverb](#auto-fadeout-baked-reverb)
-- [Lock item fades and edges](#lock-item-fades-and-edges---move-items-securely)
+- [Lock item fades and edges](#lock-item-fades-and-edges)
 
 
 ## wGroups
@@ -21,9 +21,18 @@ wGroups are my own invention. It' short for Wrap Groups. Wraping is a special wa
 
 
 
-### Fly editing - Fastest way of editing audio in REAPER
-### Mousewheel Gain - Quickly change item gain on multiple items
-### Copy all envelopes at once
-### Auto fadeout baked reverb
-### Lock item fades and edges - Move items securely
+## Fly editing
+### Fastest way of editing audio in REAPER
+
+
+## Mousewheel Gain
+### Quickly change item gain on multiple items
+
+## Copy all envelopes at once
+
+
+## Auto fadeout baked reverb
+
+
+## Lock item fades and edges - Move items securely
 
