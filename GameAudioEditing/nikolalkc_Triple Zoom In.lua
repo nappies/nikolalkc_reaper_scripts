@@ -1,5 +1,5 @@
 --[[
-  ReaScript Name: Triple zoom in
+  ReaScript Name: Triple zoom in (ProTools - T)
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+

@@ -1,5 +1,5 @@
 --[[
-  ReaScript Name: Triple zoom out
+  ReaScript Name: Triple zoom out (ProTools - R)
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+

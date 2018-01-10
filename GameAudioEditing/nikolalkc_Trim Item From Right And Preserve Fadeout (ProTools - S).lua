@@ -1,5 +1,5 @@
 --[[
-  ReaScript Name:Trim item from right and preserve fadeout (Protools S)
+  ReaScript Name:Trim item from right and preserve fadeout (ProTools - S)
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+
