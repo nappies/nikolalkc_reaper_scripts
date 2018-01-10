@@ -17,9 +17,6 @@ wGroups are my own invention. It' short for Wrap Groups. Wraping is a special wa
 [READ MORE](https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups)
 
 
-
-## Other useful scripts
-
 ### Fly editing - Fastest way of editing audio in REAPER
 ### Mousewheel Gain - Quickly change item gain on multiple items
 ### Copy all envelopes at once
