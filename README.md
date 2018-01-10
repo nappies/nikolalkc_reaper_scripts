@@ -1,4 +1,4 @@
-# Game audio editing in [Cockos REAPER](https://www.reaper.fm/)
+# nikolalkc's game audio editing in [Cockos REAPER](https://www.reaper.fm/)
 
   Set of custom PC (OSX not yet tested) REAPER Lua scripts developed specifically for game audio design workflow. This will help primarily to game audio designers, but also to anyone who wants to improve their workflow inside REAPER.
 
