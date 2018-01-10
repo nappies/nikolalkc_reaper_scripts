@@ -9,7 +9,7 @@ Summary:
 - [Mousewheel Gain](#mousewheel-gain---quickly-change-item-gain-on-multiple-items)
 - [Copy all envelopes at once](#copy-all-envelopes-at-once)
 - [Auto fadeout baked reverb](#auto-fadeout-baked-reverb)
-- [Lock item fades/edges](#lock-item-fades/edges---move-items-securely)
+- [Lock item fades/edges](#lock-item-fades-&-edges---move-items-securely)
 
 ## wGroups - Best way to organize and export sounds for games
 
@@ -32,5 +32,5 @@ wGroups are my own invention. It' short for Wrap Groups. Wraping is a special wa
 ## Auto fadeout baked reverb
 ![Fadeout Rev](https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/fadeout_rev.gif?raw=true)
 
-## Lock item fades/edges - Move items securely
+## Lock item fades & edges - Move items securely
 ![Lock](https://github.com/nikolalkc/nikolalkc_reaper_scripts/blob/master/WikiImages/lock.gif?raw=true)
