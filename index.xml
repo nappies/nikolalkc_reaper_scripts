@@ -344,7 +344,14 @@ wGroups - Best way to organize and export sounds for games
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Mousewheel Gain - Quickly change gain on multiple items\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Envelope Printer - Copy all envelopes at once\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Bakeout - Auto fadeout baked reverb\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Hand Tool - Move items securely\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Hand Tool - Move items securely\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Other useful scripts\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Check dependencies\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Move edit cursor to item start\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Select next track for importing\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Toggle width envelope for selected track\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Triple zoom in\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Triple zoom out\sa180\sa180\par}
 }
 ]]></description>
   </metadata>
