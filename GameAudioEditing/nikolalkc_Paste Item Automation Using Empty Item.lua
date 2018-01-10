@@ -1,5 +1,5 @@
 --[[
-  ReaScript Name: Paste item automation using empty item
+  ReaScript Name:Envelope Printer - Paste item automation using empty item
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+

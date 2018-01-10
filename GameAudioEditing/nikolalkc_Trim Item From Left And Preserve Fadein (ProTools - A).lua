@@ -1,5 +1,5 @@
 --[[
-  ReaScript Name:Trim item from left and preserve fadein
+  ReaScript Name:Trim item from left and preserve fadein (Protools A)
   Author: nikolalkc
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+
