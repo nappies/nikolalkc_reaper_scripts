@@ -9,7 +9,7 @@ Summary:
 - [Mousewheel Gain](#mousewheel-gain---quickly-change-item-gain-on-multiple-items)
 - [Copy all envelopes at once](#copy-all-envelopes-at-once)
 - [Auto fadeout baked reverb](#auto-fadeout-baked-reverb)
-- [Lock item fades/edges(#lock-item-fades/edges---prevent-unwanted-edits-when-moving-items)
+- [Lock item fades/edges](#lock-item-fades/edges---prevent-unwanted-edits-when-moving-items)
 
 ## wGroups - Best way to organize and export sounds for games
 
