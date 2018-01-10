@@ -336,26 +336,15 @@ Cockos REAPER
 \par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Set of custom PC (OSX not yet tested) REAPER Lua scripts developed specifically for game audio design workflow. This will help primarily to game audio designers, but also to anyone who wants to improve their workflow inside REAPER.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Summary:\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab wGroups\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Fly editing\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Mousewheel Gain\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Copy all envelopes at once\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Auto fadeout baked reverb\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Hand Tool\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 wGroups - Best way to organize and export sounds for games\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 wGroups are my own invention. It' short for Wrap Groups. Wraping is a special way of grouping items in one compact and clean container that acts as group. It can be moved, edited, copied and named, just like a normal group, but with some crucial additional benefits. {\field{\*\fldinst{HYPERLINK "https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups"}}{\fldrslt{\ul
-READ MORE
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\field{\*\fldinst{HYPERLINK "https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups"}}{\fldrslt{\ul
+wGroups - Best way to organize and export sounds for games
 }}}
 \par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Fly editing - Fastest way of editing audio\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 ProTools is not industry standard in film industry for no reason. Among other things it has great editing concept which is based around using edit cursor for deciding edit position and combination of keys for cuting and creating fades. I improved this concept in REAPER and I think that there is no better faster and more eficient way of editing audio, once you get used to it. {\field{\*\fldinst{HYPERLINK "https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/Fly-Editing"}}{\fldrslt{\ul
-READ MORE
-}}}
-\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Mousewheel Gain - Quickly change gain on multiple items\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Copy all envelopes at once\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Auto fadeout baked reverb\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Hand Tool - Move items securely\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Fly editing - Fastest way of editing audio\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Mousewheel Gain - Quickly change gain on multiple items\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Envelope Printer - Copy all envelopes at once\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Bakeout - Auto fadeout baked reverb\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Hand Tool - Move items securely\sa180\par}
 }
 ]]></description>
   </metadata>
