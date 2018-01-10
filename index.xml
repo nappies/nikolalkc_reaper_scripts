@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="0350107717c4f3d0b47f5bc30f913a8253c97e94">
+<index version="1" name="nikolalkc_reaper_scripts" commit="98662f5dfeba944dd4100bec48638adc0dd88da3">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Envelope Printer - Copy item automation using empty item">
       <metadata>
@@ -174,7 +174,7 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Toggle%20width%20envelope%20for%20selected%20track.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Trim Item From Left And Preserve Fadein (ProTools - A).lua" type="script" desc="Trim item from left and preserve fadein (Protools A)">
+    <reapack name="nikolalkc_Trim Item From Left And Preserve Fadein (ProTools - A).lua" type="script" desc="Trim item from left and preserve fadein (ProTools - A)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -189,7 +189,7 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Trim%20Item%20From%20Left%20And%20Preserve%20Fadein%20(ProTools%20-%20A).lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Trim Item From Right And Preserve Fadeout (ProTools - S).lua" type="script" desc="Trim item from right and preserve fadeout (Protools S)">
+    <reapack name="nikolalkc_Trim Item From Right And Preserve Fadeout (ProTools - S).lua" type="script" desc="Trim item from right and preserve fadeout (ProTools - S)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -204,7 +204,7 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Trim%20Item%20From%20Right%20And%20Preserve%20Fadeout%20(ProTools%20-%20S).lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Triple Zoom In.lua" type="script" desc="Triple zoom in">
+    <reapack name="nikolalkc_Triple Zoom In.lua" type="script" desc="Triple zoom in (ProTools - T)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -235,7 +235,7 @@ Check it out
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/1279bf1ca293ef0409ea6a06cde88cf3f586dce2/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Triple Zoom Out.lua" type="script" desc="Triple zoom out">
+    <reapack name="nikolalkc_Triple Zoom Out.lua" type="script" desc="Triple zoom out (ProTools - R)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
