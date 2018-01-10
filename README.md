@@ -4,12 +4,11 @@ Set of custom PC (OSX not yet tested) REAPER Lua scripts developed specifically 
 
 Summary:
 - wGroups
-- Other useful scripts
-  - Fly editing
-  - Mousewheel Gain
-  - Copy all envelopes at once
-  - Auto fadeout baked reverb
-  - Lock item fades and edges
+- Fly editing
+- Mousewheel Gain
+- Copy all envelopes at once
+- Auto fadeout baked reverb
+- Hand Tool
 
 
 ## wGroups - Best way to organize and export sounds for games
@@ -25,4 +24,4 @@ wGroups are my own invention. It' short for Wrap Groups. Wraping is a special wa
 ### Mousewheel Gain - Quickly change item gain on multiple items
 ### Copy all envelopes at once
 ### Auto fadeout baked reverb
-### Lock item fades and edges - Move items securely
+### Hand Tool - Move items securely
