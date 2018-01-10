@@ -31,7 +31,7 @@
 ]]
 
 --utility===================================================================================================================================================================
-bounced_sounds_folder = [[D:\BouncedSounds\]]
+bounced_sounds_folder = [[D:\Bounced Sounds\]]
 
 
 function Msg(param)
@@ -616,7 +616,8 @@ Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
 	--No clicked --open folder==================================
 	if ok == 7 then
 		prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
-		io.popen(prog)
+    --io.popen(prog)
+    os.execute(prog)
 	end
 	-- --=================================================================================================
 end
