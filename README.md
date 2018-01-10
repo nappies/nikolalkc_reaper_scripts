@@ -9,3 +9,10 @@ Summary:
 - Envelope Printer - Copy all envelopes at once
 - Bakeout - Auto fadeout baked reverb
 - Hand Tool - Move items securely
+- Other useful scripts
+  - Check dependencies
+  - Move edit cursor to item start
+  - Select next track for importing
+  - Toggle width envelope for selected track
+  - Triple zoom in
+  - Triple zoom out
