@@ -3,13 +3,13 @@
 Set of custom PC (OSX not yet tested) REAPER Lua scripts developed specifically for game audio design workflow. This will help primarily to game audio designers, but also to anyone who wants to improve their workflow inside REAPER. If you are one of those guys/girls still using ProTools for game audio you should stop right now and download [REAPER](https://www.reaper.fm/download.php). Try it, evaluation period lasts 60 days and there are no limitations.
 
 Summary:
-- [wGroups]
+- wGroups
 - Other useful scripts
-  - [Fly editing]
-  - [Mousewheel Gain]
-  - [Copy all envelopes at once]
-  - [Auto fadeout baked reverb]
-  - [Lock item fades and edges]
+  - Fly editing
+  - Mousewheel Gain
+  - Copy all envelopes at once
+  - Auto fadeout baked reverb
+  - Lock item fades and edges
 
 
 ## wGroups - Best way to organize and export sounds for games
