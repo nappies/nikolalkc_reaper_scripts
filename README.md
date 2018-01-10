@@ -12,8 +12,8 @@ Summary:
 - [Lock item fades and edges](#lock-item-fades-and-edges---move-items-securely)
 
 
-### wGroups
-#### Best way to organize and export sounds for games
+## wGroups
+### Best way to organize and export sounds for games
 
 wGroups are my own invention. It' short for Wrap Groups. Wraping is a special way of grouping items in one compact and clean container that acts as group. It can be moved, edited, copied and named, just like a normal group, but with some crucial additional benefits.
 [READ MORE](https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups)
