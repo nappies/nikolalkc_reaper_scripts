@@ -4,11 +4,12 @@ Set of custom PC (OSX not yet tested) REAPER Lua scripts developed specifically 
 
 Summary:
 - [wGroups](#wgroups---best-way-to-organize-and-export-sounds-for-games)
-- [Fly editing](#fly-editing---fastest-way-of-editing-audio-in-reaper)
-- [Mousewheel Gain](#mousewheel-gain---quickly-change-item-gain-on-multiple-items)
-- [Copy all envelopes at once](#copy-all-envelopes-at-once)
-- [Auto fadeout baked reverb](#auto-fadeout-baked-reverb)
-- [Lock item fades and edges](#lock-item-fades-and-edges---move-items-securely)
+- Other useful scripts
+  - [Fly editing](#fly-editing---fastest-way-of-editing-audio-in-reaper)
+  - [Mousewheel Gain](#mousewheel-gain---quickly-change-item-gain-on-multiple-items)
+  - [Copy all envelopes at once](#copy-all-envelopes-at-once)
+  - [Auto fadeout baked reverb](#auto-fadeout-baked-reverb)
+  - [Lock item fades and edges](#lock-item-fades-and-edges---move-items-securely)
 
 
 ### wGroups - Best way to organize and export sounds for games
