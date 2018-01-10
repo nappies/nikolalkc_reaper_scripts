@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="171f244673f92b42c2beff1ddfad9f8e7a1a4d1d">
+<index version="1" name="nikolalkc_reaper_scripts" commit="0350107717c4f3d0b47f5bc30f913a8253c97e94">
   <category name="GameAudioEditing">
-    <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Copy item automation using empty item">
+    <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Envelope Printer - Copy item automation using empty item">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -99,7 +99,7 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Move%20Edit%20Cursor%20To%20Item%20Start.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Paste Item Automation Using Empty Item.lua" type="script" desc="Paste item automation using empty item">
+    <reapack name="nikolalkc_Paste Item Automation Using Empty Item.lua" type="script" desc="Envelope Printer - Paste item automation using empty item">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -174,7 +174,7 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Toggle%20width%20envelope%20for%20selected%20track.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Trim Item From Left And Preserve Fadein (ProTools - A).lua" type="script" desc="Trim item from left and preserve fadein">
+    <reapack name="nikolalkc_Trim Item From Left And Preserve Fadein (ProTools - A).lua" type="script" desc="Trim item from left and preserve fadein (Protools A)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -189,7 +189,7 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Trim%20Item%20From%20Left%20And%20Preserve%20Fadein%20(ProTools%20-%20A).lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Trim Item From Right And Preserve Fadeout (ProTools - S).lua" type="script" desc="Trim item from right and preserve fadeout">
+    <reapack name="nikolalkc_Trim Item From Right And Preserve Fadeout (ProTools - S).lua" type="script" desc="Trim item from right and preserve fadeout (Protools S)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
