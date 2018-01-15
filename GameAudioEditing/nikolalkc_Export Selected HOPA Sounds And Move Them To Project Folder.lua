@@ -4,7 +4,7 @@
   Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
   REAPER: 5+
   Extensions: SWS
-  Version: 1.2
+  Version: 1.3
   About:
     Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
     Instructions: Make item or time selection, time selection has priority, then run the script
@@ -12,6 +12,8 @@
 
 
 --[[ChangeLog
+--v1.3 (2018-01-15)
+	--io.popen replaced with reascript functions for enumeration for files and folders
 --v1.2 (2017-11-30)
 	--support added for main_menu export folder
 --v1.1 (2017-10-30)
@@ -72,31 +74,46 @@ game_folder_paths = {}
 last_export_folder = ""
 interface_exceptions = {[[hud]],[[journal]],[[map]],[[over_hud]],[[main_menu]]}
 
+
 function ScanSoundsToMove(post)
+	if post == false then
+		Msg([[Scanning sounds in ]]..bounced_sounds_folder)
+		Msg("")
+	end
 	--scan all files in D:\bounced sounds
-	prog2 = [[dir "]]..bounced_sounds_folder..[[" /a:-d /b]]
+	
+	--prog2 = [[dir "]]..bounced_sounds_folder..[[" /a:-d /b]]  --deprecated
+	
 	local idx = 0
-	for sound_file in io.popen(prog2):lines() do
-		--Msg(sound_file)
+	i = 1
+	fileindex = 0
+	while i ~= nil do
+		i = reaper.EnumerateFiles( bounced_sounds_folder, fileindex )
+		--Msg(fileindex)
+		
+		
 		--create array
+		if i ~= nil then
+			--remove extension from file name
+			rid = string.reverse(i)
+			--Msg(rid)
+			index1 = string.find(rid, "%.")
+			--Msg(index1)
+			rid_name = string.sub(rid, index1+1, -1)
+			extension = string.sub(rid, 0, index1-1)
+			extension = string.reverse(extension)
+			--Msg(extension)
+			dir_name = string.reverse(rid_name)
+			--Msg(dir_name)
 
-		--remove extension from file name
-		rid = string.reverse(sound_file)
-		--Msg(rid)
-		index1 = string.find(rid, "%.")
-		--Msg(index1)
-		rid_name = string.sub(rid, index1+1, -1)
-		extension = string.sub(rid, 0, index1-1)
-		extension = string.reverse(extension)
-		--Msg(extension)
-		dir_name = string.reverse(rid_name)
-		--Msg(dir_name)
 
-
-		if extension == "ogg" then	--if ogg, add it to  moving list
-			sounds_to_move[idx] = dir_name
-			idx = idx + 1
+			if extension == "ogg" then	--if ogg, add it to  moving list
+				sounds_to_move[idx] = dir_name
+				idx = idx + 1
+				Msg(i)
+			end
 		end
+		fileindex = fileindex + 1
 	end
 
 	--debug print
@@ -105,57 +122,78 @@ function ScanSoundsToMove(post)
 		Msg("("..idx..")".." OGG sounds remaining in "..bounced_sounds_folder)
 		Msg("")
 	else
-		Msg("\n===============")
-		Msg("Scanning Sounds:\n")
-	end
-	--print them
-	for i=0, idx-1 do
-		Msg((i+1)..". "..sounds_to_move[i])
+		Msg("\nScanning Sounds Completed!\n")
+		Msg("===============")
 	end
 end
 
 function ScanFoldersInGameProjectFolder()
-	Msg("\n===============")
-	Msg("Scanning folders...\n")
-	folder_idx = 0
+	--DEPRECATED, IO POPEN DOESNT WORK
+	-- Msg("\n===============")
+	-- Msg("Scanning folders...\n")
+	-- folder_idx = 0
 
-	--list all directories in folder P:\data and exclude:  .svn _prefabs _resources _savegames _sounds===========================================================================================
-	prog1 = [[dir "P:\data\" /b /s /a:d | findstr /v "\_interface"| findstr /v "\.svn"|findstr /v "\_prefabs"| findstr /v "\_resources"| findstr /v "\_savegames"| findstr /v "\_sounds"]]
-	ScanSpecificFolders(prog1)
+	-- --list all directories in folder P:\data and exclude:  .svn _prefabs _resources _savegames _sounds===========================================================================================
+	-- prog1 = [[dir "P:\data\" /b /s /a:d | findstr /v "\_interface"| findstr /v "\.svn"|findstr /v "\_prefabs"| findstr /v "\_resources"| findstr /v "\_savegames"| findstr /v "\_sounds"]]
+	-- ScanSpecificFolders(prog1)
 
-	--TODO: za interface posebna logika
-	prog2 = [[dir "P:\data\_interface\inventory\" /b /s /a:d | findstr /v "\_sounds"]]
-	ScanSpecificFolders(prog2)
+	-- --TODO: za interface posebna logika
+	-- prog2 = [[dir "P:\data\_interface\inventory\" /b /s /a:d | findstr /v "\_sounds"]]
+	-- ScanSpecificFolders(prog2)
 
-	--exceptions za dodatne foldere, manually added
-	for f in pairs(interface_exceptions) do
-		game_folder_paths[folder_idx] = [[P:\data\_interface\]]..interface_exceptions[f]
-		game_folders[folder_idx] = interface_exceptions[f]
-		folder_idx = folder_idx + 1
-	end
-
-	--debug print
-	-- for i = 0, folder_idx - 1 do
-		-- Msg(game_folder_paths[i])
-		-- Msg(game_folders[i])
+	-- --exceptions za dodatne foldere, manually added
+	-- for f in pairs(interface_exceptions) do
+		-- game_folder_paths[folder_idx] = [[P:\data\_interface\]]..interface_exceptions[f]
+		-- game_folders[folder_idx] = interface_exceptions[f]
+		-- folder_idx = folder_idx + 1
 	-- end
 
-	Msg("Scan completed.")
+	-- --debug print
+	-- -- for i = 0, folder_idx - 1 do
+		-- -- Msg(game_folder_paths[i])
+		-- -- Msg(game_folders[i])
+	-- -- end
+
+	-- Msg("Scan completed.")
 end
 
-function ScanSpecificFolders(prog)
-	for dir in io.popen(prog):lines() do
-		--get folder name
-		rid = string.reverse(dir)
-		index1 = string.find(rid, "\\" )
-		rid_name = string.sub(rid, 0, index1-1)
-		dir_name = string.reverse(rid_name)
-
-		game_folders[folder_idx] = dir_name
-		game_folder_paths[folder_idx] = dir
-		folder_idx = folder_idx + 1
+folder_idx = 0
+function ScanSubdirectories(path)
+	local subdirindex = 0
+	local j = 1
+	while j ~= nil do 
+		j = reaper.EnumerateSubdirectories( path, subdirindex )
+		if j ~= nil and j ~= ".svn" and j ~= "_prefabs" and j ~= "_resources" and j ~= "_savegames" and j~= "_sounds" and j ~= "wallpapers_ce" then
+			--recursive call
+			local folder_path = path..j..[[\]]
+			ScanSubdirectories(folder_path)
+			--Msg(path..j)
+			
+			--add to array
+			game_folders[folder_idx] = j
+			game_folder_paths[folder_idx] = path..j
+			folder_idx = folder_idx + 1
+		end
+		
+		
+		
+		subdirindex = subdirindex + 1
 	end
 end
+
+-- function ScanSpecificFolders(prog) --DEPRECATED
+	-- for dir in io.popen(prog):lines() do
+		-- --get folder name
+		-- rid = string.reverse(dir)
+		-- index1 = string.find(rid, "\\" )
+		-- rid_name = string.sub(rid, 0, index1-1)
+		-- dir_name = string.reverse(rid_name)
+
+		-- game_folders[folder_idx] = dir_name
+		-- game_folder_paths[folder_idx] = dir
+		-- folder_idx = folder_idx + 1
+	-- end
+-- end
 
 function SeparateFolderAndFileName (name)
 	local folder_name, file_name = name:match("([^,]+)-([^,]+)")
@@ -258,7 +296,12 @@ end
 
 function MOVE_RENDERED_SOUNDS_TO_PROJECT()
 	ScanSoundsToMove(false) --for start
-	ScanFoldersInGameProjectFolder()
+	
+	--ScanFoldersInGameProjectFolder() --deprecated
+	Msg([[Scanning Folders in P:\data]])
+	ScanSubdirectories([[P:\data\]])
+	Msg("Scanning Folders Completed!")
+	
 	MoveSounds()
 	ScanSoundsToMove(true) -- to check how many remained after moving
 	Msg("\n>>>> Moving Completed <<<<")
