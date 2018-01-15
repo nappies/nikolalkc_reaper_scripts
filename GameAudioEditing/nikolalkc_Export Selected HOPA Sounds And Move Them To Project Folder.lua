@@ -31,7 +31,7 @@
 ]]
 
 --utility===================================================================================================================================================================
-bounced_sounds_folder = [[D:\Bounced Sounds\]]
+bounced_sounds_folder = [[D:\BouncedSounds\]]
 
 
 function Msg(param)
