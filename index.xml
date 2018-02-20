@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="98662f5dfeba944dd4100bec48638adc0dd88da3">
+<index version="1" name="nikolalkc_reaper_scripts" commit="1a8119825f34ab1c6158403f7ebcd6f485df03f4">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Envelope Printer - Copy item automation using empty item">
       <metadata>
@@ -34,6 +34,9 @@
       <version name="1.2" author="nikolalkc" time="2017-12-28T14:46:37Z">
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/GameAudioEditing/nikolalkc_Export%20Selected%20HOPA%20Sounds%20And%20Move%20Them%20To%20Project%20Folder.lua</source>
       </version>
+      <version name="1.3" author="nikolalkc" time="2018-01-15T11:35:09Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/1603170ac860b66f2bdf785a5bbac6eae6dec205/GameAudioEditing/nikolalkc_Export%20Selected%20HOPA%20Sounds%20And%20Move%20Them%20To%20Project%20Folder.lua</source>
+      </version>
     </reapack>
     <reapack name="nikolalkc_Flying Fadein Items To Cursor (ProTools - D).lua" type="script" desc="Flying Fadein Items To Cursor (ProTools - D)">
       <metadata>
@@ -63,6 +66,11 @@
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Flying%20Fadeout%20Items%20From%20Cursor%20(ProTools%20-%20G).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="nikolalkc_MHG - Set Item Name To Text Copied From Localization">
+      <version name="0.1" author="nikolalkc" time="2018-02-20T12:00:28Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/8a57cc117b753c5bfc42b93546e2c9b621fcd34d/GameAudioEditing/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_MHG Check Dependencies.lua" type="script" desc="MHG Check Dependencies">
