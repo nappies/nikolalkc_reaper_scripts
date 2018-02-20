@@ -81,17 +81,17 @@ function ScanSoundsToMove(post)
 		Msg("")
 	end
 	--scan all files in D:\bounced sounds
-	
+
 	--prog2 = [[dir "]]..bounced_sounds_folder..[[" /a:-d /b]]  --deprecated
-	
+
 	local idx = 0
 	i = 1
 	fileindex = 0
 	while i ~= nil do
 		i = reaper.EnumerateFiles( bounced_sounds_folder, fileindex )
 		--Msg(fileindex)
-		
-		
+
+
 		--create array
 		if i ~= nil then
 			--remove extension from file name
@@ -161,22 +161,22 @@ folder_idx = 0
 function ScanSubdirectories(path)
 	local subdirindex = 0
 	local j = 1
-	while j ~= nil do 
+	while j ~= nil do
 		j = reaper.EnumerateSubdirectories( path, subdirindex )
 		if j ~= nil and j ~= ".svn" and j ~= "_prefabs" and j ~= "_resources" and j ~= "_savegames" and j~= "_sounds" and j ~= "wallpapers_ce" then
 			--recursive call
 			local folder_path = path..j..[[\]]
 			ScanSubdirectories(folder_path)
 			--Msg(path..j)
-			
+
 			--add to array
 			game_folders[folder_idx] = j
 			game_folder_paths[folder_idx] = path..j
 			folder_idx = folder_idx + 1
 		end
-		
-		
-		
+
+
+
 		subdirindex = subdirindex + 1
 	end
 end
@@ -296,12 +296,12 @@ end
 
 function MOVE_RENDERED_SOUNDS_TO_PROJECT()
 	ScanSoundsToMove(false) --for start
-	
+
 	--ScanFoldersInGameProjectFolder() --deprecated
 	Msg([[Scanning Folders in P:\data]])
 	ScanSubdirectories([[P:\data\]])
 	Msg("Scanning Folders Completed!")
-	
+
 	MoveSounds()
 	ScanSoundsToMove(true) -- to check how many remained after moving
 	Msg("\n>>>> Moving Completed <<<<")
@@ -546,15 +546,16 @@ function render_selected_items()
 				--INACTIVE--if _item_pos < _start_time or _item_end > _end_time then
 
 
-					--if it does not belong to same group_id(TODO check if upper part should be standalone and not nested in here and deactivated)
-					if _current_group_id ~= group_id then
-						--save mute state and mute items
-						overlapping_items[ov_index] = _item
-						overlapping_items_mute_state[ov_index] = reaper.GetMediaItemInfo_Value(_item, "B_MUTE")--get mute
-						reaper.SetMediaItemInfo_Value(_item, "B_MUTE", 1 )--mute that item
-						ov_index = ov_index + 1
+				--if it does not belong to same group_id(TODO check if upper part should be standalone and not nested in here and deactivated)
+				if _current_group_id ~= group_id then
+					--save mute state and mute items
+					overlapping_items[ov_index] = _item
+					overlapping_items_mute_state[ov_index] = reaper.GetMediaItemInfo_Value(_item, "B_MUTE")--get mute
+					reaper.SetMediaItemInfo_Value(_item, "B_MUTE", 1 )--mute that item
+					ov_index = ov_index + 1
 
-					else -- if belongs to same group
+				else -- if belongs to same group
+					if _name ~= "/keep color" then   --change color if item is not marked for retaining color
 						if make_items_white == true then
 							--color to white
 							local white = reaper.ColorToNative(255,255,255)|0x1000000
@@ -563,8 +564,7 @@ function render_selected_items()
 						--make item color brighter
 							MakeItemColorBrighter(_item)
 						end
-
-
+					end
 						--if they are all mono, set mono export, if not then stereo export (WARNING: daes not consider take envelopes, and it doesn't work)
 						-- if _take ~= nil then
 							-- local _pcm_source = reaper.GetMediaItemTake_Source(_take)
@@ -582,7 +582,7 @@ function render_selected_items()
 								-- end
 							-- end
 						-- end
-					end
+				end
 
 
 				--INACTIVE--end
@@ -625,43 +625,43 @@ function render_selected_items()
 		reaper.Main_OnCommand(40020,0) --Time selection: Remove time selection and loop points
 	end
 
-	reaper.Main_OnCommand(41207,0) --render all
+	--reaper.Main_OnCommand(41207,0) --render all
 
 end
 
 function post_export_dialog(message_title)
-	if message_title == nil then message_title = [[Rendering Completed]] end
-	-- --When rendering completed======================================================================
-	ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
+	-- if message_title == nil then message_title = [[Rendering Completed]] end
+	-- -- --When rendering completed======================================================================
+	-- ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
 
-Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
-	--Msg(ok)
+-- Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
+	-- --Msg(ok)
 
-	--Yes clicked --run move script=============================
-	if ok == 6 then
-		--autohotkey script
-		--get script path
-		-- local info = debug.getinfo(1).source:match("@(.*)")
-		-- ofni = string.reverse(info)
-		-- idx = string.find(ofni, "\\" )
-		-- htap = string.sub(ofni, idx, -1)
-		-- path = string.reverse(htap)
-		-- --Msg(path);
+	-- --Yes clicked --run move script=============================
+	-- if ok == 6 then
+		-- --autohotkey script
+		-- --get script path
+		-- -- local info = debug.getinfo(1).source:match("@(.*)")
+		-- -- ofni = string.reverse(info)
+		-- -- idx = string.find(ofni, "\\" )
+		-- -- htap = string.sub(ofni, idx, -1)
+		-- -- path = string.reverse(htap)
+		-- -- --Msg(path);
 
-		-- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
-		-- os.execute (batch_path)
+		-- -- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
+		-- -- os.execute (batch_path)
 
 
-		--move script
-		MOVE_RENDERED_SOUNDS_TO_PROJECT()
-	end
+		-- --move script
+		-- MOVE_RENDERED_SOUNDS_TO_PROJECT()
+	-- end
 
-	--No clicked --open folder==================================
-	if ok == 7 then
-		prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
-    --io.popen(prog)
-    os.execute(prog)
-	end
+	-- --No clicked --open folder==================================
+	-- if ok == 7 then
+		-- prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
+    -- --io.popen(prog)
+    -- os.execute(prog)
+	-- end
 	-- --=================================================================================================
 end
 
