@@ -1,5 +1,5 @@
 --[[
- ReaScript Name: nikolalkc_MHG - Set Item Name To Text Copied From Localization
+ ReaScript Name: MHG - Set Item Name To Text Copied From Localization
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5.75
