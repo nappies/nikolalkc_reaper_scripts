@@ -260,7 +260,7 @@ function SetNameForItem(cur_item,retval,final_name,item_is_empty,index_to_add)
 				final_name = final_name.."_"..zero..index_to_add
 			end
 			reaper.ULT_SetMediaItemNote( cur_item, final_name)
-			reaper.Main_OnCommand(reaper.NamedCommandLookup("_RSb428746958e98560bf16fdec0d9022a5b13465c0"),0) -- fit notes stretch (for all selected items HEDA SCRIPT)
+			ToggleNoteStretchToFit(cur_item)
 		end
 
 		--Msg(file_path)
@@ -269,6 +269,27 @@ function SetNameForItem(cur_item,retval,final_name,item_is_empty,index_to_add)
 		file:close()
 	end
 
+end
+
+  --TOGGLE NOTE STRETCH TO FIT WITH LUA
+function ToggleNoteStretchToFit(item)
+  local strNeedBig = ""
+  retval, strNeedBig = reaper.GetItemStateChunk( item, strNeedBig, false )
+  -- Msg(strNeedBig)
+  -- Msg("=====================================================")
+  NoteStretchState = string.match(strNeedBig, "IMGRESOURCEFLAGS %d")
+  
+  -- TURN ON
+  new_state = string.gsub(strNeedBig, "IMGRESOURCEFLAGS %d", "IMGRESOURCEFLAGS 2") --turn on stretch
+  
+  --TOGGLE
+  -- if NoteStretchState == "IMGRESOURCEFLAGS 0" then
+    -- new_state = string.gsub(strNeedBig, "IMGRESOURCEFLAGS %d", "IMGRESOURCEFLAGS 2") --turn on stretch
+  -- else
+    -- new_state = string.gsub(strNeedBig, "IMGRESOURCEFLAGS %d", "IMGRESOURCEFLAGS 0") --turn off stretch
+  -- end
+
+  reaper.SetItemStateChunk( item, new_state, true )
 end
 
 --RUN
