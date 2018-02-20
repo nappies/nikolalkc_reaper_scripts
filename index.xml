@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="1a8119825f34ab1c6158403f7ebcd6f485df03f4">
+<index version="1" name="nikolalkc_reaper_scripts" commit="61cca2af580f73fb4ba9c8876afd84fc2497f9c7">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Envelope Printer - Copy item automation using empty item">
       <metadata>
@@ -68,7 +68,7 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Flying%20Fadeout%20Items%20From%20Cursor%20(ProTools%20-%20G).lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="nikolalkc_MHG - Set Item Name To Text Copied From Localization">
+    <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
       <version name="0.1" author="nikolalkc" time="2018-02-20T12:00:28Z">
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/8a57cc117b753c5bfc42b93546e2c9b621fcd34d/GameAudioEditing/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
       </version>
