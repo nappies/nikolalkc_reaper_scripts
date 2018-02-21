@@ -3,13 +3,15 @@
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5.75
- Version: 0.1
+ Version: 1.1
  About:
 	Uses text copied from localization_en.txt and formats it to wGroup naming convention.
 ]]
 
 --[[
  * Changelog:
+ * v1.1 (2018-02-21)
+	+ Fix for exporting problem with remaing \t character
  * v1.0 (2018-02-19)
 	+ Initial Release
 ]]
@@ -25,7 +27,7 @@ end
 function Main()
 	clipboard = reaper.CF_GetClipboard('')
 	a = string.find(clipboard, '\t', 1)
-	short = [[@]]..string.sub(clipboard,0,a)
+	short = [[@]]..string.sub(clipboard,0,a-1)
 	final_name = string.gsub(short,":",":\nvo_")
 
 

@@ -625,44 +625,44 @@ function render_selected_items()
 		reaper.Main_OnCommand(40020,0) --Time selection: Remove time selection and loop points
 	end
 
-	--reaper.Main_OnCommand(41207,0) --render all
+	reaper.Main_OnCommand(41207,0) --render all
 
 end
 
 function post_export_dialog(message_title)
-	-- if message_title == nil then message_title = [[Rendering Completed]] end
-	-- -- --When rendering completed======================================================================
-	-- ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
+	if message_title == nil then message_title = [[Rendering Completed]] end
+	-- --When rendering completed======================================================================
+	ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
 
--- Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
-	-- --Msg(ok)
+Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
+	--Msg(ok)
 
-	-- --Yes clicked --run move script=============================
-	-- if ok == 6 then
-		-- --autohotkey script
-		-- --get script path
-		-- -- local info = debug.getinfo(1).source:match("@(.*)")
-		-- -- ofni = string.reverse(info)
-		-- -- idx = string.find(ofni, "\\" )
-		-- -- htap = string.sub(ofni, idx, -1)
-		-- -- path = string.reverse(htap)
-		-- -- --Msg(path);
+	--Yes clicked --run move script=============================
+	if ok == 6 then
+		--autohotkey script
+		--get script path
+		-- local info = debug.getinfo(1).source:match("@(.*)")
+		-- ofni = string.reverse(info)
+		-- idx = string.find(ofni, "\\" )
+		-- htap = string.sub(ofni, idx, -1)
+		-- path = string.reverse(htap)
+		-- --Msg(path);
 
-		-- -- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
-		-- -- os.execute (batch_path)
+		-- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
+		-- os.execute (batch_path)
 
 
-		-- --move script
-		-- MOVE_RENDERED_SOUNDS_TO_PROJECT()
-	-- end
+		--move script
+		MOVE_RENDERED_SOUNDS_TO_PROJECT()
+	end
 
-	-- --No clicked --open folder==================================
-	-- if ok == 7 then
-		-- prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
-    -- --io.popen(prog)
-    -- os.execute(prog)
-	-- end
-	-- --=================================================================================================
+	--No clicked --open folder==================================
+	if ok == 7 then
+		prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
+    --io.popen(prog)
+    os.execute(prog)
+	end
+	--=================================================================================================
 end
 
 
