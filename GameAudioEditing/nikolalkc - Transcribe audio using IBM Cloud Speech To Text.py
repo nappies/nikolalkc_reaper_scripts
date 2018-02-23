@@ -10,7 +10,7 @@ def transcribe_audio(path_to_audio_file):
 
     with open(path_to_audio_file, 'rb') as audio_file:
         return speech_to_text.recognize(audio_file,
-            content_type='audio/ogg')
+            content_type='audio/wav')
 
 def main():
 	RPR_ShowConsoleMsg("Transcribing audio....\n")
