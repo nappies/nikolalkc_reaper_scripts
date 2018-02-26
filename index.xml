@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="557a50a1bbcdfb83c87a4ecf9ee261111d86fbd9">
+<index version="1" name="nikolalkc_reaper_scripts" commit="6b5f4812b449871ffd5a0169d2eb60be905258ed">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script renders selected items to new takes and puts all item fx offline. If that operation has already been done then it restores original items length and fades, deletes rendered take from project and put all items fx back online. NOTE: Remember to occasionaly do project clean up because this script does not delete files when it deletes takes. Also it works only with items that have one or two takes.\par}
+}
+]]></description>
+      </metadata>
       <version name="1.0" author="nikolalkc" time="2018-02-26T10:28:24Z">
         <changelog><![CDATA[+ Initial Commit]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/557a50a1bbcdfb83c87a4ecf9ee261111d86fbd9/GameAudioEditing/nikolalkc%20-%20Toggle%20Freeze%20And%20Unfreeze%20Selected%20Items.lua</source>
