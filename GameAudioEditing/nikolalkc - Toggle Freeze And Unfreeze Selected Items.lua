@@ -5,10 +5,10 @@
  REAPER: 5+
  Version: 1.0
  About:
-	This script renders selected items to new takes and puts all item fx offline. If that operation has already
-	been done then it restores original items length and fades, deletes rendered take from project and put all items fx
-	back online. NOTE: Remember to occasionaly do project clean up because this script does not delete files when it deletes takes.
-	Also it works only with items that have one or two takes. 
+  This script renders selected items to new takes and puts all item fx offline. If that operation has already
+  been done then it restores original items length and fades, deletes rendered take from project and put all items fx
+  back online. NOTE: Remember to occasionaly do project clean up because this script does not delete files when it deletes takes.
+  Also it works only with items that have one or two takes. 
 ]]
 
 --[[
