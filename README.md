@@ -1,6 +1,9 @@
 # nikolalkc's game audio editing in [Cockos REAPER](https://www.reaper.fm/)
 
   Set of custom REAPER Lua scripts developed specifically for game audio. This will also help anyone who wants to improve their workflow inside REAPER. NOTE:All scripts are for PC, OSX not yet tested.
+  
+  
+  [DONATE IF YOU FIND MY STUFF USEFUL](https://www.paypal.me/reaperandlife)
 
 Summary:
 - [wGroups - Best way to organize and export sounds for games](https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups)
