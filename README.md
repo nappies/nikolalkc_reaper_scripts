@@ -1,4 +1,4 @@
-# nikolalkc's scripts for game audio in [REAPER](https://www.reaper.fm/)
+# nikolaLKC's scripts for game audio in [REAPER](https://www.reaper.fm/)
 
   Set of custom REAPER Lua scripts developed specifically for game audio. This will also help to anyone who wants to improve their workflow inside REAPER. 
   
