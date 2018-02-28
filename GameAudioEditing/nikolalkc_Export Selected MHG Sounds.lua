@@ -1,17 +1,19 @@
 --[[
-  ReaScript Name:Export Selected HOPA Sounds And Move Them To Project Folder
-  Author: nikolalkc
-  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
-  REAPER: 5+
-  Extensions: SWS
-  Version: 1.3
-  About:
-    Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
-    Instructions: Make item or time selection, time selection has priority, then run the script
+ ReaScript Name:Export Selected MHG Sounds
+ Author: nikolalkc
+ Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ REAPER: 5+
+ Extensions: SWS
+ Version: 1.4
+ About:
+  NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
+  Instructions: Make item or time selection, time selection has priority, then run the script
 ]]
 
 
 --[[ChangeLog
+--v1.4 (2018-02-28)
+	--Added check for system variable that defines project type (MADBOX or WWISE)
 --v1.3 (2018-01-15)
 	--io.popen replaced with reascript functions for enumeration for files and folders
 --v1.2 (2017-11-30)
@@ -34,7 +36,7 @@
 
 --utility===================================================================================================================================================================
 bounced_sounds_folder = [[D:\BouncedSounds\]]
-
+active_project_type = os.getenv("ACTIVE_AUDIO_PROJECT")
 
 function Msg(param)
   reaper.ShowConsoleMsg(tostring(param).."\n")
@@ -625,44 +627,50 @@ function render_selected_items()
 		reaper.Main_OnCommand(40020,0) --Time selection: Remove time selection and loop points
 	end
 
-	reaper.Main_OnCommand(41207,0) --render all
+	if active_project_type == "MADBOX" then
+		reaper.Main_OnCommand(41207,0) --render all
+	end
 
 end
 
 function post_export_dialog(message_title)
-	if message_title == nil then message_title = [[Rendering Completed]] end
-	-- --When rendering completed======================================================================
-	ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
+	if active_project_type == "MADBOX" then
+		if message_title == nil then message_title = [[Rendering Completed]] end
+		-- --When rendering completed======================================================================
+		ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
 
-Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
-	--Msg(ok)
+	Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
+		--Msg(ok)
 
-	--Yes clicked --run move script=============================
-	if ok == 6 then
-		--autohotkey script
-		--get script path
-		-- local info = debug.getinfo(1).source:match("@(.*)")
-		-- ofni = string.reverse(info)
-		-- idx = string.find(ofni, "\\" )
-		-- htap = string.sub(ofni, idx, -1)
-		-- path = string.reverse(htap)
-		-- --Msg(path);
+		--Yes clicked --run move script=============================
+		if ok == 6 then
+			--autohotkey script
+			--get script path
+			-- local info = debug.getinfo(1).source:match("@(.*)")
+			-- ofni = string.reverse(info)
+			-- idx = string.find(ofni, "\\" )
+			-- htap = string.sub(ofni, idx, -1)
+			-- path = string.reverse(htap)
+			-- --Msg(path);
 
-		-- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
-		-- os.execute (batch_path)
+			-- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
+			-- os.execute (batch_path)
 
 
-		--move script
-		MOVE_RENDERED_SOUNDS_TO_PROJECT()
+			--move script
+			MOVE_RENDERED_SOUNDS_TO_PROJECT()
+		end
+
+		--No clicked --open folder==================================
+		if ok == 7 then
+			prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
+		--io.popen(prog)
+		os.execute(prog)
+		end
+		--=================================================================================================
+	elseif active_project_type == "WWISE" then
+		reaper.Main_OnCommand(reaper.NamedCommandLookup("_actionOpenTransferWindow"),0) --Open WAAPI transfer window.
 	end
-
-	--No clicked --open folder==================================
-	if ok == 7 then
-		prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
-    --io.popen(prog)
-    os.execute(prog)
-	end
-	--=================================================================================================
 end
 
 
