@@ -11,27 +11,28 @@
 ]]
 
 
---[[ChangeLog
---v1.4 (2018-02-28)
-	--Added check for system variable that defines project type (MADBOX or WWISE)
---v1.3 (2018-01-15)
-	--io.popen replaced with reascript functions for enumeration for files and folders
---v1.2 (2017-11-30)
-	--support added for main_menu export folder
---v1.1 (2017-10-30)
-	--support fo over_hud folder, special array for exceptions created
---v1.0 (2017-10-24)
-	--MERGE Move Rendered Sounds To Project & Export Selected Clip Groups, they are now one script
---v.03 (2017-10-23)
-	--run lua script after rendering
-	--bounced_sounds_folder variable
-	--make_items_white variable
---v.02 (2017-08-17)
-	--colors become lighter after exporting, not white
---v.01 (old)
-  --Export selected Wrap Groups to BouncedSounds folder and runs SNF - Move Rendered Sounds To Project.lua
-	--Clip group names must begin with '@' character
-	--Render settings must be set with dummy render to item-name @region and bounds to time selection
+--[[
+ * ChangeLog
+ * v1.4 (2018-02-28)
+	+ Added check for system variable that defines project type (MADBOX or WWISE)
+ * v1.3 (2018-01-15)
+	+ io.popen replaced with reascript functions for enumeration for files and folders
+ * .2 (2017-11-30)
+	+ support added for main_menu export folder
+ * v1.1 (2017-10-30)
+	+ support fo over_hud folder, special array for exceptions created
+ * v1.0 (2017-10-24)
+	+ MERGE Move Rendered Sounds To Project & Export Selected Clip Groups, they are now one script
+ * v.03 (2017-10-23)
+	+ run lua script after rendering
+	+ bounced_sounds_folder variable
+	+ make_items_white variable
+ * v.02 (2017-08-17)
+	+ colors become lighter after exporting, not white
+ * v.01 (old)
+    + Export selected Wrap Groups to BouncedSounds folder and runs SNF - Move Rendered Sounds To Project.lua
+	+ Clip group names must begin with '@' character
+	+ Render settings must be set with dummy render to item-name @region and bounds to time selection
 ]]
 
 --utility===================================================================================================================================================================

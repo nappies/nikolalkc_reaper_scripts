@@ -1,5 +1,5 @@
 --[[
- ReaScript Name:  MHG Check Dependencies
+ ReaScript Name:MHG - Check Dependencies
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/AutoHotKey_Macros/tree/master/Reaper%20Scripts
  REAPER: 5+
