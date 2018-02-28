@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="db1983f8fc79934d6972a7d73f8232bdb34477ab">
+<index version="1" name="nikolalkc_reaper_scripts" commit="9977d85bd2611e223371996db736951f45f2a8a8">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -304,7 +304,7 @@ Check it out
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Check%20Dependencies.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_MHG - Export Selected Sounds.lua" type="script" desc="Export Selected MHG Sounds">
+    <reapack name="nikolalkc_MHG - Export Selected Sounds.lua" type="script" desc="MHG - Export Selected Sounds">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
