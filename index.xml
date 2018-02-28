@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="c70c7f82c4c3742cadccb04336a5e704d90b7e56">
+<index version="1" name="nikolalkc_reaper_scripts" commit="24b9d4d20a19904292ac93cdf71a8138c65ec00a">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -32,20 +32,6 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Copy%20Item%20Automation%20Using%20Empty%20Item.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Export Selected MHG Sounds.lua" type="script" desc="Export Selected MHG Sounds">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script\par}
-}
-]]></description>
-      </metadata>
-      <version name="1.4" author="nikolalkc" time="2018-02-28T09:55:19Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/c70c7f82c4c3742cadccb04336a5e704d90b7e56/GameAudioEditing/nikolalkc_Export%20Selected%20MHG%20Sounds.lua</source>
-      </version>
-    </reapack>
     <reapack name="nikolalkc_Flying Fadein Items To Cursor (ProTools - D).lua" type="script" desc="Flying Fadein Items To Cursor (ProTools - D)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
@@ -76,16 +62,7 @@
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Flying%20Fadeout%20Items%20From%20Cursor%20(ProTools%20-%20G).lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
-      <version name="0.1" author="nikolalkc" time="2018-02-20T12:00:28Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/8a57cc117b753c5bfc42b93546e2c9b621fcd34d/GameAudioEditing/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
-      </version>
-      <version name="1.1" author="nikolalkc" time="2018-02-21T10:00:10Z">
-        <changelog><![CDATA[+ Fix for exporting problem with remaing \t character]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/053de2510474f342e154e6939efd706f7963b375/GameAudioEditing/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG Check Dependencies.lua" type="script" desc="MHG Check Dependencies">
+    <reapack name="nikolalkc_MHG - Check Dependencies.lua" type="script" desc="MHG - Check Dependencies">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -95,13 +72,32 @@
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_MHG%20Check%20Dependencies.lua</source>
-      </version>
-      <version name="1.7" author="nikolalkc" time="2017-12-28T14:46:37Z">
+      <version name="1.7" author="nikolalkc" time="2018-02-28T10:01:59Z">
         <changelog><![CDATA[+ Check for offline files and skip them for copying]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f800d676c7203983f2afb5a99d0efe85bfd05025/GameAudioEditing/nikolalkc_MHG%20Check%20Dependencies.lua</source>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/24b9d4d20a19904292ac93cdf71a8138c65ec00a/GameAudioEditing/nikolalkc_MHG%20-%20Check%20Dependencies.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_MHG - Export Selected Sounds.lua" type="script" desc="Export Selected MHG Sounds">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.4" author="nikolalkc" time="2018-02-28T10:01:59Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/24b9d4d20a19904292ac93cdf71a8138c65ec00a/GameAudioEditing/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
+      <version name="0.1" author="nikolalkc" time="2018-02-20T12:00:28Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/8a57cc117b753c5bfc42b93546e2c9b621fcd34d/GameAudioEditing/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
+      </version>
+      <version name="1.1" author="nikolalkc" time="2018-02-21T10:00:10Z">
+        <changelog><![CDATA[+ Fix for exporting problem with remaing \t character]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/053de2510474f342e154e6939efd706f7963b375/GameAudioEditing/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Move Edit Cursor To Item Start.lua" type="script" desc="Move Edit Cursor To Item Start">
