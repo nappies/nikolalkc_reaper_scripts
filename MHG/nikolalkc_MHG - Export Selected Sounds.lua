@@ -1,5 +1,5 @@
 --[[
- ReaScript Name:Export Selected MHG Sounds
+ ReaScript Name:MHG - Export Selected Sounds
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
