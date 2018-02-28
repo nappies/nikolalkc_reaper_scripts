@@ -1,5 +1,5 @@
 --[[
- ReaScript Name: Type In Hopa Name
+ ReaScript Name:MHG - Type In Name
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
