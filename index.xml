@@ -357,11 +357,20 @@ Check it out
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nikolalkc's game audio editing in {\field{\*\fldinst{HYPERLINK "https://www.reaper.fm/"}}{\fldrslt{\ul
-Cockos REAPER
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nikolaLKC's scripts for game audio in {\field{\*\fldinst{HYPERLINK "https://www.reaper.fm/"}}{\fldrslt{\ul
+REAPER
 }}}
 \par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Set of custom REAPER Lua scripts developed specifically for game audio. This will also help anyone who wants to improve their workflow inside REAPER. NOTE:All scripts are for PC, OSX not yet tested.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Set of custom REAPER Lua scripts developed specifically for game audio. This will also help to anyone who wants to improve their workflow inside REAPER.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: All scripts are for PC, OSX not yet tested. This repository is {\field{\*\fldinst{HYPERLINK "https://reapack.com/"}}{\fldrslt{\ul
+Reapack
+}}}
+ compatible.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 ANOTHER NOTE: This repo is not yet completely user-friendly. When I complete Wiki and some other stuff this line will be removed.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "https://www.paypal.me/reaperandlife"}}{\fldrslt{\ul
+DONATE IF YOU FIND MY STUFF USEFUL
+}}}
+\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Summary:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\field{\*\fldinst{HYPERLINK "https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups"}}{\fldrslt{\ul
 wGroups - Best way to organize and export sounds for games
