@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="24b9d4d20a19904292ac93cdf71a8138c65ec00a">
+<index version="1" name="nikolalkc_reaper_scripts" commit="db1983f8fc79934d6972a7d73f8232bdb34477ab">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -60,44 +60,6 @@
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Flying%20Fadeout%20Items%20From%20Cursor%20(ProTools%20-%20G).lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG - Check Dependencies.lua" type="script" desc="MHG - Check Dependencies">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: This script is developed for Mad Head Games projects only. Use parts of it for your own purposes. Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory Instructions: Use it with your Saving shortcut, replace default (CTRL+S)\par}
-}
-]]></description>
-      </metadata>
-      <version name="1.7" author="nikolalkc" time="2018-02-28T10:01:59Z">
-        <changelog><![CDATA[+ Check for offline files and skip them for copying]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/24b9d4d20a19904292ac93cdf71a8138c65ec00a/GameAudioEditing/nikolalkc_MHG%20-%20Check%20Dependencies.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG - Export Selected Sounds.lua" type="script" desc="Export Selected MHG Sounds">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script\par}
-}
-]]></description>
-      </metadata>
-      <version name="1.4" author="nikolalkc" time="2018-02-28T10:01:59Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/24b9d4d20a19904292ac93cdf71a8138c65ec00a/GameAudioEditing/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
-      <version name="0.1" author="nikolalkc" time="2018-02-20T12:00:28Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/8a57cc117b753c5bfc42b93546e2c9b621fcd34d/GameAudioEditing/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
-      </version>
-      <version name="1.1" author="nikolalkc" time="2018-02-21T10:00:10Z">
-        <changelog><![CDATA[+ Fix for exporting problem with remaing \t character]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/053de2510474f342e154e6939efd706f7963b375/GameAudioEditing/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Move Edit Cursor To Item Start.lua" type="script" desc="Move Edit Cursor To Item Start">
@@ -266,21 +228,6 @@ Check it out
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Triple%20Zoom%20Out.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_Type in HOPA Name.lua" type="script" desc="Type In Hopa Name">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 Renames take name in format @input1:input2 based on input strings from user (replaces spaces with underscore)\par}
-}
-]]></description>
-      </metadata>
-      <version name="1.4" author="nikolalkc" time="2017-12-28T12:41:50Z">
-        <changelog><![CDATA[+ Stretch empty item note to fit on write]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_Type%20in%20HOPA%20Name.lua</source>
-      </version>
-    </reapack>
     <reapack name="nikolalkc_wGroup - Create Wrap Group From Selected Items.lua" type="script" desc="wGroup - Create Wrap Group From Selected Items">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
@@ -338,6 +285,58 @@ Check it out
       <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Unwrap%20Selected%20Wrap%20Groups.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="MHG">
+    <reapack name="nikolalkc_MHG - Check Dependencies.lua" type="script" desc="MHG - Check Dependencies">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: This script is developed for Mad Head Games projects only. Use parts of it for your own purposes. Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory Instructions: Use it with your Saving shortcut, replace default (CTRL+S)\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.7" author="nikolalkc" time="2018-02-28T10:06:47Z">
+        <changelog><![CDATA[+ Check for offline files and skip them for copying]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Check%20Dependencies.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_MHG - Export Selected Sounds.lua" type="script" desc="Export Selected MHG Sounds">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.4" author="nikolalkc" time="2018-02-28T10:06:47Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
+      <version name="1.1" author="nikolalkc" time="2018-02-28T10:06:47Z">
+        <changelog><![CDATA[+ Fix for exporting problem with remaing \t character]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nikolalkc_MHG - Type in Name.lua" type="script" desc="MHG - Type In Name">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Renames take name in format @input1:input2 based on input strings from user (replaces spaces with underscore)\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.4" author="nikolalkc" time="2018-02-28T10:06:47Z">
+        <changelog><![CDATA[+ Stretch empty item note to fit on write]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Type%20in%20Name.lua</source>
       </version>
     </reapack>
   </category>
