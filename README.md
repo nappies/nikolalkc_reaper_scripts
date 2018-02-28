@@ -2,7 +2,7 @@
 
   Set of custom REAPER Lua scripts developed specifically for game audio. This will also help to anyone who wants to improve their workflow inside REAPER. 
   
-  NOTE: All scripts are for PC, OSX not yet tested. This repository is [Reapack](https://reapack.com/) compatible
+  NOTE: All scripts are for PC, OSX not yet tested. This repository is [Reapack](https://reapack.com/) compatible.
   
   ANOTHER NOTE: This repo is not yet completely user-friendly. When I complete Wiki and some other stuff this line will be removed.
   
