@@ -3,8 +3,9 @@ import json
 from os.path import join, dirname
 from watson_developer_cloud import SpeechToTextV1 as SpeechToText
 def transcribe_audio(path_to_audio_file):
-    username = "e8196f68-67ad-42a2-a5cc-cbff3b563c2a"
-    password = "BKxcdajdCfT0"
+    # enter your info here
+    username = ""
+    password = ""
     speech_to_text = SpeechToText(username=username,
                                   password=password)
 
