@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="9938d4647720923ec132d3cf3608a45b5821fa6a">
+<index version="1" name="nikolalkc_reaper_scripts" commit="dcfeac2fe80ab7b6a2b1772e792ee8942a55e71f">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -311,6 +311,8 @@ Check it out
 \widowctrl\hyphauto
 
 {\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 WARNING: Do not start your region names with * character, this script uses it for distinguishing render region from normal regions!\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 WARNING 2: Do not use slot #16 for sws mute state, and selection set #10 because this script will override them!\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 INSTRUCTIONS: Make item or time selection, time selection has priority, then run the script.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 RENDER SETTINGS:\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 SOURCE: Region render matrix\par}
@@ -330,6 +332,11 @@ Check it out
       <version name="1.52" author="nikolalkc" time="2018-03-08T11:03:43Z">
         <changelog><![CDATA[+ Testing change log in reapack index]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/9938d4647720923ec132d3cf3608a45b5821fa6a/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
+      </version>
+      <version name="1.53" author="nikolalkc" time="2018-03-08T11:34:20Z">
+        <changelog><![CDATA[+ Items that overlap initial time selection are also added to render list
++ Using slot #10 for selection set instead of #01]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/dcfeac2fe80ab7b6a2b1772e792ee8942a55e71f/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
