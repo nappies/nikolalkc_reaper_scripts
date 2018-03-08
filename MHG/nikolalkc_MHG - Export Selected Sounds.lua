@@ -4,7 +4,7 @@
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.5
+ Version: 1.51
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
   
@@ -20,6 +20,8 @@
 
 --[[
  * ChangeLog:
+ * v1.51 (2018-03-08)
+	+ Info added, testing new change log format
  * v1.5 (2018-03-08)
 	+ Completely changed rendering behavior to use render matrix instead of render queue.
  * v1.4 (2018-02-28)
