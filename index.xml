@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="4323572cdbf2b5e29039c594ee71ac511dbd3219">
+<index version="1" name="nikolalkc_reaper_scripts" commit="9938d4647720923ec132d3cf3608a45b5821fa6a">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -326,6 +326,10 @@ Check it out
       </version>
       <version name="1.51" author="nikolalkc" time="2018-03-08T10:59:02Z">
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/4323572cdbf2b5e29039c594ee71ac511dbd3219/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
+      </version>
+      <version name="1.52" author="nikolalkc" time="2018-03-08T11:03:43Z">
+        <changelog><![CDATA[+ Testing change log in reapack index]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/9938d4647720923ec132d3cf3608a45b5821fa6a/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
