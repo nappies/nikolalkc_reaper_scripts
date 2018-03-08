@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="3f93cf83d7bff03641cd119dd7166566e00db61c">
+<index version="1" name="nikolalkc_reaper_scripts" commit="660d13678e4c7fec85b8c4e1b34eb019191703c9">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -310,7 +310,7 @@ Check it out
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script (render settings should be set to SOURCE: Region render matrix, fileneme: $region )\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script. RENDER SETTINGS: SOURCE: Region render matrix FILENEME: $region\par}
 }
 ]]></description>
       </metadata>
