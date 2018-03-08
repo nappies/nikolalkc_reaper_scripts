@@ -4,7 +4,7 @@
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.51
+ Version: 1.52
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
   
@@ -17,9 +17,10 @@
     FILENEME: $region
 ]]
 
-
 --[[
- * ChangeLog:
+ * Changelog:
+ * v1.52 (2018-03-08)
+	+ Testing change log in reapack index
  * v1.51 (2018-03-08)
 	+ Info added, testing new change log format
  * v1.5 (2018-03-08)
