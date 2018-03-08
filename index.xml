@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="9977d85bd2611e223371996db736951f45f2a8a8">
+<index version="1" name="nikolalkc_reaper_scripts" commit="3f93cf83d7bff03641cd119dd7166566e00db61c">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -310,12 +310,15 @@ Check it out
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders Instructions: Make item or time selection, time selection has priority, then run the script (render settings should be set to SOURCE: Region render matrix, fileneme: $region )\par}
 }
 ]]></description>
       </metadata>
       <version name="1.4" author="nikolalkc" time="2018-02-28T10:06:47Z">
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
+      </version>
+      <version name="1.5" author="nikolalkc" time="2018-03-08T10:39:52Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/82929d6280c1c8740f4cbb54650d65076d15f840/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
