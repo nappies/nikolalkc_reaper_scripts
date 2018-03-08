@@ -4,15 +4,17 @@
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.4
+ Version: 1.5
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
-  Instructions: Make item or time selection, time selection has priority, then run the script
+  Instructions: Make item or time selection, time selection has priority, then run the script (render settings should be set to SOURCE: Region render matrix, fileneme: $region )
 ]]
 
 
 --[[
  * ChangeLog
+ * v1.5 (2018-03-08)
+	+ Completely changed rendering behavior to use render matrix instead of render queue.
  * v1.4 (2018-02-28)
 	+ Added check for system variable that defines project type (MADBOX or WWISE)
  * v1.3 (2018-01-15)
@@ -130,36 +132,6 @@ function ScanSoundsToMove(post)
 	end
 end
 
-function ScanFoldersInGameProjectFolder()
-	--DEPRECATED, IO POPEN DOESNT WORK
-	-- Msg("\n===============")
-	-- Msg("Scanning folders...\n")
-	-- folder_idx = 0
-
-	-- --list all directories in folder P:\data and exclude:  .svn _prefabs _resources _savegames _sounds===========================================================================================
-	-- prog1 = [[dir "P:\data\" /b /s /a:d | findstr /v "\_interface"| findstr /v "\.svn"|findstr /v "\_prefabs"| findstr /v "\_resources"| findstr /v "\_savegames"| findstr /v "\_sounds"]]
-	-- ScanSpecificFolders(prog1)
-
-	-- --TODO: za interface posebna logika
-	-- prog2 = [[dir "P:\data\_interface\inventory\" /b /s /a:d | findstr /v "\_sounds"]]
-	-- ScanSpecificFolders(prog2)
-
-	-- --exceptions za dodatne foldere, manually added
-	-- for f in pairs(interface_exceptions) do
-		-- game_folder_paths[folder_idx] = [[P:\data\_interface\]]..interface_exceptions[f]
-		-- game_folders[folder_idx] = interface_exceptions[f]
-		-- folder_idx = folder_idx + 1
-	-- end
-
-	-- --debug print
-	-- -- for i = 0, folder_idx - 1 do
-		-- -- Msg(game_folder_paths[i])
-		-- -- Msg(game_folders[i])
-	-- -- end
-
-	-- Msg("Scan completed.")
-end
-
 folder_idx = 0
 function ScanSubdirectories(path)
 	local subdirindex = 0
@@ -184,19 +156,6 @@ function ScanSubdirectories(path)
 	end
 end
 
--- function ScanSpecificFolders(prog) --DEPRECATED
-	-- for dir in io.popen(prog):lines() do
-		-- --get folder name
-		-- rid = string.reverse(dir)
-		-- index1 = string.find(rid, "\\" )
-		-- rid_name = string.sub(rid, 0, index1-1)
-		-- dir_name = string.reverse(rid_name)
-
-		-- game_folders[folder_idx] = dir_name
-		-- game_folder_paths[folder_idx] = dir
-		-- folder_idx = folder_idx + 1
-	-- end
--- end
 
 function SeparateFolderAndFileName (name)
 	local folder_name, file_name = name:match("([^,]+)-([^,]+)")
@@ -278,11 +237,6 @@ function ExecuteMoveFile(original_file,destination_file,full_final_path,source) 
 	--Msg(source)
 	move_prog = [[move /y "]]..bounced_sounds_folder..original_file..[[.ogg" "]]..full_final_path..destination_file..[[.ogg"]]
 	--Msg(move_prog)
-	--io.popen(move_prog)
-	-- for dir in io.popen(move_prog):lines() do
-		-- Msg(dir)
-	-- end
-
 
 	done = os.execute(move_prog)
 	--Msg(done)
@@ -300,7 +254,6 @@ end
 function MOVE_RENDERED_SOUNDS_TO_PROJECT()
 	ScanSoundsToMove(false) --for start
 
-	--ScanFoldersInGameProjectFolder() --deprecated
 	Msg([[Scanning Folders in P:\data]])
 	ScanSubdirectories([[P:\data\]])
 	Msg("Scanning Folders Completed!")
@@ -433,9 +386,15 @@ function Main()
 	if delta_time > 0 then     --there is time selection
 		--export
 		reaper.Main_OnCommand(40717,0) --Item: Select all items in current time selection
+		reaper.Main_OnCommand(40290,0) --Time selection: Set time selection to items
+		
+		--update time selection values
+		start_time, end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
+		delta_time = end_time - start_time
+		
 		selected_count = reaper.CountSelectedMediaItems(0)
 		create_regions_and_sort_them()
-		add_regions_to_render_queue()
+		manage_regions()
 		post_export_dialog()
 
 	else --no time selection
@@ -452,17 +411,17 @@ function Main()
 			delta_time = end_time - start_time
 			
 			create_regions_and_sort_them()
-			add_regions_to_render_queue()
+			manage_regions()
 			post_export_dialog()
 		end
 	end
-	reaper.Undo_EndBlock("SNF: Add selected items to render queue", -1)
+	reaper.Undo_EndBlock("nikolalkc_MHG - Render Selected wGroups", -1)
 	reaper.UpdateArrange()
 end
 
 --other fun=================================================================================================================================================================
 function create_regions_and_sort_them()
-	reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_SAVE_SOLO_MUTE_ALL_ITEMS_SLOT_1"),0) --SWS/BR: Save all items' mute state, slot 01
+	reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_SAVE_SOLO_MUTE_ALL_ITEMS_SLOT_16"),0) --SWS/BR: Save all items' mute state, slot 16
 	reaper.Main_OnCommand(41229,0) -- save selection set #01
 	reaper.Main_OnCommand(40182,0) -- Item: Select all items
 	reaper.Main_OnCommand(40719,0) -- Item properties: Mute
@@ -489,10 +448,11 @@ function create_regions_and_sort_them()
 			clip_group[cg_index] = item[i]
 			cg_index = cg_index + 1
 
-			--color item to white
+			--DEPRECATED -- action is used instead later
+			-- -- color item to white
 			-- local white = reaper.ColorToNative(255,255,255)|0x1000000
 			-- reaper.SetMediaItemInfo_Value( item[i], "I_CUSTOMCOLOR", white)
-			--Msg(name[i])
+			-- -- Msg(name[i])
 		end
 	end
 
@@ -545,125 +505,81 @@ function create_regions_and_sort_them()
 end
 
 
-function add_regions_to_render_queue()
+function manage_regions() --render or add to render queue depenging on project type(MADBOX,WWISE)
 	local master_track =  reaper.GetMasterTrack( 0 )
 	
-	--idi red po red
+	--line by line
 	for i = 0, MAX_REGION_LEVEL do
 	
-		--stavi ceo red u render matrix
+		--put whole line in render matrix
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
 		for j in pairs (region_level[i]) do
 			--get region
 			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(region_level[i][j])
 			local item = dictionary[nameOut]
 			
-			--stavi regiju u matrix
+			--put regions in matrix
 			if markrgnindexnumberOut ~= nil then
 				reaper.SetRegionRenderMatrix( 0, markrgnindexnumberOut, master_track, 1 )
 				
-				--selektuj sve label iteme u redu
+				--select all label items
 				if item ~= nil then
 					reaper.SetMediaItemSelected( item, true )				
 				end
 			end
 		end
-		
-		--selektuj sve iteme u redu
-		--soliraj sve iteme u grupi koji nisu mutirani
+
+		--unmute line, because they have previoulsy been muted by this script
 		reaper.Main_OnCommand(40034,0) --Item grouping: Select all items in groups
-		reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_RESTORE_SOLO_MUTE_ALL_ITEMS_SLOT_1"),0) --SWS/BR: Restore items' mute state to all items, slot 01
+		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_WHITEITEM"),0) --Set selected item's colors to white
+		reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_RESTORE_SOLO_MUTE_SEL_ITEMS_SLOT_16"),0) --SWS/BR: Restore items' mute state to selected items, slot 16
 		
 		
-		--dodaj regije iz reda u render queue i iybrisi selekciju
+		--manage regions - render or add to queue
 		if region_level[i][1] ~= nil then
-			reaper.Main_OnCommand(41823,0) --File: Add project to render queue, using the most recent render settings			
+			if active_project_type == "WWISE" then
+				reaper.Main_OnCommand(41823,0) --File: Add project to render queue, using the most recent render settings
+			else	--if MADBOX or undefined
+				reaper.Main_OnCommand(41824,0) --render using last render setting
+				-- Msg("Rendering row:"..i.. " completed!")
+			end
 		end
+		
+		reaper.Main_OnCommand(40182,0) -- Item: Select all items
+		reaper.Main_OnCommand(40719,0) -- Item properties: Mute
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
-		for i = 0, all_markers_count -1 do
-			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(i)
-			if isrgnOut then
-				-- -- delete temp region
-				reaper.DeleteProjectMarker( 0, markrgnindexnumberOut, true )
-				reaper.SetRegionRenderMatrix(0,markrgnindexnumberOut,master_track,-1)
-			end
+		
+		--remove regions from matrix
+		for l in pairs (region_level[i]) do
+			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(region_level[i][l])
+			reaper.SetRegionRenderMatrix(0,markrgnindexnumberOut,master_track,-1)
 		end
 	end
 
-	if active_project_type == "MADBOX" then
-		reaper.Main_OnCommand(41207,0) --render all
-	end
-end
---save vertical mute state and mute all items which should not be rendered
-function update_region_mute_state(for_index,group_id)
-	--DEPRECATED, UNUSED, REGION MATRIX IS NOW USED
-	local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(for_index)
-	startOut, retval, endOut =  reaper.GetSet_LoopTimeRange( true, true, posOut, rgnendOut, true)
-	
-	reaper.Main_OnCommand(40717,0) --Item: Select all items in current time selection
-	sel_count = reaper.CountSelectedMediaItems(0)
-
-	-- get time selection start and end time
-	_start_time = posOut
-	_end_time = rgnendOut
-
-	--take info from all items in vertical selection
-	local mono_item = true
-	for j = 0, sel_count - 1 do
-
-		--get stuff
-		local _item = reaper.GetSelectedMediaItem(0,j)
-		local _take = reaper.GetMediaItemTake(_item, 0)
-		local _name = ""
-		if _take ~= nil then
-			_name =  reaper.GetTakeName(_take)
-		else
-			_name = reaper.ULT_GetMediaItemNote(_item)
-			_name = string.gsub (_name, "\n", "")
-			_name = string.gsub (_name, "\r", "")
-		end
-
-		local _item_pos = reaper.GetMediaItemInfo_Value(_item,"D_POSITION")
-		local _item_len = reaper.GetMediaItemInfo_Value(_item,"D_LENGTH")
-		local _item_end = _item_pos + _item_len
-		local _current_group_id = reaper.GetMediaItemInfo_Value(_item,"I_GROUPID")
-
-		--INACTIVE -- if overlap item
-		--INACTIVE--if _item_pos < _start_time or _item_end > _end_time then
-
-
-		--if it does not belong to same group_id(TODO check if upper part should be standalone and not nested in here and deactivated)
-		if _current_group_id ~= group_id then
-			--save mute state and mute items
-			overlapping_items[ov_index] = _item
-			overlapping_items_mute_state[ov_index] = reaper.GetMediaItemInfo_Value(_item, "B_MUTE")--get mute
-			reaper.SetMediaItemInfo_Value(_item, "B_MUTE", 1 )--mute that item
-			ov_index = ov_index + 1
-
-		else -- if belongs to same group
-			if _name ~= "/keep color" then   --change color if item is not marked for retaining color
-				if make_items_white == true then
-					--color to white
-					local white = reaper.ColorToNative(255,255,255)|0x1000000
-					ApplyColor_Items(white,_item)
-				else
-				--make item color brighter
-					MakeItemColorBrighter(_item)
-				end
-			end
+	-- PrintLevelState()
+	--put all regions in one array
+	local buffer = {}
+	for q = 0, MAX_REGION_LEVEL do
+		for k in pairs (region_level[q]) do
+			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(region_level[q][k])
+			table.insert(buffer,markrgnindexnumberOut)
 		end
 	end
 	
-	
-	--recall old mute state
-	for j = 0, ov_index - 1 do
-		reaper.SetMediaItemInfo_Value(overlapping_items[j], "B_MUTE", overlapping_items_mute_state[j])--mute that item
+	--delete regions at once
+	for a in pairs(buffer) do
+			reaper.DeleteProjectMarker( 0, buffer[a], true )
 	end
+	
+	reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_RESTORE_SOLO_MUTE_ALL_ITEMS_SLOT_16"),0) --SWS/BR: Restore items' mute state to all items, slot 16
 
+	
+	-- Msg("after delete")
+	-- PrintLevelState()
 end
 
 function post_export_dialog(message_title)
-	if active_project_type == "MADBOX" then
+	if active_project_type ~= "WWISE"  then	--if madbox or undefined
 		if message_title == nil then message_title = [[Rendering Completed]] end
 		-- --When rendering completed======================================================================
 		ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
@@ -673,19 +589,6 @@ function post_export_dialog(message_title)
 
 		--Yes clicked --run move script=============================
 		if ok == 6 then
-			--autohotkey script
-			--get script path
-			-- local info = debug.getinfo(1).source:match("@(.*)")
-			-- ofni = string.reverse(info)
-			-- idx = string.find(ofni, "\\" )
-			-- htap = string.sub(ofni, idx, -1)
-			-- path = string.reverse(htap)
-			-- --Msg(path);
-
-			-- batch_path = [["]]..path..[[Reaper_Move_Sounds.ahk"]]
-			-- os.execute (batch_path)
-
-
 			--move script
 			MOVE_RENDERED_SOUNDS_TO_PROJECT()
 		end
@@ -693,11 +596,10 @@ function post_export_dialog(message_title)
 		--No clicked --open folder==================================
 		if ok == 7 then
 			prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
-		--io.popen(prog)
-		os.execute(prog)
+			os.execute(prog)
 		end
 		--=================================================================================================
-	elseif active_project_type == "WWISE" then
+	else	--ako je wwise
 		reaper.Main_OnCommand(reaper.NamedCommandLookup("_actionOpenTransferWindow"),0) --Open WAAPI transfer window.
 	end
 end
@@ -718,9 +620,9 @@ function OgranizeRegions()
 		for k = 0, MAX_REGION_LEVEL do
 			for i = 0, all_markers_count - 1 do 
 				local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, i )
-				if isrgnOut and string.sub(nameOut,0,1) == "*" then		--ovde treba smisliti kako da ne ukljucuje obicne regije, preko imena ili boje
+				if isrgnOut and string.sub(nameOut,0,1) == "*" then	
 					if posOut >= start_time and rgnendOut <= end_time then
-					local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, i ) -- i za ENUM
+					local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, i ) -- i fors ENUM
 						UpdateRegionLevel(i)
 					end
 				end
@@ -765,7 +667,7 @@ function PrintLevelState()
 			 local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, region_level[i][k])
 			 GetRegionLevel(region_level[i][k])
 			 Msg(region_level[i][k].."         "..nameOut)
-			 Msg(dictionary[nameOut])
+			 -- Msg(dictionary[nameOut])
 		end
 	end
 end
@@ -788,9 +690,9 @@ level[13]= reaper.ColorToNative(60 ,30 ,100)|0x1000000
 level[14]= reaper.ColorToNative(80 ,100,100)|0x1000000
 level[15]= reaper.ColorToNative(0  ,0  ,200)|0x1000000
 
---init nizova
+--init arrays
 region_level = {}
-MAX_REGION_LEVEL = 14 --OD NULA KREĆE
+MAX_REGION_LEVEL = 14 -- starts at zero
 for i = 0,MAX_REGION_LEVEL do		
 	region_level[i] = {}
 end
@@ -798,7 +700,7 @@ end
 	
 
 function setLevel(for_index,layer)
-	--ubaci ako već nije na listi
+	--if not already on list put it on list
 	local not_on_list = true
 	if region_level[layer] ~= nil then
 		for k in pairs (region_level[layer]) do
@@ -809,7 +711,7 @@ function setLevel(for_index,layer)
 		end
 		if not_on_list then
 			table.insert(region_level[layer],for_index)
-			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, for_index ) -- i za ENUM
+			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, for_index ) -- i for ENUM
 			if string.sub(nameOut,0,1) ~= "*" then
 				new_name = "*"..nameOut
 			else
@@ -849,20 +751,20 @@ function UpdateRegionLevel(for_index)
 			for k in pairs (region_level[i]) do
 				local cValue, cIsRegion, cPos, cEnd, cName, cMarkerIndex = reaper.EnumProjectMarkers(region_level[i][k])
 				if  markrgnindexnumberOut ~= cMarkerIndex then--do not compare with self
-					if rgnendOut > cPos then							--proveri samo ako je regija levo od kraja trenutne
+					if rgnendOut > cPos then							--check only if region is left from ending of current
 						-- Msg("Comparing:"..nameOut.." with "..cName)
-						if posOut < cEnd  then --ako se preklapaju 	--ovde mozda <=	
+						if posOut < cEnd  then --if they overlap	maybe use <=	
 							-- Msg("OOPS, REGIONS OVERLAP")
 							this_level_is_blocked = true
-							if i == this_region_level then--ako se overlapuje se onom regijom koja je istom nivou
+							if i == this_region_level then--if they overlap with region on same level
 								if posOut > cPos then
 									-- Msg("Move to new level")
-									removeFromLevel(for_index, this_region_level) --prebaci ga na sledeci level
+									removeFromLevel(for_index, this_region_level) --move to next level
 									this_region_level = this_region_level + 1
 									break
 								elseif posOut == cPos then
 									if markrgnindexnumberOut > cMarkerIndex then
-										removeFromLevel(for_index, this_region_level) --prebaci ga na sledeci level
+										removeFromLevel(for_index, this_region_level) --move to next level
 										this_region_level = this_region_level + 1
 									end
 								else
@@ -875,17 +777,17 @@ function UpdateRegionLevel(for_index)
 							-- Msg("No overlap")
 						end
 					else
-						-- Msg("Region "..cName.." is right of region "..nameOut) --ŠTA AKO SE PREKLAPA SA TE STRANE NA ISTOM LEVELU ?
+						-- Msg("Region "..cName.." is right of region "..nameOut) --WHAT IF REGIONS OVERLAP HERE ON SAME LEVEL ???
 					end
 				else
 					-- Msg("Don't compare with self")
 				end
 			end
-			--proveri stanje nakon provere ovog levela
+			--check state after searching through this level
 			if this_level_is_blocked == false then
 				-- Msg("Space is free on level:"..i)
 				-- Msg("Setting new Level")
-				removeFromLevel(for_index,this_region_level) --izrbisi ga sa trenutne pozicije
+				removeFromLevel(for_index,this_region_level) --remove region from current level
 				this_region_level = i
 				break
 			end
@@ -903,7 +805,7 @@ end
 
 
 function GetRegionLevel(for_index)
-	local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(for_index) -- i za ENUM
+	local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(for_index) -- i for ENUM
 	result = "UNKNOWN"
 	for i = 0, MAX_REGION_LEVEL do
 		for k in pairs (region_level[i]) do
