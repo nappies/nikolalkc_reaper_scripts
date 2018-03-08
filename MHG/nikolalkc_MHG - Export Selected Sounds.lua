@@ -7,34 +7,37 @@
  Version: 1.5
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
-  Instructions: Make item or time selection, time selection has priority, then run the script (render settings should be set to SOURCE: Region render matrix, fileneme: $region )
+  Instructions: Make item or time selection, time selection has priority, then run the script.
+  RENDER SETTINGS: 
+    SOURCE: Region render matrix
+    FILENEME: $region
 ]]
 
 
 --[[
-* ChangeLog
+ * ChangeLog:
  * v1.5 (2018-03-08)
-  + Completely changed rendering behavior to use render matrix instead of render queue.
+	+ Completely changed rendering behavior to use render matrix instead of render queue.
  * v1.4 (2018-02-28)
-  + Added check for system variable that defines project type (MADBOX or WWISE)
+	+ Added check for system variable that defines project type (MADBOX or WWISE)
  * v1.3 (2018-01-15)
-  + io.popen replaced with reascript functions for enumeration for files and folders
+	+ io.popen replaced with reascript functions for enumeration for files and folders
  * v1.2 (2017-11-30)
-  + support added for main_menu export folder
+	+ support added for main_menu export folder
  * v1.1 (2017-10-30)
-  + support fo over_hud folder, special array for exceptions created
+	+ support fo over_hud folder, special array for exceptions created
  * v1.0 (2017-10-24)
-  + MERGE Move Rendered Sounds To Project & Export Selected Clip Groups, they are now one script
+	+ MERGE Move Rendered Sounds To Project & Export Selected Clip Groups, they are now one script
  * v0.03 (2017-10-23)
-  + run lua script after rendering
-  + bounced_sounds_folder variable
-  + make_items_white variable
+	+ run lua script after rendering
+	+ bounced_sounds_folder variable
+	+ make_items_white variable
  * v0.02 (2017-08-17)
-  + colors become lighter after exporting, not white
+	+ colors become lighter after exporting, not white
  * v0.01 (2017-01-01)
-    + Export selected Wrap Groups to BouncedSounds folder and runs SNF - Move Rendered Sounds To Project.lua
-  + Clip group names must begin with '@' character
-  + Render settings must be set with dummy render to item-name @region and bounds to time selection
+	+ Export selected Wrap Groups to BouncedSounds folder and runs SNF - Move Rendered Sounds To Project.lua
+	+ Clip group names must begin with '@' character
+	+ Render settings must be set with dummy render to item-name @region and bounds to time selection
 ]]
 
 --utility===================================================================================================================================================================
