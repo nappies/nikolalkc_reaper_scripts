@@ -7,9 +7,13 @@
  Version: 1.5
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
-  Instructions: Make item or time selection, time selection has priority, then run the script.
+  
+  INSTRUCTIONS: Make item or time selection, time selection has priority, then run the script.
+
   RENDER SETTINGS: 
+
     SOURCE: Region render matrix
+
     FILENEME: $region
 ]]
 
