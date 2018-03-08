@@ -4,9 +4,13 @@
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.52
+ Version: 1.53
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
+  
+  WARNING: Do not start your region names with * character, this script uses it for distinguishing render region from normal regions!
+  
+  WARNING 2: Do not use slot #16 for sws mute state, and selection set #10 because this script will override them!
   
   INSTRUCTIONS: Make item or time selection, time selection has priority, then run the script.
 
@@ -19,6 +23,9 @@
 
 --[[
  * Changelog:
+ * v1.53 (2018-03-08)
+	+ Items that overlap initial time selection are also added to render list
+	+ Using slot #10 for selection set instead of #01
  * v1.52 (2018-03-08)
 	+ Testing change log in reapack index
  * v1.51 (2018-03-08)
@@ -396,7 +403,7 @@ function Main()
 	if delta_time > 0 then     --there is time selection
 		--export
 		reaper.Main_OnCommand(40717,0) --Item: Select all items in current time selection
-		reaper.Main_OnCommand(40290,0) --Time selection: Set time selection to items
+		-- reaper.Main_OnCommand(40290,0) --Time selection: Set time selection to items
 		
 		--update time selection values
 		start_time, end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
@@ -432,10 +439,10 @@ end
 --RENDER MATRIX MANAGE REGIONS=================================================================================================================================================================
 function create_regions_and_sort_them()
 	reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_SAVE_SOLO_MUTE_ALL_ITEMS_SLOT_16"),0) --SWS/BR: Save all items' mute state, slot 16
-	reaper.Main_OnCommand(41229,0) -- save selection set #01
+	reaper.Main_OnCommand(41238,0) -- save selection set #10
 	reaper.Main_OnCommand(40182,0) -- Item: Select all items
 	reaper.Main_OnCommand(40719,0) -- Item properties: Mute
-	reaper.Main_OnCommand(41239,0) -- Selection set: Load set #01
+	reaper.Main_OnCommand(41248,0) -- Selection set: Load set #10
 	
 	for i = 0, selected_count - 1 do
 	
@@ -593,17 +600,18 @@ function OgranizeRegions()
 	all_markers_count, num_markersOut, num_regionsOut  = reaper.CountProjectMarkers( 0 )
 
 	--get time selection
-	start_time, end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
-	delta_time = end_time - start_time
+	local start_time, end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
+	local delta_time = end_time - start_time
 	
 	
 	
-	if delta_time ~= 0 then
-		for k = 0, MAX_REGION_LEVEL do
+	if delta_time ~= 0 then					--if time selection exists
+		for k = 0, MAX_REGION_LEVEL do		--for all newly created regions
 			for i = 0, all_markers_count - 1 do 
 				local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, i )
-				if isrgnOut and string.sub(nameOut,0,1) == "*" then	
-					if posOut >= start_time and rgnendOut <= end_time then
+				if isrgnOut and string.sub(nameOut,0,1) == "*" then	--only if it is region that starts with *
+					-- if posOut >= start_time and rgnendOut <= end_time then		--DEPRECATED:only if regions are inside (old version)
+					if (rgnendOut >= start_time and rgnendOut <= end_time) or (posOut >= start_time and posOut <= end_time) then		--only if regions are (inside or they overlap ) time selection
 					local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, i ) -- i fors ENUM
 						UpdateRegionLevel(i)
 					end
