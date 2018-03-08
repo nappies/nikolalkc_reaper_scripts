@@ -12,29 +12,29 @@
 
 
 --[[
- * ChangeLog
+* ChangeLog
  * v1.5 (2018-03-08)
-	+ Completely changed rendering behavior to use render matrix instead of render queue.
+  + Completely changed rendering behavior to use render matrix instead of render queue.
  * v1.4 (2018-02-28)
-	+ Added check for system variable that defines project type (MADBOX or WWISE)
+  + Added check for system variable that defines project type (MADBOX or WWISE)
  * v1.3 (2018-01-15)
-	+ io.popen replaced with reascript functions for enumeration for files and folders
- * .2 (2017-11-30)
-	+ support added for main_menu export folder
+  + io.popen replaced with reascript functions for enumeration for files and folders
+ * v1.2 (2017-11-30)
+  + support added for main_menu export folder
  * v1.1 (2017-10-30)
-	+ support fo over_hud folder, special array for exceptions created
+  + support fo over_hud folder, special array for exceptions created
  * v1.0 (2017-10-24)
-	+ MERGE Move Rendered Sounds To Project & Export Selected Clip Groups, they are now one script
- * v.03 (2017-10-23)
-	+ run lua script after rendering
-	+ bounced_sounds_folder variable
-	+ make_items_white variable
- * v.02 (2017-08-17)
-	+ colors become lighter after exporting, not white
- * v.01 (old)
+  + MERGE Move Rendered Sounds To Project & Export Selected Clip Groups, they are now one script
+ * v0.03 (2017-10-23)
+  + run lua script after rendering
+  + bounced_sounds_folder variable
+  + make_items_white variable
+ * v0.02 (2017-08-17)
+  + colors become lighter after exporting, not white
+ * v0.01 (2017-01-01)
     + Export selected Wrap Groups to BouncedSounds folder and runs SNF - Move Rendered Sounds To Project.lua
-	+ Clip group names must begin with '@' character
-	+ Render settings must be set with dummy render to item-name @region and bounds to time selection
+  + Clip group names must begin with '@' character
+  + Render settings must be set with dummy render to item-name @region and bounds to time selection
 ]]
 
 --utility===================================================================================================================================================================
@@ -419,7 +419,7 @@ function Main()
 	reaper.UpdateArrange()
 end
 
---other fun=================================================================================================================================================================
+--RENDER MATRIX MANAGE REGIONS=================================================================================================================================================================
 function create_regions_and_sort_them()
 	reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_SAVE_SOLO_MUTE_ALL_ITEMS_SLOT_16"),0) --SWS/BR: Save all items' mute state, slot 16
 	reaper.Main_OnCommand(41229,0) -- save selection set #01
@@ -577,34 +577,6 @@ function manage_regions() --render or add to render queue depenging on project t
 	-- Msg("after delete")
 	-- PrintLevelState()
 end
-
-function post_export_dialog(message_title)
-	if active_project_type ~= "WWISE"  then	--if madbox or undefined
-		if message_title == nil then message_title = [[Rendering Completed]] end
-		-- --When rendering completed======================================================================
-		ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
-
-	Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
-		--Msg(ok)
-
-		--Yes clicked --run move script=============================
-		if ok == 6 then
-			--move script
-			MOVE_RENDERED_SOUNDS_TO_PROJECT()
-		end
-
-		--No clicked --open folder==================================
-		if ok == 7 then
-			prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
-			os.execute(prog)
-		end
-		--=================================================================================================
-	else	--ako je wwise
-		reaper.Main_OnCommand(reaper.NamedCommandLookup("_actionOpenTransferWindow"),0) --Open WAAPI transfer window.
-	end
-end
-
-
 
 function OgranizeRegions() 
 	--get all markers count
@@ -817,6 +789,36 @@ function GetRegionLevel(for_index)
 	end
 	-- Msg(nameOut..[[ is on level: ]]..result)
 	return result
+end
+
+
+
+
+--other fun=================================================================================================================================================================
+function post_export_dialog(message_title)
+	if active_project_type ~= "WWISE"  then	--if madbox or undefined
+		if message_title == nil then message_title = [[Rendering Completed]] end
+		-- --When rendering completed======================================================================
+		ok = reaper.ShowMessageBox( [[Do you want to move rendered sounds to P:\data ?
+
+	Pressing No will open ]]..bounced_sounds_folder, message_title, 3 )
+		--Msg(ok)
+
+		--Yes clicked --run move script=============================
+		if ok == 6 then
+			--move script
+			MOVE_RENDERED_SOUNDS_TO_PROJECT()
+		end
+
+		--No clicked --open folder==================================
+		if ok == 7 then
+			prog = [[%SystemRoot%\explorer.exe "]]..bounced_sounds_folder..[["]]
+			os.execute(prog)
+		end
+		--=================================================================================================
+	else	--ako je wwise
+		reaper.Main_OnCommand(reaper.NamedCommandLookup("_actionOpenTransferWindow"),0) --Open WAAPI transfer window.
+	end
 end
 
 
