@@ -3,13 +3,15 @@
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
- Version: 1.4
+ Version: 2.0
  About:
   Renames take name in format @input1:input2 based on input strings from user (replaces spaces with underscore)
 ]]
 
 --[[
  * Changelog:
+ * v2.0	(2018-03-09)
+	+ Proper case with uppercase two-letter prefix and no underscores naming convention for WWISE projects
  * v1.9 (2017-12-04)
 	+ Added support for ce chapter prefix naming -iic or -uuc
  * v1.8 (2017-12-04)
@@ -56,6 +58,7 @@ array_naming = false
 function Main()
 	--read environmental variable
 	hopa_name_path = os.getenv("HOPA_NAME")
+	active_project_type = os.getenv("ACTIVE_AUDIO_PROJECT")
 	--Msg(hopa_name_path)
 
 
@@ -176,13 +179,23 @@ function ShowDialogForNaming(cur_name)
 	--USER INPUT
 	retval, result = reaper.GetUserInputs("NAME THE FILE:", 2, "Scene:,File:,extrawidth=300", scene_name..","..file_name)
 	answer1, answer2 = result:match("([^,]+),([^,]+)")
+	--prefix is upper case
+	
 	--Msg("Answer1:"..answer1)
 	--Msg("Answer2:"..answer2)
 	--check if both fields are filled
 	if answer1 ~= nil and answer2 ~= nil then                --ako jesu onda iseckaj i sastavi
 		--Msg("Both fields are filled")
-		answer1 = string.gsub(answer1, "% ", "_")
-		answer2 = string.gsub(answer2, "% ", "_")
+		if active_project_type ~= "WWISE" then
+			answer1 = string.gsub(answer1, "% ", "_")
+			answer2 = string.gsub(answer2, "% ", "_")
+		else
+			--make prefix uppercase
+			answer1= MakeStringPrefixUppercase(answer1)
+			--velika prva slova
+			answer1 = string.gsub(" "..answer1, "%W%l", string.upper):sub(2)
+			answer2 = string.gsub(" "..answer2, "%W%l", string.upper):sub(2)
+		end
 
 		answer1 =string.gsub(answer1, "\n", "")
 		answer1 =string.gsub(answer1, "\r", "")
@@ -221,9 +234,13 @@ function ShowDialogForNaming(cur_name)
 			answer2 = [[use_item_]]..chapter..[[_]]..answer2
 		end
 
-		final_name = "@"..answer1..[[:
+		if active_project_type == "WWISE" then
+			final_name = "@"..answer1..[[ 
 ]]..answer2
-
+		else
+			final_name = "@"..answer1..[[:
+]]..answer2
+		end
 		answer_to_save = answer1
 	else
 		--Msg("both fields are NOT filled!")
@@ -234,13 +251,31 @@ function ShowDialogForNaming(cur_name)
 		else                                                       --if one field is filled, put @ prefix
 			--Msg("at least one field is not empty")
 			cut_result = string.gsub(result, "%,", "")  --remove comma (,) character
-			cut_result = string.gsub(cut_result, "% ", "_")
+			if active_project_type ~= "WWISE" then
+				cut_result = string.gsub(cut_result, "% ", "_")
+			else
+				--make prefix uppercase
+				cut_result= MakeStringPrefixUppercase(cut_result)
+				--velika prva slova
+				cut_result= string.gsub(" "..cut_result, "%W%l", string.upper):sub(2)
+			end
 			answer_to_save = cut_result
 			final_name = "@"..cut_result
 		end
 	end
 
 	return retval,final_name
+end
+
+
+function MakeStringPrefixUppercase(some_string)
+	local prefix = string.find(some_string,"%a%a%s")
+	if prefix == 1 then
+		local pre = string.upper(string.sub(some_string,1,3))
+		local post = string.sub(some_string,4,-1)
+		some_string = pre..post
+	end
+	return some_string
 end
 
 
@@ -257,8 +292,13 @@ function SetNameForItem(cur_item,retval,final_name,item_is_empty,index_to_add)
 				if index_to_add <= 9 then
 					zero = "0"
 				end
-				final_name = final_name.."_"..zero..index_to_add
+				if active_project_type == "WWISE" then
+					final_name = final_name.." "..zero..index_to_add
+				else
+					final_name = final_name.."_"..zero..index_to_add
+				end
 			end
+			
 			reaper.ULT_SetMediaItemNote( cur_item, final_name)
 			ToggleNoteStretchToFit(cur_item)
 		end
