@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="fcd632c33d4473a0e94d88222779e3fa1a2d31db">
+<index version="1" name="nikolalkc_reaper_scripts" commit="b577e2fc80e8b4b1675393ccda73c1abad8a9561">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -362,6 +362,10 @@ Check it out
       <version name="1.4" author="nikolalkc" time="2018-02-28T10:06:47Z">
         <changelog><![CDATA[+ Stretch empty item note to fit on write]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Type%20in%20Name.lua</source>
+      </version>
+      <version name="2.0" author="nikolalkc" time="2018-03-09T14:14:03Z">
+        <changelog><![CDATA[+ Proper case with uppercase two-letter prefix and no underscores naming convention for WWISE projects]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/1102fc0eed9828be57e61bfa990d630e3c35d496/MHG/nikolalkc_MHG%20-%20Type%20in%20Name.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_MHG Empty Project with Master Limiter.rpp" type="projecttpl" desc="MHG Empty Project with Master Limiter">
