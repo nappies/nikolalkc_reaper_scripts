@@ -195,6 +195,9 @@ function ShowDialogForNaming(cur_name)
 			--velika prva slova
 			answer1 = string.gsub(" "..answer1, "%W%l", string.upper):sub(2)
 			answer2 = string.gsub(" "..answer2, "%W%l", string.upper):sub(2)
+			
+			--remove spaces from second row
+			answer2 = string.gsub(answer2, "% ", "")
 		end
 
 		answer1 =string.gsub(answer1, "\n", "")
