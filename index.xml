@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="8454f7041e8efa9c952d25d5a40f210e58b8a234">
+<index version="1" name="nikolalkc_reaper_scripts" commit="889a1eabc9dbff4402d7c3bfdfa0ea0c5c6406ba">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -352,6 +352,7 @@ Check it out
 {\pard \ql \f0 \sa180 \li0 \fi0 Template for game audio projects, updated to use render matrix as preset\par}
 }
 ]]></description>
+        <link rel="website">https://github.com/nikolalkc/nikolalkc_reaper_scripts</link>
       </metadata>
       <version name="1.0" author="nikolalkc" time="2018-03-09T09:48:24Z">
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/8454f7041e8efa9c952d25d5a40f210e58b8a234/MHG/nikolalkc_MHG%20-%20Project%20Template%2016FX%204ATM%20OGG.lua</source>
