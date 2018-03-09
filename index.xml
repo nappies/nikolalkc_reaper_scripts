@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="889a1eabc9dbff4402d7c3bfdfa0ea0c5c6406ba">
+<index version="1" name="nikolalkc_reaper_scripts" commit="bde3830a841054c7ee82095f18b2c06054b593b1">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -289,6 +289,21 @@ Check it out
     </reapack>
   </category>
   <category name="MHG">
+    <reapack name="MHG_Template_16FX_4ATM_2REV_OGG_30fps.rpp" type="projecttpl" desc="MHG Project Template 16FX 4ATM OGG">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Template for game audio projects, updated to use render matrix as preset\par}
+}
+]]></description>
+        <link rel="website">https://github.com/nikolalkc/nikolalkc_reaper_scripts</link>
+      </metadata>
+      <version name="1.0" author="nikolalkc" time="2018-03-09T10:03:05Z">
+        <source>https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/bde3830a841054c7ee82095f18b2c06054b593b1/MHG/MHG_Template_16FX_4ATM_2REV_OGG_30fps.rpp</source>
+      </version>
+    </reapack>
     <reapack name="nikolalkc_MHG - Check Dependencies.lua" type="script" desc="MHG - Check Dependencies">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
@@ -341,22 +356,6 @@ Check it out
       <version name="1.54" author="nikolalkc" time="2018-03-09T08:48:29Z">
         <changelog><![CDATA[+ Fix: Regions that are wider than time selection but still overlap it will also be rendered, as expected]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/218ebced691148adb839fe5204a5b780ebf2efb4/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG - Project Template 16FX 4ATM OGG.lua" type="script" desc="MHG Project Template 16FX 4ATM OGG">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 Template for game audio projects, updated to use render matrix as preset\par}
-}
-]]></description>
-        <link rel="website">https://github.com/nikolalkc/nikolalkc_reaper_scripts</link>
-      </metadata>
-      <version name="1.0" author="nikolalkc" time="2018-03-09T09:48:24Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/8454f7041e8efa9c952d25d5a40f210e58b8a234/MHG/nikolalkc_MHG%20-%20Project%20Template%2016FX%204ATM%20OGG.lua</source>
-        <source type="projecttpl" file="MHG_Template_16FX_4ATM_2REV_OGG_30fps.rpp">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/8454f7041e8efa9c952d25d5a40f210e58b8a234/MHG/MHG_Template_16FX_4ATM_2REV_OGG_30fps.rpp</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
