@@ -1,3 +1,12 @@
+--[[
+ @description MHG Project Template 16FX 4ATM OGG
+ @author nikolalkc
+ @link https://github.com/nikolalkc/nikolalkc_reaper_scripts
+ @version 1.0
+ @about
+  Template for game audio projects, updated to use render matrix as preset
+  
+]]
 <REAPER_PROJECT 0.1 "5.76/x64" 1520588160
   <NOTES 0
     |MHG HOPA TEMPLATE PROJECT
