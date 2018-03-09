@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="218ebced691148adb839fe5204a5b780ebf2efb4">
+<index version="1" name="nikolalkc_reaper_scripts" commit="e11e6bffc885d743ed0fe6c75d85a67f3b4f110f">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
