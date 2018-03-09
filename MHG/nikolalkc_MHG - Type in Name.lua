@@ -177,7 +177,11 @@ function ShowDialogForNaming(cur_name)
 
 
 	--USER INPUT
-	retval, result = reaper.GetUserInputs("NAME THE FILE:", 2, "Scene:,File:,extrawidth=300", scene_name..","..file_name)
+	if active_project_type == "WWISE" then
+		retval, result = reaper.GetUserInputs("NAME THE FILE:", 2, "Type:,Description:,extrawidth=300", scene_name..","..file_name)
+	else
+		retval, result = reaper.GetUserInputs("NAME THE FILE:", 2, "Scene:,File:,extrawidth=300", scene_name..","..file_name)
+	end
 	answer1, answer2 = result:match("([^,]+),([^,]+)")
 	--prefix is upper case
 	
