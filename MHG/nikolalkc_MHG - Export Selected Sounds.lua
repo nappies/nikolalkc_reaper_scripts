@@ -4,7 +4,7 @@
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.53
+ Version: 1.54
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
   
@@ -23,6 +23,8 @@
 
 --[[
  * Changelog:
+ * v1.54 (2018-03-09)
+	+ Fix: Regions that are wider than time selection but still overlap it will also be rendered, as expected
  * v1.53 (2018-03-08)
 	+ Items that overlap initial time selection are also added to render list
 	+ Using slot #10 for selection set instead of #01
@@ -611,8 +613,10 @@ function OgranizeRegions()
 				local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, i )
 				if isrgnOut and string.sub(nameOut,0,1) == "*" then	--only if it is region that starts with *
 					-- if posOut >= start_time and rgnendOut <= end_time then		--DEPRECATED:only if regions are inside (old version)
-					if (rgnendOut >= start_time and rgnendOut <= end_time) or (posOut >= start_time and posOut <= end_time) then		--only if regions are (inside or they overlap ) time selection
-					local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, i ) -- i fors ENUM
+					if (rgnendOut >= start_time and rgnendOut <= end_time)  -- if region ends inside time selection
+					or (posOut >= start_time and posOut <= end_time)		-- if region starts inside time selection
+					or (posOut <= startOut and rgnendOut >= end_time) then	-- if region is wider than time selection but still overlaps it
+						local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, i ) -- i fors ENUM
 						UpdateRegionLevel(i)
 					end
 				end
