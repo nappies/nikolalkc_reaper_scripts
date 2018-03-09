@@ -7,6 +7,14 @@
   ANOTHER NOTE: This repo is not yet completely user-friendly. When I complete Wiki and some other stuff this line will be removed.
   
   
+## Installation
+
+Copy and paste this URL in Extensions > ReaPack > Import a repository:
+
+```
+https://github.com/nikolalkc_scripts/raw/master/index.xml
+```
+  
   [DONATE IF YOU FIND MY STUFF USEFUL](https://www.paypal.me/reaperandlife)
 
 Summary:
