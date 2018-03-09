@@ -198,11 +198,11 @@ Check it out
       </metadata>
       <version name="1.1" author="nikolalkc" time="2017-12-28T21:47:23Z">
         <changelog><![CDATA[+ Support for horizontal zoom center to edit cursor]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/259667e00e170ffc6dcd1483f5bd12d3998bdadb/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
       </version>
       <version name="1.2" author="nikolalkc" time="2017-12-28T22:16:56Z">
         <changelog><![CDATA[+ About section added]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d39dade393b0562e9da90fd2995ff2cb4af668df/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/fe3f789426c067d918f8ad2bc4d0eae11b397f1f/GameAudioEditing/nikolalkc_Triple%20Zoom%20In.lua</source>
       </version>
       <version name="1.3" author="nikolalkc" time="2017-12-28T22:21:02Z">
         <changelog><![CDATA[+ Link added]]></changelog>
