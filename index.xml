@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="b0a30b2a31b322e288c7f19918972464323b0b8a">
+<index version="1" name="nikolalkc_reaper_scripts" commit="b7b0f97cbd94ee2a8a7cf0010b544620be1a97ed">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -346,6 +346,11 @@ Check it out
         <changelog><![CDATA[+ MoveSound section moved to separate script file]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b0a30b2a31b322e288c7f19918972464323b0b8a/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
         <source file="move_sounds.lua">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b0a30b2a31b322e288c7f19918972464323b0b8a/MHG/move_sounds.lua</source>
+      </version>
+      <version name="1.57" author="nikolalkc" time="2018-03-13T14:22:30Z">
+        <changelog><![CDATA[+ Renamed provided files]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b7b0f97cbd94ee2a8a7cf0010b544620be1a97ed/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
+        <source file="nikolalkc_MHG - Move Exported Sounds.lua">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b7b0f97cbd94ee2a8a7cf0010b544620be1a97ed/MHG/nikolalkc_MHG%20-%20Move%20Exported%20Sounds.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
