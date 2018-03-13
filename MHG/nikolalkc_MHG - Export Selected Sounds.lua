@@ -148,6 +148,7 @@ function create_regions_and_sort_them()
 	reaper.Main_OnCommand(40719,0) -- Item properties: Mute
 	reaper.Main_OnCommand(41248,0) -- Selection set: Load set #10
 	
+	single_items = {}
 	for i = 0, selected_count - 1 do
 	
 		--get stuff from item
@@ -165,16 +166,25 @@ function create_regions_and_sort_them()
 
 		--make new array with items that begin with '@'
 		local first_string = string.sub(name[i], 1, 1)
-		if first_string == "@" then
-			clip_group[cg_index] = item[i]
-			cg_index = cg_index + 1
+		local current_group_id = reaper.GetMediaItemInfo_Value(item[i],"I_GROUPID")
+		if current_group_id ~= 0 then
+			if first_string == "@" then
+				clip_group[cg_index] = item[i]
+				cg_index = cg_index + 1
 
-			--DEPRECATED -- action is used instead later
-			-- -- color item to white
-			-- local white = reaper.ColorToNative(255,255,255)|0x1000000
-			-- reaper.SetMediaItemInfo_Value( item[i], "I_CUSTOMCOLOR", white)
-			-- -- Msg(name[i])
+				--DEPRECATED -- action is used instead later
+				-- -- color item to white
+				-- local white = reaper.ColorToNative(255,255,255)|0x1000000
+				-- reaper.SetMediaItemInfo_Value( item[i], "I_CUSTOMCOLOR", white)
+				-- -- Msg(name[i])
+			end
+		elseif first_string == "@" then	--STAO SI OVDE
+			table.insert(single_items,name[i])
 		end
+	end
+	
+	for k in pairs(single_items) do
+		Msg(single_items[k]..[[ is single item!]])
 	end
 
 
@@ -216,10 +226,10 @@ function create_regions_and_sort_them()
 	
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
 	
+	end
 		--set original time selection
 		startOut, retval, endOut =  reaper.GetSet_LoopTimeRange( true, true, start_time, end_time, true)
 		
-	end
 
 	OgranizeRegions()
 
