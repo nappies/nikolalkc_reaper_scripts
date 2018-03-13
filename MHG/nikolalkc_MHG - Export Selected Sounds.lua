@@ -4,7 +4,7 @@
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.56
+ Version: 1.57
  Provides: nikolalkc_MHG - Move Exported Sounds.lua
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
@@ -24,6 +24,8 @@
 
 --[[
  * Changelog:
+ * v1.57 (2018-03-13)
+	+ Renamed provided files
  * v1.56 (2018-03-12)
 	+ MoveSound section moved to separate script file
  * v1.55 (2018-03-12)
