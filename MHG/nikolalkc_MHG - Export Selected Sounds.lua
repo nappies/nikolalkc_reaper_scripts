@@ -5,7 +5,7 @@
  REAPER: 5+
  Extensions: SWS
  Version: 1.56
- Provides: move_sounds.lua
+ Provides: nikolalkc_MHG - Move Exported Sounds.lua
  About:
   NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders
   
@@ -78,7 +78,7 @@ make_items_white = true
 
 local info = debug.getinfo(1,'S');
 script_path = info.source:match[[^@?(.*[\/])[^\/]-$]]
-dofile(script_path .. "move_sounds.lua")
+dofile(script_path .. "nikolalkc_MHG - Move Exported Sounds.lua")
 
 
 --array defs================================================================================================================================================================
