@@ -115,7 +115,7 @@ function Main()
 		
 		selected_count = reaper.CountSelectedMediaItems(0)
 		create_regions_and_sort_them()
-		manage_regions()
+		Render_or_CreateQueue()
 		post_export_dialog()
 
 	else --no time selection
@@ -132,7 +132,7 @@ function Main()
 			delta_time = end_time - start_time
 			
 			create_regions_and_sort_them()
-			manage_regions()
+			Render_or_CreateQueue()
 			post_export_dialog()
 		end
 	end
@@ -141,14 +141,14 @@ function Main()
 end
 
 --RENDER MATRIX MANAGE REGIONS=================================================================================================================================================================
+single_items = {}
 function create_regions_and_sort_them()
 	reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_SAVE_SOLO_MUTE_ALL_ITEMS_SLOT_16"),0) --SWS/BR: Save all items' mute state, slot 16
 	reaper.Main_OnCommand(41238,0) -- save selection set #10
 	reaper.Main_OnCommand(40182,0) -- Item: Select all items
 	reaper.Main_OnCommand(40719,0) -- Item properties: Mute
 	reaper.Main_OnCommand(41248,0) -- Selection set: Load set #10
-	
-	single_items = {}
+
 	for i = 0, selected_count - 1 do
 	
 		--get stuff from item
@@ -167,25 +167,15 @@ function create_regions_and_sort_them()
 		--make new array with items that begin with '@'
 		local first_string = string.sub(name[i], 1, 1)
 		local current_group_id = reaper.GetMediaItemInfo_Value(item[i],"I_GROUPID")
-		if current_group_id ~= 0 then
-			if first_string == "@" then
-				clip_group[cg_index] = item[i]
-				cg_index = cg_index + 1
-
-				--DEPRECATED -- action is used instead later
-				-- -- color item to white
-				-- local white = reaper.ColorToNative(255,255,255)|0x1000000
-				-- reaper.SetMediaItemInfo_Value( item[i], "I_CUSTOMCOLOR", white)
-				-- -- Msg(name[i])
-			end
-		elseif first_string == "@" then	--STAO SI OVDE
-			table.insert(single_items,name[i])
+		if first_string == "@" then
+			clip_group[cg_index] = item[i]
+			cg_index = cg_index + 1
 		end
 	end
 	
-	for k in pairs(single_items) do
-		Msg(single_items[k]..[[ is single item!]])
-	end
+	-- for k in pairs(single_items) do
+		-- Msg(single_items[k]..[[ is single item!]])
+	-- end
 
 
 	--Msg("Clip Groups:"..cg_index)
@@ -201,7 +191,7 @@ function create_regions_and_sort_them()
 		--get stuff
 		local item_pos = reaper.GetMediaItemInfo_Value(clip_group[i],"D_POSITION")
 		local item_len = reaper.GetMediaItemInfo_Value(clip_group[i],"D_LENGTH")
-		-- local group_id = reaper.GetMediaItemInfo_Value(clip_group[i],"I_GROUPID")
+		local group_id = reaper.GetMediaItemInfo_Value(clip_group[i],"I_GROUPID")
 		local take = reaper.GetMediaItemTake(clip_group[i], 0)
 		local item_end = item_pos + item_len
 		local name = ""
@@ -215,14 +205,22 @@ function create_regions_and_sort_them()
 		
 		local changed_name = string.sub(name, 2)
 		local value = string.gsub(changed_name, "%:", "-") --replace (:) with (-)
-		local new_name = "*"..value	--add specific prefix
+		local new_name = value
+		if group_id == 0 then
+			new_name = "#"..value	--add specific single item prefix
+		else
+			new_name = "*"..value	--add specific prefix
+		end
 		local red = reaper.ColorToNative(255,0,0)|0x1000000
 
 
-		--create region with same name as clip group
+		--create region with same name as clip group /// --OVDE SI STIGAO, neće lepo da napravi niz SINGLE ITEMS, zavisi od pozicije itema ???
 		local marker_index = reaper.AddProjectMarker2( 0, 1, item_pos, item_end, new_name, 0, red )
 		for_index = Get_ForIndex_by_MarkerIndex(marker_index)
-		dictionary[value] = clip_group[i]
+		dictionary[value] = clip_group[i] --array for linking label items and coresponding regions
+		if group_id == 0 then
+			table.insert(single_items,for_index)
+		end
 	
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
 	
@@ -231,24 +229,36 @@ function create_regions_and_sort_them()
 		startOut, retval, endOut =  reaper.GetSet_LoopTimeRange( true, true, start_time, end_time, true)
 		
 
-	OgranizeRegions()
+	OgranizeRegions() --put every region to appropriate level
+	
+	-- PutSingleItemRegionsToEnd()
 
 end
 
+function PutSingleItemRegionsToEnd()
+	for k in pairs(single_items) do
+		setLevel(single_items[k],highest_group_region_level + 1)
+	end
+	
+	for k in pairs(single_items) do
+		local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(single_items[k])
+		Msg("Single Item:"..nameOut )
+	end
+end
 
-function manage_regions() --render or add to render queue depenging on project type(MADBOX,WWISE)
+
+function Render_or_CreateQueue() --render or add to render queue depenging on project type(MADBOX,WWISE)
 	local master_track =  reaper.GetMasterTrack( 0 )
 	
 	--line by line
 	for i = 0, MAX_REGION_LEVEL do
 	
-		--put whole line in render matrix
+		--put whole level in render matrix
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
 		for j in pairs (region_level[i]) do
 			--get region
 			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(region_level[i][j])
 			local item = dictionary[nameOut]
-			
 			--put regions in matrix
 			if markrgnindexnumberOut ~= nil then
 				reaper.SetRegionRenderMatrix( 0, markrgnindexnumberOut, master_track, 1 )
@@ -260,35 +270,38 @@ function manage_regions() --render or add to render queue depenging on project t
 			end
 		end
 
-		--unmute line, because they have previoulsy been muted by this script
+		--unmute level, because they have previoulsy been muted by this script
 		reaper.Main_OnCommand(40034,0) --Item grouping: Select all items in groups
-		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_WHITEITEM"),0) --Set selected item's colors to white
+		-- reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_WHITEITEM"),0) --Set selected item's colors to white -- VRATI
 		reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_RESTORE_SOLO_MUTE_SEL_ITEMS_SLOT_16"),0) --SWS/BR: Restore items' mute state to selected items, slot 16
 		
 		
-		--manage regions - render or add to queue
+		--PREPARE EXPORT:
 		if region_level[i][1] ~= nil then
+			--QUEUE
 			if active_project_type == "WWISE" then
 				reaper.Main_OnCommand(41823,0) --File: Add project to render queue, using the most recent render settings
 			else	--if MADBOX or undefined
-				reaper.Main_OnCommand(41824,0) --render using last render setting
+			--RENDER
+				-- reaper.Main_OnCommand(41824,0) --render using last render setting --VRATI
 				-- Msg("Rendering row:"..i.. " completed!")
 			end
 		end
 		
+		--MUTE ALL ITEMS
 		reaper.Main_OnCommand(40182,0) -- Item: Select all items
 		reaper.Main_OnCommand(40719,0) -- Item properties: Mute
 		reaper.Main_OnCommand(40289,0) --Item: Unselect all items
 		
-		--remove regions from matrix
+		--REMOVE REGIONS FROM MATRIX
 		for l in pairs (region_level[i]) do
 			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(region_level[i][l])
 			reaper.SetRegionRenderMatrix(0,markrgnindexnumberOut,master_track,-1)
 		end
 	end
 
-	-- PrintLevelState()
-	--put all regions in one array
+	PrintLevelState() --VRATI
+	--PUT ALL REGIONS IN ONE ARRAY
 	local buffer = {}
 	for q = 0, MAX_REGION_LEVEL do
 		for k in pairs (region_level[q]) do
@@ -297,7 +310,7 @@ function manage_regions() --render or add to render queue depenging on project t
 		end
 	end
 	
-	--delete regions at once
+	--DELETE REGIONS AT ONCE
 	for a in pairs(buffer) do
 			reaper.DeleteProjectMarker( 0, buffer[a], true )
 	end
@@ -376,6 +389,7 @@ function PrintLevelState()
 			 -- Msg(dictionary[nameOut])
 		end
 	end
+	Msg("Highest Region Level:"..highest_group_region_level)
 end
 
 level = {}
@@ -419,11 +433,11 @@ function setLevel(for_index,layer)
 			table.insert(region_level[layer],for_index)
 			local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers2(0, for_index ) -- i for ENUM
 			if string.sub(nameOut,0,1) ~= "*" then
-				new_name = "*"..nameOut
-			else
-				new_name = nameOut
+				if string.sub(nameOut,0,1) ~= "#" then	--IF not single item
+					nameOut = "*"..nameOut
+				end
 			end
-			reaper.SetProjectMarker3(0,markrgnindexnumberOut,isrgnOut,posOut,rgnendOut,new_name,level[layer])
+			reaper.SetProjectMarker3(0,markrgnindexnumberOut,isrgnOut,posOut,rgnendOut,nameOut,level[layer])
 		end
 	end
 end
@@ -440,7 +454,7 @@ function removeFromLevel(for_index,layer)
 end
 
 
-
+highest_group_region_level = 0
 function UpdateRegionLevel(for_index)
 	--get this region info
 	local retval, isrgnOut, posOut, rgnendOut, nameOut, markrgnindexnumberOut = reaper.EnumProjectMarkers(for_index) -- i za ENUM
@@ -497,6 +511,11 @@ function UpdateRegionLevel(for_index)
 				this_region_level = i
 				break
 			end
+		end
+		
+		--check highest region level and set
+		if this_region_level > highest_group_region_level then
+			highest_group_region_level = this_region_level
 		end
 	else
 		setLevel(for_index,0) --first time setting
