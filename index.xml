@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="3512aa0014d161f2e0b2ad2e9a94654af7ea0004">
+<index version="1" name="nikolalkc_reaper_scripts" commit="efec3a33f901396a85cdf4f682741ba3e1222232">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -398,6 +398,9 @@ Check it out
       <version name="1.0" author="nikolalkc" time="2018-03-09T10:13:11Z">
         <changelog><![CDATA[+ Initial commit]]></changelog>
         <source>https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/fcd632c33d4473a0e94d88222779e3fa1a2d31db/MHG/nikolalkc_MHG%20Empty%20Project%20with%20Master%20Limiter.rpp</source>
+      </version>
+      <version name="1.1" author="nikolalkc" time="2018-03-15T15:09:01Z">
+        <source>https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/efec3a33f901396a85cdf4f682741ba3e1222232/MHG/nikolalkc_MHG%20Empty%20Project%20with%20Master%20Limiter.rpp</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_MHG Project Template 16FX 4ATM 2REV OGG 30fps.rpp" type="projecttpl" desc="MHG Project Template 16FX 4ATM OGG">
