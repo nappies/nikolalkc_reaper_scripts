@@ -2,26 +2,32 @@
  @description MHG Empty Project with Master Limiter
  @author nikolalkc
  @link https://github.com/nikolalkc/nikolalkc_reaper_scripts
- @version 1.1
+ @version 1.0
  @about
   Template for game audio projects, updated to use render matrix as preset
   
 ]]
 
-<REAPER_PROJECT 0.1 "5.77/x64" 1521126495
+--[[
+ * Changelog:
+ * v1.0 (2018-03-09)
+	+ Initial commit
+]]
+
+<REAPER_PROJECT 0.1 "5.76/x64" 1520509111
   RIPPLE 0
   GROUPOVERRIDE 0 0 0
   AUTOXFADE 1
   ENVATTACH 1
   POOLEDENVATTACH 0
-  MIXERUIFLAGS 11 305
+  MIXERUIFLAGS 11 48
   PEAKGAIN 1
   FEEDBACK 0
   PANLAW 1
   PROJOFFS 0 0
   MAXPROJLEN 0 600
-  GRID 3199 8 1 8 1 0 1 0
-  TIMEMODE 5 5 -1 30 0
+  GRID 3199 8 1 8 1 0 0 0
+  TIMEMODE 1 5 -1 30 0
   VIDEO_CONFIG 0 0 256
   PANMODE 3
   CURSOR 0
@@ -32,7 +38,7 @@
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
   LOOP 0
   LOOPGRAN 0 4
-  RECORD_PATH "Assets" ""
+  RECORD_PATH "" ""
   <RECORD_CFG
     ZXZhdxAAAA==
   >
@@ -80,7 +86,7 @@
   MASTER_FX 1
   MASTER_SEL 0
   <MASTERFXLIST
-    WNDRECT 24 52 716 200
+    WNDRECT 32 60 718 280
     SHOW 0
     LASTSEL 0
     DOCKED 0
