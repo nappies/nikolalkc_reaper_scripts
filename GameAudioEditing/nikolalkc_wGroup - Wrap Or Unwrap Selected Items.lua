@@ -39,6 +39,8 @@ first_selected_track = nil
 last_selected_track = nil
 
 --MAIN==========================================
+empty_items = {}
+empty_index = 0
 function Main()
 	reaper.ShowConsoleMsg("") --Clear Screen
 
@@ -47,17 +49,61 @@ function Main()
 	starttime = 1
 	endtime = 2
 	qnInOptional = 0
-
+	
+	reaper.Main_OnCommand( 40034, 0 ) --Item grouping: Select all items in groups
 	selected_count = reaper.CountSelectedMediaItems(0)
 	--Msg(selected_count)
 
 	--Find selection start and end
 	selectionStart, selectionEnd =  reaper.GetSet_LoopTimeRange(0,0,0,0,0)
-	 --Msg("SelectionStart:")
-	 --Msg(selectionStart)
-	 --Msg("SelectionEnd:")
-	 --Msg(selectionEnd)
+	 
+	--check if there are empty items in selection
+	for i = 0, selected_count - 1 do
+		local item = reaper.GetSelectedMediaItem(0,i)
+		local take = reaper.GetMediaItemTake(item, 0)
+		if take ~= nil then
+			local name =  reaper.GetTakeName(take)
+		else
+			empty_items[empty_index] = item
+			empty_index = empty_index + 1
+		end
+	end
+	
+	if empty_index > 0 then
+		local first_signature = ""
+		for k in pairs (empty_items) do
+			if k == 0 then
+				first_signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,13)		--  >>UNWRAPPED<<
+				if first_signature ~= ">>UNWRAPPED<<" then
+					first_signature = ""
+				end
+				-- Msg(first_signature)
+			else
+				local signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,13)		--  >>UNWRAPPED<<
+				if signature ~= first_signature then
+					Msg("ERROR: You must select just wrapper or just unwrrapped items!")
+					break
+				end
+			end
+		end
+		
+		if first_signature == "" then
+			Unwrap()
+		else
+			Wrap()
+		end
+		
+	else
+		Wrap()
+	end
+	
+	reaper.Main_OnCommand(40020,0) --Time selection: Remove time selection and loop points
+	
 
+end
+
+
+function Wrap()
 	--run thru all selected items
 	for i = 0, selected_count - 1 do
 
@@ -151,7 +197,7 @@ function Main()
 
 
 	--create empty on  first-1 track
-	if there_is_empty_item ~= true then
+	if empty_index == 0 then
 		title_track = reaper.GetTrack(0,first_selected_track-2)
 		if title_track ~= nil then
 			--empty item
@@ -167,7 +213,14 @@ function Main()
 			--midi = reaper.CreateNewMIDIItemInProj(title_track,selectionStart,selectionEnd,qnInOptional)
 			--reaper.SetMediaItemSelected(midi,1)
 		end
+	else
+		for k in pairs(empty_items) do
+			local label = reaper.ULT_GetMediaItemNote( empty_items[k])
+			label = string.sub(label,14,-1) --remove >>UNWRAPPED<< prefix
+			reaper.ULT_SetMediaItemNote( empty_items[k],label)
+		end
 	end
+
 
 	for i = 0, midi_idx-1 do
 		reaper.SetMediaItemSelected( midi_items[i], 1)
@@ -184,14 +237,64 @@ function Main()
 	--reaper.Main_OnCommand(40706,0) --Item: Set to one random color
     reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_ITEMRANDCOL"),0) --SWS: Set selected item(s) to one random custom color
 
-	reaper.Main_OnCommand(40020,0) --Time selection: Remove time selection and loop points
-
 	--Msg(first_selected_track)
 	--Msg(last_selected_track)
-
 end
 
+array_of_items_to_unselect = {}
+array_index = 0
+function Unwrap()
+	reaper.Main_OnCommand( 40033, 0 ) --Ungroup
+	if	selected_count > 0  then
+		for i = 0, selected_count - 1 do
+			--Msg("I:"..i)
+			--assign values
+			item = reaper.GetSelectedMediaItem(0,i)
+			take = reaper.GetMediaItemTake(item, 0)
+			if take ~= nil then
+				name =  reaper.GetTakeName(take)
+				--Msg("Name:"..name)
+				source =  reaper.GetMediaItemTake_Source(take)
+				source_type = reaper.GetMediaSourceType(source,"")
+			end
 
+			-- Msg("Item:")
+			-- Msg(item)
+			--Msg("Take:")
+			--Msg(take)
+
+			--Msg("SourceType:")
+			--Msg(source_type)
+			--Msg("===")
+
+			if item ~= nil then
+				if source_type == "MIDI"  then
+					--delete later
+				else
+					if source_type == nil then --empty item
+						local label = reaper.ULT_GetMediaItemNote( item)
+						label = ">>UNWRAPPED<<"..label
+						reaper.ULT_SetMediaItemNote( item,label)
+					end
+					--do nothing - unselect
+					array_of_items_to_unselect[array_index] = item
+					array_index = array_index + 1
+				end
+			else
+				Msg("MISS")
+			end
+
+		end
+
+		--unselect
+		for i=0, array_index -1 do
+			reaper.SetMediaItemSelected( array_of_items_to_unselect[i], 0 )
+		end
+
+
+		reaper.Main_OnCommand( 40697, 0 ) --delete
+	end
+end
 
 
 --EXECUTION======================================

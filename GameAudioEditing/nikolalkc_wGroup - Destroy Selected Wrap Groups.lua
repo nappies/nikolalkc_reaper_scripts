@@ -53,12 +53,12 @@ if	selected_count > 0  then
 		--Msg("===")
 
 		if item ~= nil then
-			if source_type == "MIDI" then
+			if source_type == "MIDI" or source_type == nil then
 				--delete later
 			else
 				--do nothing
 				array_of_items_to_unselect[array_index] = item
-				array_index = array_index +1
+				array_index = array_index + 1
 			end
 		end
 
