@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="efec3a33f901396a85cdf4f682741ba3e1222232">
+<index version="1" name="nikolalkc_reaper_scripts" commit="3b63e1df0cdc2681578198dffa5f685e592bbf33">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -228,18 +228,19 @@ Check it out
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Triple%20Zoom%20Out.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_wGroup - Create Wrap Group From Selected Items.lua" type="script" desc="wGroup - Create Wrap Group From Selected Items">
+    <reapack name="nikolalkc_wGroup - Destroy Selected Wrap Groups.lua" type="script" desc="wGroup - Unwrap Selected Wrap Group(s)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming Instructions: Create item selection and run the script\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Deletes empty midi items for selected Wrap Groups and ungroups items so they can be independently edited. Instructions: Select your wGroup and run the script.\par}
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Create%20Wrap%20Group%20From%20Selected%20Items.lua</source>
+      <version name="1.0" author="nikolalkc" time="2018-03-18T19:29:33Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/3b63e1df0cdc2681578198dffa5f685e592bbf33/GameAudioEditing/nikolalkc_wGroup%20-%20Destroy%20Selected%20Wrap%20Groups.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_wGroup - Select Next Wrap Group.lua" type="script" desc="wGroup -  Select Next Wrap Group">
@@ -272,154 +273,18 @@ Check it out
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Select%20Previous%20Wrap%20Group.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_wGroup - Unwrap Selected Wrap Groups.lua" type="script" desc="wGroup - Unwrap Selected Wrap Group(s)">
+    <reapack name="nikolalkc_wGroup - Wrap Or Unwrap Selected Items.lua" type="script" desc="wGroup - Create Wrap Group From Selected Items">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 Deletes empty midi items for selected Wrap Groups and ungroups items so they can be independently edited. Instructions: Select your wGroup and run the script.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming Instructions: Create item selection and run the script\par}
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="nikolalkc" time="2017-12-28T12:41:50Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Unwrap%20Selected%20Wrap%20Groups.lua</source>
-      </version>
-    </reapack>
-  </category>
-  <category name="MHG">
-    <reapack name="nikolalkc_MHG - Check Dependencies.lua" type="script" desc="MHG - Check Dependencies">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: This script is developed for Mad Head Games projects only. Use parts of it for your own purposes. Checks for source of all audio files in project and if they are not from Q: partition copies files in project directory Instructions: Use it with your Saving shortcut, replace default (CTRL+S)\par}
-}
-]]></description>
-      </metadata>
-      <version name="1.7" author="nikolalkc" time="2018-02-28T10:06:47Z">
-        <changelog><![CDATA[+ Check for offline files and skip them for copying]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Check%20Dependencies.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG - Export Selected Sounds.lua" type="script" desc="MHG - Export Selected Sounds">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 NOTE: MHG ONLY SCRIPT! Renders selected wGroups (which have been named properly) to desired folder and after that it moves files to HOPA/_sounds folders\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 WARNING: Do not start your region names with * or # character, this script uses them for distinguishing render regions from normal regions!\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 WARNING 2: Do not use slot #16 for sws mute state, and selection set #10 because this script will override them!\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 INSTRUCTIONS: Make item or time selection, time selection has priority, then run the script.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 RENDER SETTINGS:\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 SOURCE: Region render matrix\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 FILENEME: $region\par}
-}
-]]></description>
-      </metadata>
-      <version name="1.4" author="nikolalkc" time="2018-02-28T10:06:47Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-      </version>
-      <version name="1.5" author="nikolalkc" time="2018-03-08T10:39:52Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/82929d6280c1c8740f4cbb54650d65076d15f840/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-      </version>
-      <version name="1.51" author="nikolalkc" time="2018-03-08T10:59:02Z">
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/4323572cdbf2b5e29039c594ee71ac511dbd3219/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-      </version>
-      <version name="1.52" author="nikolalkc" time="2018-03-08T11:03:43Z">
-        <changelog><![CDATA[+ Testing change log in reapack index]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/9938d4647720923ec132d3cf3608a45b5821fa6a/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-      </version>
-      <version name="1.53" author="nikolalkc" time="2018-03-08T11:34:20Z">
-        <changelog><![CDATA[+ Items that overlap initial time selection are also added to render list
-+ Using slot #10 for selection set instead of #01]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/dcfeac2fe80ab7b6a2b1772e792ee8942a55e71f/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-      </version>
-      <version name="1.54" author="nikolalkc" time="2018-03-09T08:48:29Z">
-        <changelog><![CDATA[+ Fix: Regions that are wider than time selection but still overlap it will also be rendered, as expected]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/218ebced691148adb839fe5204a5b780ebf2efb4/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-      </version>
-      <version name="1.56" author="nikolalkc" time="2018-03-13T14:18:43Z">
-        <changelog><![CDATA[+ MoveSound section moved to separate script file]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b0a30b2a31b322e288c7f19918972464323b0b8a/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-        <source file="move_sounds.lua">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b0a30b2a31b322e288c7f19918972464323b0b8a/MHG/move_sounds.lua</source>
-      </version>
-      <version name="1.57" author="nikolalkc" time="2018-03-13T14:22:30Z">
-        <changelog><![CDATA[+ Renamed provided files]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b7b0f97cbd94ee2a8a7cf0010b544620be1a97ed/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-        <source file="nikolalkc_MHG - Move Exported Sounds.lua">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/b7b0f97cbd94ee2a8a7cf0010b544620be1a97ed/MHG/nikolalkc_MHG%20-%20Move%20Exported%20Sounds.lua</source>
-      </version>
-      <version name="1.58" author="nikolalkc" time="2018-03-15T09:13:38Z">
-        <changelog><![CDATA[+ Preventing UI refresh enabled, speeds up script execution
-+ Support for exporting single items more quickly]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/3512aa0014d161f2e0b2ad2e9a94654af7ea0004/MHG/nikolalkc_MHG%20-%20Export%20Selected%20Sounds.lua</source>
-        <source file="nikolalkc_MHG - Move Exported Sounds.lua">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/3512aa0014d161f2e0b2ad2e9a94654af7ea0004/MHG/nikolalkc_MHG%20-%20Move%20Exported%20Sounds.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG - Set Item Name To Text Copied From Localization.lua" type="script" desc="MHG - Set Item Name To Text Copied From Localization">
-      <version name="1.1" author="nikolalkc" time="2018-02-28T10:06:47Z">
-        <changelog><![CDATA[+ Fix for exporting problem with remaing \t character]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Set%20Item%20Name%20To%20Text%20Copied%20From%20Localization.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG - Type in Name.lua" type="script" desc="MHG - Type In Name">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 Renames take name in format @input1:input2 based on input strings from user (replaces spaces with underscore)\par}
-}
-]]></description>
-      </metadata>
-      <version name="1.4" author="nikolalkc" time="2018-02-28T10:06:47Z">
-        <changelog><![CDATA[+ Stretch empty item note to fit on write]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/db1983f8fc79934d6972a7d73f8232bdb34477ab/MHG/nikolalkc_MHG%20-%20Type%20in%20Name.lua</source>
-      </version>
-      <version name="2.0" author="nikolalkc" time="2018-03-09T14:14:03Z">
-        <changelog><![CDATA[+ Proper case with uppercase two-letter prefix and no underscores naming convention for WWISE projects]]></changelog>
-        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/1102fc0eed9828be57e61bfa990d630e3c35d496/MHG/nikolalkc_MHG%20-%20Type%20in%20Name.lua</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG Empty Project with Master Limiter.rpp" type="projecttpl" desc="MHG Empty Project with Master Limiter">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 Template for game audio projects, updated to use render matrix as preset\par}
-}
-]]></description>
-        <link rel="website">https://github.com/nikolalkc/nikolalkc_reaper_scripts</link>
-      </metadata>
-      <version name="1.0" author="nikolalkc" time="2018-03-09T10:13:11Z">
-        <changelog><![CDATA[+ Initial commit]]></changelog>
-        <source>https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/fcd632c33d4473a0e94d88222779e3fa1a2d31db/MHG/nikolalkc_MHG%20Empty%20Project%20with%20Master%20Limiter.rpp</source>
-      </version>
-      <version name="1.1" author="nikolalkc" time="2018-03-15T15:09:01Z">
-        <source>https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/efec3a33f901396a85cdf4f682741ba3e1222232/MHG/nikolalkc_MHG%20Empty%20Project%20with%20Master%20Limiter.rpp</source>
-      </version>
-    </reapack>
-    <reapack name="nikolalkc_MHG Project Template 16FX 4ATM 2REV OGG 30fps.rpp" type="projecttpl" desc="MHG Project Template 16FX 4ATM OGG">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 Template for game audio projects, updated to use render matrix as preset\par}
-}
-]]></description>
-        <link rel="website">https://github.com/nikolalkc/nikolalkc_reaper_scripts</link>
-      </metadata>
-      <version name="1.0" author="nikolalkc" time="2018-03-09T10:05:17Z">
-        <source>https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/99d5373cb78e4d6f2b657d55d61fc2cfb3777094/MHG/nikolalkc_MHG%20Project%20Template%2016FX%204ATM%202REV%20OGG%2030fps.rpp</source>
-      </version>
-      <version name="1.01" author="nikolalkc" time="2018-03-09T10:07:33Z">
-        <changelog><![CDATA[+ Region Matrix is used for rendering]]></changelog>
-        <source>https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/4ba1161b8e3ff9415bf8bc15b54d575659a10e8a/MHG/nikolalkc_MHG%20Project%20Template%2016FX%204ATM%202REV%20OGG%2030fps.rpp</source>
+      <version name="1.0" author="nikolalkc" time="2018-03-18T19:29:33Z">
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/3b63e1df0cdc2681578198dffa5f685e592bbf33/GameAudioEditing/nikolalkc_wGroup%20-%20Wrap%20Or%20Unwrap%20Selected%20Items.lua</source>
       </version>
     </reapack>
   </category>
