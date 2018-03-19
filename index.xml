@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="3b63e1df0cdc2681578198dffa5f685e592bbf33">
+<index version="1" name="nikolalkc_reaper_scripts" commit="55a1bc0a41ecf1532c83b052310f72db0c851856">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -228,7 +228,7 @@ Check it out
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/f1fbfc3f9859e37441ae815065a6265601b7806b/GameAudioEditing/nikolalkc_Triple%20Zoom%20Out.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_wGroup - Destroy Selected Wrap Groups.lua" type="script" desc="wGroup - Unwrap Selected Wrap Group(s)">
+    <reapack name="nikolalkc_wGroup - Destroy Selected Wrap Groups.lua" type="script" desc="wGroup - Destroy Selected Wrap Group(s)">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -241,6 +241,10 @@ Check it out
       <version name="1.0" author="nikolalkc" time="2018-03-18T19:29:33Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/3b63e1df0cdc2681578198dffa5f685e592bbf33/GameAudioEditing/nikolalkc_wGroup%20-%20Destroy%20Selected%20Wrap%20Groups.lua</source>
+      </version>
+      <version name="1.1" author="nikolalkc" time="2018-03-19T09:52:49Z">
+        <changelog><![CDATA[+ Action now deletes empty items]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/55a1bc0a41ecf1532c83b052310f72db0c851856/GameAudioEditing/nikolalkc_wGroup%20-%20Destroy%20Selected%20Wrap%20Groups.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_wGroup - Select Next Wrap Group.lua" type="script" desc="wGroup -  Select Next Wrap Group">
@@ -273,7 +277,7 @@ Check it out
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/d45de17dc51559a7ac10ac9fa4c61170830f38c9/GameAudioEditing/nikolalkc_wGroup%20-%20Select%20Previous%20Wrap%20Group.lua</source>
       </version>
     </reapack>
-    <reapack name="nikolalkc_wGroup - Wrap Or Unwrap Selected Items.lua" type="script" desc="wGroup - Create Wrap Group From Selected Items">
+    <reapack name="nikolalkc_wGroup - Wrap Or Unwrap Selected Items.lua" type="script" desc="wGroup - Wrap or Unwrap Selected Items">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -285,6 +289,10 @@ Check it out
       </metadata>
       <version name="1.0" author="nikolalkc" time="2018-03-18T19:29:33Z">
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/3b63e1df0cdc2681578198dffa5f685e592bbf33/GameAudioEditing/nikolalkc_wGroup%20-%20Wrap%20Or%20Unwrap%20Selected%20Items.lua</source>
+      </version>
+      <version name="1.1" author="nikolalkc" time="2018-03-19T09:52:49Z">
+        <changelog><![CDATA[+ Action is now toggle for wrapping and unwrapping]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/55a1bc0a41ecf1532c83b052310f72db0c851856/GameAudioEditing/nikolalkc_wGroup%20-%20Wrap%20Or%20Unwrap%20Selected%20Items.lua</source>
       </version>
     </reapack>
   </category>
