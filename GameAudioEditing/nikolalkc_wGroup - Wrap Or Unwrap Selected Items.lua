@@ -4,7 +4,7 @@
 	Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
 	REAPER: 5+
 	Extensions: SWS
-	Version: 1.3
+	Version: 1.4
 	About:
 		Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
 		Instructions: Create item selection and run the script
@@ -12,6 +12,8 @@
 
 --[[
  * Changelog:
+ * v1.4 (2018-03-19)
+	+ Wrapping and unwrapping now does not affect label name, group id is used instead
  * v1.3 (2018-03-19)
 	+ Support for deleting just automatically created empty midi items when unwrapping
  * v1.2 (2018-03-19)
@@ -83,24 +85,21 @@ function Main()
 	
 	local Error = false
 	if empty_index > 0 then
-		-- Msg("EMPTY COUNT:"..empty_index)
-		local first_signature = ""
+		local first_signature = nil
 		for k = 0, empty_index -1 do
-			-- Msg("K:"..k)
 			if k == 0 then
-				first_signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,2)		--  >>UNWRAPPED<<
-				-- Msg("First Signature:"..first_signature)
-				if first_signature ~= "[[" then
-					first_signature = ""
-				end
-				-- Msg(first_signature)
+				first_signature = reaper.GetMediaItemInfo_Value(empty_items[k],"I_GROUPID")
+				-- first_signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,2)		--  >>UNWRAPPED<<
+				-- if first_signature ~= "[[" then
+					-- first_signature = ""
+				-- end
 			else
-				local signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,2)		--  >>UNWRAPPED<<
+				local signature = reaper.GetMediaItemInfo_Value(empty_items[k],"I_GROUPID")
 				-- Msg("Signature:"..signature)
-				if signature ~= "[[" then
-					signature = ""
-				end
-				-- Msg([[>>]]..signature..[[ : ]]..first_signature..[[<<]])
+				-- local signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,2)		--  >>UNWRAPPED<<
+				-- if signature ~= "[[" then
+					-- signature = ""
+				-- end
 				if signature ~= first_signature then
 					Error = true
 					break
@@ -109,9 +108,10 @@ function Main()
 		end
 		
 		if Error then
-			Msg("ERROR: You must select just wrapper or just unwrrapped items!")
+			Msg("ERROR: You must select just wrapped or just unwrrapped items!")
 		else
-			if first_signature == "" then
+			-- Msg("First signature:"..first_signature)
+			if first_signature ~= 0.0 then
 				Unwrap()
 			else
 				if empty_index == 1 then
@@ -275,11 +275,11 @@ function Wrap()
 			--reaper.SetMediaItemSelected(midi,1)
 		end
 	else
-		for k in pairs(empty_items) do
-			local label = reaper.ULT_GetMediaItemNote( empty_items[k])
-			label = string.sub(label,3,-3) --remove >>UNWRAPPED<< prefix
-			reaper.ULT_SetMediaItemNote( empty_items[k],label)
-		end
+		-- for k in pairs(empty_items) do
+			-- local label = reaper.ULT_GetMediaItemNote( empty_items[k])
+			-- label = string.sub(label,3,-3) --remove >>UNWRAPPED<< prefix
+			-- reaper.ULT_SetMediaItemNote( empty_items[k],label)
+		-- end
 	end
 
 
@@ -344,11 +344,11 @@ function Unwrap()
 					end
 					--delete later
 				else
-					if source_type == nil then --empty item
-						local label = reaper.ULT_GetMediaItemNote( item)
-						label = "[["..label.."]]" -- add UNWRAPPED prefix
-						reaper.ULT_SetMediaItemNote( item,label)
-					end
+					-- if source_type == nil then --empty item
+						-- local label = reaper.ULT_GetMediaItemNote( item)
+						-- label = "[["..label.."]]" -- add UNWRAPPED prefix
+						-- reaper.ULT_SetMediaItemNote( item,label)
+					-- end
 					--do nothing - unselect
 					array_of_items_to_unselect[array_index] = item
 					array_index = array_index + 1
