@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="55a1bc0a41ecf1532c83b052310f72db0c851856">
+<index version="1" name="nikolalkc_reaper_scripts" commit="c91b4afb4f63f214cba5929f358c71b3279a5cb3">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
@@ -293,6 +293,10 @@ Check it out
       <version name="1.1" author="nikolalkc" time="2018-03-19T09:52:49Z">
         <changelog><![CDATA[+ Action is now toggle for wrapping and unwrapping]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/55a1bc0a41ecf1532c83b052310f72db0c851856/GameAudioEditing/nikolalkc_wGroup%20-%20Wrap%20Or%20Unwrap%20Selected%20Items.lua</source>
+      </version>
+      <version name="1.2" author="nikolalkc" time="2018-03-19T10:31:31Z">
+        <changelog><![CDATA[+ Label item update their lentgth on rewraping if selection is wider that label item]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/c91b4afb4f63f214cba5929f358c71b3279a5cb3/GameAudioEditing/nikolalkc_wGroup%20-%20Wrap%20Or%20Unwrap%20Selected%20Items.lua</source>
       </version>
     </reapack>
   </category>
