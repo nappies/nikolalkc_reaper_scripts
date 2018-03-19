@@ -4,7 +4,7 @@
 	Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
 	REAPER: 5+
 	Extensions: SWS
-	Version: 1.2
+	Version: 1.3
 	About:
 		Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
 		Instructions: Create item selection and run the script
@@ -12,6 +12,8 @@
 
 --[[
  * Changelog:
+ * v1.3 (2018-03-19)
+	+ Support for deleting just automatically created empty midi items when unwrapping
  * v1.2 (2018-03-19)
 	+ Label item update their lentgth on rewraping if selection is wider that label item
  * v1.1 (2018-03-19)
@@ -186,13 +188,25 @@ function Wrap()
 			if item_track[i] == item_track[i-1] then
 				empty_midi = reaper.CreateNewMIDIItemInProj(item_track[i], end_pos[i-1], start_pos[i], qnInOptional ) --between items of same track
 				midi_items[midi_idx] = empty_midi
+				--name
+				local mid_take = reaper.GetMediaItemTake(empty_midi, 0)
+				reaper.GetSetMediaItemTakeInfo_String(mid_take, "P_NAME", "((empty))", true)
+				
 				midi_idx = midi_idx + 1
 			else
 				a = reaper.CreateNewMIDIItemInProj(item_track[i-1], end_pos[i-1], selectionEnd,qnInOptional) -- at the end of inner tracks
+				--name
+				local mid_take = reaper.GetMediaItemTake(a, 0)
+				reaper.GetSetMediaItemTakeInfo_String(mid_take, "P_NAME", "((empty))", true)
+				
 				midi_items[midi_idx] = a
 				midi_idx = midi_idx + 1
 
 				b = reaper.CreateNewMIDIItemInProj(item_track[i], selectionStart, start_pos[i],qnInOptional) --at the start of inner tracks
+				--name
+				local mid_take = reaper.GetMediaItemTake(b, 0)
+				reaper.GetSetMediaItemTakeInfo_String(mid_take, "P_NAME", "((empty))", true)
+				
 				midi_items[midi_idx] = b
 				midi_idx = midi_idx + 1
 
@@ -205,6 +219,8 @@ function Wrap()
 					for k = track_a_idx+1, track_b_idx-1 do
 						trackk = reaper.GetTrack(0,k-1)
 						mid = reaper.CreateNewMIDIItemInProj(trackk, selectionStart,selectionEnd,qnInOptional)
+						local mid_take = reaper.GetMediaItemTake(mid, 0)
+						reaper.GetSetMediaItemTakeInfo_String(mid_take, "P_NAME", "((empty))", true)
 						midi_items[midi_idx] = mid
 						midi_idx = midi_idx + 1
 					end
@@ -214,6 +230,10 @@ function Wrap()
 		else
 			if selectionStart ~= start_pos[i] then
 				c = reaper.CreateNewMIDIItemInProj(item_track[i], selectionStart, start_pos[i], qnInOptional) --for start of first track
+				--name
+				local mid_take = reaper.GetMediaItemTake(c, 0)
+				reaper.GetSetMediaItemTakeInfo_String(mid_take, "P_NAME", "((empty))", true)
+				
 				midi_items[midi_idx] = c
 				midi_idx = midi_idx + 1
 			end
@@ -222,6 +242,10 @@ function Wrap()
 		if i == selected_count - 1 then
 			if end_pos[i] ~= selectionEnd then
 				d = reaper.CreateNewMIDIItemInProj(item_track[i], end_pos[i], selectionEnd, qnInOptional) -- for end of last track
+				--name
+				local mid_take = reaper.GetMediaItemTake(d, 0)
+				reaper.GetSetMediaItemTakeInfo_String(mid_take, "P_NAME", "((empty))", true)
+				
 				midi_items[midi_idx] = d
 				midi_idx = midi_idx + 1
 			end
@@ -310,6 +334,14 @@ function Unwrap()
 
 			if item ~= nil then
 				if source_type == "MIDI"  then
+					--name
+					local mid_take = reaper.GetMediaItemTake(item, 0)
+					local retval, name = reaper.GetSetMediaItemTakeInfo_String(mid_take, "P_NAME", "", false)
+					-- Msg(name)
+					if name ~= "((empty))" then
+						array_of_items_to_unselect[array_index] = item
+						array_index = array_index + 1
+					end
 					--delete later
 				else
 					if source_type == nil then --empty item
@@ -322,7 +354,7 @@ function Unwrap()
 					array_index = array_index + 1
 				end
 			else
-				Msg("MISS")
+				-- Msg("MISS")
 			end
 
 		end

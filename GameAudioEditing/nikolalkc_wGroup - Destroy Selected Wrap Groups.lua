@@ -4,7 +4,7 @@
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.1
+ Version: 1.2
  About:
   Deletes empty midi items for selected Wrap Groups and ungroups items so they can be independently edited.
   Instructions: Select your wGroup and run the script.
@@ -12,11 +12,16 @@
 
 --[[
  * Changelog:
+ * v1.2 (2018-03-19)
+	+ Support for deleting all midi items
  * v1.1 (2018-03-19)
 	+ Action now deletes empty items
  * v1.0 (2017-12-28)
 	+ Initial Release
 --]]
+
+--USER SETTINGS
+DELETE_ALL_MIDI_ITEMS = true -- change to false if you want to delete just automatically created empty midi items
 
 function Msg(param)
   reaper.ShowConsoleMsg(tostring(param).."\n")
@@ -57,7 +62,19 @@ if	selected_count > 0  then
 
 		if item ~= nil then
 			if source_type == "MIDI" or source_type == nil then
-				--delete later
+				--name
+				if DELETE_ALL_MIDI_ITEMS ~= true then
+					if source_type ~= nil then
+						local item_take = reaper.GetMediaItemTake(item, 0)
+						local retval, name = reaper.GetSetMediaItemTakeInfo_String(item_take, "P_NAME", "", false)
+						-- Msg(name)
+						if name ~= "((empty))" then
+								array_of_items_to_unselect[array_index] = item
+								array_index = array_index + 1
+						end
+					end
+				end
+				--delete later all other items
 			else
 				--do nothing
 				array_of_items_to_unselect[array_index] = item
