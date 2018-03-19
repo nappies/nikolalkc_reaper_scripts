@@ -1,15 +1,22 @@
 --[[
-	ReaScript Name:wGroup - Create Wrap Group From Selected Items
+	ReaScript Name:wGroup - Wrap or Unwrap Selected Items
 	Author: nikolalkc
 	Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
 	REAPER: 5+
 	Extensions: SWS
-	Version: 1.0
+	Version: 1.1
 	About:
 		Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
 		Instructions: Create item selection and run the script
 ]]
 
+--[[
+ * Changelog:
+ * v1.1 (2018-03-19)
+	+ Action is now toggle for wrapping and unwrapping
+ * v1.0 (0000-00-00)
+	+ Initial Release
+--]]
 
 --UTILITIES=======================================
 function Msg(param)
@@ -69,30 +76,46 @@ function Main()
 		end
 	end
 	
+	local Error = false
 	if empty_index > 0 then
+		-- Msg("EMPTY COUNT:"..empty_index)
 		local first_signature = ""
-		for k in pairs (empty_items) do
+		for k = 0, empty_index -1 do
+			-- Msg("K:"..k)
 			if k == 0 then
-				first_signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,13)		--  >>UNWRAPPED<<
-				if first_signature ~= ">>UNWRAPPED<<" then
+				first_signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,2)		--  >>UNWRAPPED<<
+				-- Msg("First Signature:"..first_signature)
+				if first_signature ~= "[[" then
 					first_signature = ""
 				end
 				-- Msg(first_signature)
 			else
-				local signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,13)		--  >>UNWRAPPED<<
+				local signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,2)		--  >>UNWRAPPED<<
+				-- Msg("Signature:"..signature)
+				if signature ~= "[[" then
+					signature = ""
+				end
+				-- Msg([[>>]]..signature..[[ : ]]..first_signature..[[<<]])
 				if signature ~= first_signature then
-					Msg("ERROR: You must select just wrapper or just unwrrapped items!")
+					Error = true
 					break
 				end
 			end
 		end
 		
-		if first_signature == "" then
-			Unwrap()
+		if Error then
+			Msg("ERROR: You must select just wrapper or just unwrrapped items!")
 		else
-			Wrap()
+			if first_signature == "" then
+				Unwrap()
+			else
+				if empty_index == 1 then
+					Wrap()
+				else
+					Msg("ERROR: You cannot wrap multiple label items together!")
+				end
+			end
 		end
-		
 	else
 		Wrap()
 	end
@@ -216,7 +239,7 @@ function Wrap()
 	else
 		for k in pairs(empty_items) do
 			local label = reaper.ULT_GetMediaItemNote( empty_items[k])
-			label = string.sub(label,14,-1) --remove >>UNWRAPPED<< prefix
+			label = string.sub(label,3,-3) --remove >>UNWRAPPED<< prefix
 			reaper.ULT_SetMediaItemNote( empty_items[k],label)
 		end
 	end
@@ -250,14 +273,18 @@ function Unwrap()
 			--Msg("I:"..i)
 			--assign values
 			item = reaper.GetSelectedMediaItem(0,i)
+			-- Msg(item)
 			take = reaper.GetMediaItemTake(item, 0)
+			local source_type = nil
 			if take ~= nil then
 				name =  reaper.GetTakeName(take)
-				--Msg("Name:"..name)
+				-- Msg("Name:"..name)
 				source =  reaper.GetMediaItemTake_Source(take)
 				source_type = reaper.GetMediaSourceType(source,"")
+			else
+				-- Msg(item) --print empty item id
 			end
-
+			-- Msg("")
 			-- Msg("Item:")
 			-- Msg(item)
 			--Msg("Take:")
@@ -273,7 +300,7 @@ function Unwrap()
 				else
 					if source_type == nil then --empty item
 						local label = reaper.ULT_GetMediaItemNote( item)
-						label = ">>UNWRAPPED<<"..label
+						label = "[["..label.."]]" -- add UNWRAPPED prefix
 						reaper.ULT_SetMediaItemNote( item,label)
 					end
 					--do nothing - unselect
@@ -302,5 +329,5 @@ reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh( 1 )
 Main() -- run script
 reaper.PreventUIRefresh( -1 )
-reaper.Undo_EndBlock("Make Clip Group From Selection (With Emtpy Midi Items)", -1)
+reaper.Undo_EndBlock("nikolakc_wGroup - Wrap or Unwrap Sel. Items", -1)
 reaper.UpdateArrange()

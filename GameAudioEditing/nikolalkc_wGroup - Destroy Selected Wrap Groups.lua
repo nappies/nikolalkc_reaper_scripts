@@ -1,10 +1,10 @@
 --[[
- ReaScript Name:wGroup - Unwrap Selected Wrap Group(s)
+ ReaScript Name:wGroup - Destroy Selected Wrap Group(s)
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.0
+ Version: 1.1
  About:
   Deletes empty midi items for selected Wrap Groups and ungroups items so they can be independently edited.
   Instructions: Select your wGroup and run the script.
@@ -12,6 +12,8 @@
 
 --[[
  * Changelog:
+ * v1.1 (2018-03-19)
+	+ Action now deletes empty items
  * v1.0 (2017-12-28)
 	+ Initial Release
 --]]
@@ -20,10 +22,11 @@ function Msg(param)
   reaper.ShowConsoleMsg(tostring(param).."\n")
 end
 
+reaper.Undo_BeginBlock()
+
 array_index = 0
 array_of_items_to_unselect = {}
 
-reaper.Undo_BeginBlock()
 
 reaper.Main_OnCommand( 40034, 0 ) --Item grouping: Select all items in groups
 reaper.Main_OnCommand( 40033, 0 ) --Ungroup
@@ -72,5 +75,6 @@ if	selected_count > 0  then
 
 	reaper.Main_OnCommand( 40697, 0 ) --delete
 	reaper.UpdateArrange()
-	reaper.Undo_EndBlock("nikolalkc: Unwrap selected wGroup(s).", -1)
 end
+
+reaper.Undo_EndBlock("nikolalkc: DESTROY SELECTED WGROUP(s).", -1)
