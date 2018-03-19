@@ -4,7 +4,7 @@
 	Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
 	REAPER: 5+
 	Extensions: SWS
-	Version: 1.1
+	Version: 1.2
 	About:
 		Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
 		Instructions: Create item selection and run the script
@@ -12,6 +12,8 @@
 
 --[[
  * Changelog:
+ * v1.2 (2018-03-19)
+	+ Label item update their lentgth on rewraping if selection is wider that label item
  * v1.1 (2018-03-19)
 	+ Action is now toggle for wrapping and unwrapping
  * v1.0 (0000-00-00)
@@ -63,6 +65,7 @@ function Main()
 
 	--Find selection start and end
 	selectionStart, selectionEnd =  reaper.GetSet_LoopTimeRange(0,0,0,0,0)
+	selectionLength = selectionEnd - selectionStart
 	 
 	--check if there are empty items in selection
 	for i = 0, selected_count - 1 do
@@ -112,7 +115,7 @@ function Main()
 				if empty_index == 1 then
 					Wrap()
 				else
-					Msg("ERROR: You cannot wrap multiple label items together!")
+					Msg("ERROR: Wrapping multiple wGroups at the same time is not currently supported!")
 				end
 			end
 		end
@@ -128,6 +131,17 @@ end
 
 function Wrap()
 	--run thru all selected items
+	for k in pairs(empty_items) do
+		local label_start =  reaper.GetMediaItemInfo_Value( empty_items[k], "D_POSITION")
+		local label_length = reaper.GetMediaItemInfo_Value( empty_items[k], "D_LENGTH")
+		local label_end = label_start + label_length
+		
+		if label_start ~= selectionStart or label_end ~= selectionEnd then
+			 reaper.SetMediaItemInfo_Value( empty_items[k], "D_POSITION", selectionStart)
+			 reaper.SetMediaItemInfo_Value( empty_items[k], "D_LENGTH", selectionLength)
+		end
+	end
+	
 	for i = 0, selected_count - 1 do
 
 		--get the values
