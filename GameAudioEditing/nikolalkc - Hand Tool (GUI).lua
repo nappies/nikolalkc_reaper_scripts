@@ -1,9 +1,9 @@
---[[ ReaScript Name:nikolalkc - Hand Tool With GUI
+--[[ ReaScript Name:Hand Tool With GUI
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
  Extensions: SWS
- Version: 1.0
+ Version: 1.01
  About:
 	Locks item edges, fades, stretch markers, envelopes and time selection and shows visible large red GUI while locking is activated. 
 	This enables you to move items like you have real hand tool.
