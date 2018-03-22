@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="232a4f5c5ba2a7b06a7330d89e2b0ae5aa661fd2">
+<index version="1" name="nikolalkc_reaper_scripts" commit="5641b362aafc99233dbc5eb34a7856267e65f791">
   <category name="GameAudioEditing">
+    <reapack name="nikolalkc - Hand Tool (GUI).lua" type="script" desc="nikolalkc - Hand Tool With GUI">
+      <version name="1.0" author="nikolalkc" time="2018-03-22T12:03:35Z">
+        <changelog><![CDATA[+ Initial Commit]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/5641b362aafc99233dbc5eb34a7856267e65f791/GameAudioEditing/nikolalkc%20-%20Hand%20Tool%20(GUI).lua</source>
+      </version>
+    </reapack>
     <reapack name="nikolalkc - Toggle Freeze And Unfreeze Selected Items.lua" type="script" desc="Toggle Freeze And Unfreeze Selected Items">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
