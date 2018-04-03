@@ -3,7 +3,7 @@
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
- Version: 1.0
+ Version: 1.1
  About:
   This script renders selected items to new takes and puts all item fx offline. If that operation has already
   been done then it restores original items length and fades, deletes rendered take from project and puts all items fx
@@ -13,6 +13,9 @@
 
 --[[
  * Changelog:
+ * v1.1 (2018-04-02)
+	+ Preserve source type when rendering (added)
+	+ Delete active take and source file on restore (added)
  * v1.0 (2018-02-26)
 	+ Initial Commit
 ]]
@@ -39,7 +42,10 @@ function RenderItemsAndSetFXOffline()
 		--retval, offsOut, lenOut, revOut reaper.PCM_Source_GetSectionInfo( src )
 	end
 
-	reaper.Main_OnCommand(41999,0) --Item: Render items to new take
+	--choose
+	reaper.Main_OnCommand(41999,0) --Item: Render items to new take --old
+	-- reaper.Main_OnCommand(40601,0) --Item: Render items to new take (PRESERVE SOURCE TYPE)
+	
 	reaper.Main_OnCommand(reaper.NamedCommandLookup("_XENAKIOS_SELECTFIRSTTAKEOFITEMS"),0) --Xenakios/SWS: Select first take in selected items
 	reaper.Main_OnCommand(reaper.NamedCommandLookup("_S&M_TAKEFX_OFFLINE"),0) --SWS/S&M: Set all take FX offline for selected items
 	reaper.Main_OnCommand(40125,0) --Take: Switch items to next take
@@ -64,7 +70,10 @@ function RestoreItemsAndSetFXOnline()
 		reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN", fadeout)
 		reaper.ULT_SetMediaItemNote( item, "")
 	end
-	reaper.Main_OnCommand(40129,0) --Take: Delete active take from items
+	--choose
+	-- reaper.Main_OnCommand(40129,0) --Take: Delete active take from items
+	reaper.Main_OnCommand(reaper.NamedCommandLookup("_S&M_DELTAKEANDFILE4"),0) --SWS/S&M: Delete active take and source file in selected items (no undo)
+	
 	reaper.Main_OnCommand(reaper.NamedCommandLookup("_S&M_TAKEFX_ONLINE"),0) --all take fx online
 	reaper.Main_OnCommand(40638,0) --show item fx
 end
