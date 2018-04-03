@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="1d0e0b3dfacf23c3df82747350e46c93045e2ee6">
+<index version="1" name="nikolalkc_reaper_scripts" commit="9638d6e7494e5d16eed035abf9551e04add8d14c">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Hand Tool (GUI).lua" type="script" desc="Hand Tool With GUI">
       <version name="1.0" author="nikolalkc" time="2018-03-22T12:03:35Z">
@@ -20,7 +20,7 @@
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 This script renders selected items to new takes and puts all item fx offline. If that operation has already been done then it restores original items length and fades, deletes rendered take from project and puts all items fx back online. NOTE: Remember to occasionaly do project clean up because this script does not delete files when it deletes takes. Also it works only with items that have one or two takes.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This is a simulation of Nuendo's DIRECT OFFLINE PROCESSING. This script renders selected items to new takes and puts all item fx offline. If that operation has already been done then it restores original items length and fades, deletes rendered take from project and puts all items fx back online. NOTE: It works only with items that have one or two takes.\par}
 }
 ]]></description>
       </metadata>
@@ -40,6 +40,10 @@
       <version name="1.3" author="nikolalkc" time="2018-04-03T11:46:49Z">
         <changelog><![CDATA[+ Rendered item have stretch markers as visual indicators]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/1d0e0b3dfacf23c3df82747350e46c93045e2ee6/GameAudioEditing/nikolalkc%20-%20Toggle%20Freeze%20And%20Unfreeze%20Selected%20Items.lua</source>
+      </version>
+      <version name="1.31" author="nikolalkc" time="2018-04-03T11:49:33Z">
+        <changelog><![CDATA[+ New description]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/9638d6e7494e5d16eed035abf9551e04add8d14c/GameAudioEditing/nikolalkc%20-%20Toggle%20Freeze%20And%20Unfreeze%20Selected%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Envelope Printer - Copy item automation using empty item">
