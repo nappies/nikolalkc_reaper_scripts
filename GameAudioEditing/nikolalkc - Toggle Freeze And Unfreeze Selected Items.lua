@@ -3,7 +3,7 @@
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
- Version: 1.2
+ Version: 1.3
  About:
   This script renders selected items to new takes and puts all item fx offline. If that operation has already
   been done then it restores original items length and fades, deletes rendered take from project and puts all items fx
@@ -13,9 +13,10 @@
 
 --[[
  * Changelog:
+ * v1.3 (2018-04-03)
+ 	+ Rendered item have stretch markers as visual indicators
  * v1.2 (2018-04-03)
 	+ Redefined rendering logic to include fades and time selection
-	+ Rendered item have stretch markers as visual indicators
  * v1.1 (2018-04-02)
 	+ Preserve source type when rendering (added)
 	+ Delete active take and source file on restore (added)
