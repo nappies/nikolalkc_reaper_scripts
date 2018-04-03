@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="9638d6e7494e5d16eed035abf9551e04add8d14c">
+<index version="1" name="nikolalkc_reaper_scripts" commit="56af3d951620873eeae0d3186ae09415d8742bcf">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Hand Tool (GUI).lua" type="script" desc="Hand Tool With GUI">
       <version name="1.0" author="nikolalkc" time="2018-03-22T12:03:35Z">
@@ -44,6 +44,10 @@
       <version name="1.31" author="nikolalkc" time="2018-04-03T11:49:33Z">
         <changelog><![CDATA[+ New description]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/9638d6e7494e5d16eed035abf9551e04add8d14c/GameAudioEditing/nikolalkc%20-%20Toggle%20Freeze%20And%20Unfreeze%20Selected%20Items.lua</source>
+      </version>
+      <version name="1.32" author="nikolalkc" time="2018-04-03T13:50:58Z">
+        <changelog><![CDATA[+ Volume saving and support added]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/56af3d951620873eeae0d3186ae09415d8742bcf/GameAudioEditing/nikolalkc%20-%20Toggle%20Freeze%20And%20Unfreeze%20Selected%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Envelope Printer - Copy item automation using empty item">
