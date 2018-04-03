@@ -3,16 +3,18 @@
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
- Version: 1.3
+ Version: 1.31
  About:
-  This script renders selected items to new takes and puts all item fx offline. If that operation has already
-  been done then it restores original items length and fades, deletes rendered take from project and puts all items fx
-  back online. NOTE: Remember to occasionaly do project clean up because this script does not delete files when it deletes takes.
-  Also it works only with items that have one or two takes. 
+  This is a simulation of Nuendo's DIRECT OFFLINE PROCESSING. This script renders selected items to new takes and puts all item fx offline.
+  If that operation has already been done then it restores original items length and fades,
+  deletes rendered take from project and puts all items fx back online.
+  NOTE: It works only with items that have one or two takes.
 ]]
 
 --[[
  * Changelog:
+ * v1.31 (2018-04-03)
+	+ New description
  * v1.3 (2018-04-03)
  	+ Rendered item have stretch markers as visual indicators
  * v1.2 (2018-04-03)
