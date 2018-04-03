@@ -3,7 +3,7 @@
  Author: nikolalkc
  Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
  REAPER: 5+
- Version: 1.31
+ Version: 1.32
  About:
   This is a simulation of Nuendo's DIRECT OFFLINE PROCESSING. This script renders selected items to new takes and puts all item fx offline.
   If that operation has already been done then it restores original items length and fades,
@@ -13,6 +13,8 @@
 
 --[[
  * Changelog:
+ * v1.32 (2018-04-03)
+	+ Volume saving and support added
  * v1.31 (2018-04-03)
 	+ New description
  * v1.3 (2018-04-03)
@@ -56,9 +58,10 @@ function RenderItemsAndSetFXOffline()
 		local length = reaper.GetMediaItemInfo_Value( item, "D_LENGTH" )
 		local fadein = reaper.GetMediaItemInfo_Value( item, "D_FADEINLEN" )
 		local fadeout = reaper.GetMediaItemInfo_Value( item, "D_FADEOUTLEN" )
+		local item_volume = reaper.GetMediaItemInfo_Value(item, "D_VOL")
 		
 		--write parameters to notes
-		local note = length..[[-]]..fadein..[[-]]..fadeout
+		local note = length..[[-]]..fadein..[[-]]..fadeout..[[-]]..item_volume
 		reaper.ULT_SetMediaItemNote( item, note)
 		--retval, offsOut, lenOut, revOut reaper.PCM_Source_GetSectionInfo( src )
 		
@@ -101,6 +104,7 @@ function RenderItemsAndSetFXOffline()
 		reaper.SetTakeStretchMarker(new_take, -1, new_length*0.5)
 		reaper.SetTakeStretchMarker(new_take, -1, new_length*0.49)
 		reaper.SetTakeStretchMarker(new_take, -1, new_length*0.51)
+		reaper.Main_OnCommand(41923,0) -- reset item volume to 0db
 
 		
 		
@@ -129,14 +133,16 @@ function RestoreItemsAndSetFXOnline()
 		reaper.ULT_SetMediaItemNote( item, note)
 		--retval, offsOut, lenOut, revOut reaper.PCM_Source_GetSectionInfo( src )
 		
-		length, fadein, fadeout = note:match("([^,]+)-([^,]+)-([^,]+)")
+		local length, fadein, fadeout, volume = note:match("([^,]+)-([^,]+)-([^,]+)-([^,]+)")
 		-- Msg(length)
 		-- Msg(fadein)
 		-- Msg(fadeout)
+		-- Msg(volume)
 		
 		reaper.SetMediaItemInfo_Value( item, "D_LENGTH", length)
 		reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN", fadein)
 		reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN", fadeout)
+		reaper.SetMediaItemInfo_Value( item, "D_VOL", volume)
 		reaper.ULT_SetMediaItemNote( item, "")
 	end
 	--choose
