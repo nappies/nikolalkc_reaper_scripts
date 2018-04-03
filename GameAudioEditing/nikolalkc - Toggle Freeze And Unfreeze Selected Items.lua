@@ -15,6 +15,7 @@
  * Changelog:
  * v1.2 (2018-04-03)
 	+ Redefined rendering logic to include fades and time selection
+	+ Rendered item have stretch markers as visual indicators
  * v1.1 (2018-04-02)
 	+ Preserve source type when rendering (added)
 	+ Delete active take and source file on restore (added)
@@ -88,9 +89,18 @@ function RenderItemsAndSetFXOffline()
 		
 		local start_time, end_time =  reaper.GetSet_LoopTimeRange2( 0, false, false, 0, 0, false)
 		local delta_time = end_time - start_time
+		local new_item  = reaper.GetSelectedMediaItem(0,0)
 		if delta_time > 0 then
 			reaper.Main_OnCommand(41320,0) --Item: Move items to time selection, trim/loop to fit
 		end
+		local new_length = reaper.GetMediaItemInfo_Value( new_item, "D_LENGTH" )
+		local new_take =  reaper.GetActiveTake( item )
+		reaper.SetTakeStretchMarker(new_take, -1, new_length*0.5)
+		reaper.SetTakeStretchMarker(new_take, -1, new_length*0.49)
+		reaper.SetTakeStretchMarker(new_take, -1, new_length*0.51)
+
+		
+		
 		
 		
 		
