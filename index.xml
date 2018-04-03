@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="88a3a6f02f3c67c4a19186ab23c0c1ae90d49024">
+<index version="1" name="nikolalkc_reaper_scripts" commit="0165143054116be7670feaa4917eb4f336cd67a3">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Hand Tool (GUI).lua" type="script" desc="Hand Tool With GUI">
       <version name="1.0" author="nikolalkc" time="2018-03-22T12:03:35Z">
@@ -27,6 +27,15 @@
       <version name="1.0" author="nikolalkc" time="2018-02-26T10:28:24Z">
         <changelog><![CDATA[+ Initial Commit]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/557a50a1bbcdfb83c87a4ecf9ee261111d86fbd9/GameAudioEditing/nikolalkc%20-%20Toggle%20Freeze%20And%20Unfreeze%20Selected%20Items.lua</source>
+      </version>
+      <version name="1.1" author="nikolalkc" time="2018-04-03T09:50:22Z">
+        <changelog><![CDATA[+ Preserve source type when rendering (added)
++ Delete active take and source file on restore (added)]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/c21e570c7026d4ac2935c8c4d40139adb7012dbf/GameAudioEditing/nikolalkc%20-%20Toggle%20Freeze%20And%20Unfreeze%20Selected%20Items.lua</source>
+      </version>
+      <version name="1.2" author="nikolalkc" time="2018-04-03T11:09:13Z">
+        <changelog><![CDATA[+ Redefined rendering logic to include fades and time selection]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/0165143054116be7670feaa4917eb4f336cd67a3/GameAudioEditing/nikolalkc%20-%20Toggle%20Freeze%20And%20Unfreeze%20Selected%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="nikolalkc_Copy Item Automation Using Empty Item.lua" type="script" desc="Envelope Printer - Copy item automation using empty item">
