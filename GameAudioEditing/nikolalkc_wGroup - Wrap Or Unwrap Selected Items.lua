@@ -4,7 +4,7 @@
 	Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
 	REAPER: 5+
 	Extensions: SWS
-	Version: 1.5
+	Version: 1.6
 	About:
 		Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
 		Instructions: Create item selection and run the script
@@ -12,6 +12,8 @@
 
 --[[
  * Changelog:
+ * v1.6 (2018-04-10)
+	+ Fixed error with unwrapping multiple groups
  * v1.5 (2018-04-10)
 	+ Cleaned deprecated toggle strech items code
  * v1.4 (2018-03-19)
@@ -91,12 +93,14 @@ function Main()
 		for k = 0, empty_index -1 do
 			if k == 0 then
 				first_signature = reaper.GetMediaItemInfo_Value(empty_items[k],"I_GROUPID")
+				if first_signature ~= 0 then first_signature = 1 end
 				-- first_signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,2)		--  >>UNWRAPPED<<
 				-- if first_signature ~= "[[" then
 					-- first_signature = ""
 				-- end
 			else
 				local signature = reaper.GetMediaItemInfo_Value(empty_items[k],"I_GROUPID")
+				if signature ~= 0 then signature = 1 end
 				-- Msg("Signature:"..signature)
 				-- local signature = string.sub(reaper.ULT_GetMediaItemNote( empty_items[k]),1,2)		--  >>UNWRAPPED<<
 				-- if signature ~= "[[" then
