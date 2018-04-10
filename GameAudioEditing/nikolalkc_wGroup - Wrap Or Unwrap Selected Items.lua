@@ -4,7 +4,7 @@
 	Repository URL: https://github.com/nikolalkc/nikolalkc_reaper_scripts
 	REAPER: 5+
 	Extensions: SWS
-	Version: 1.4
+	Version: 1.5
 	About:
 		Creates special kind of group from selected items, filled with empty midi items and one empty item which can be used for naming
 		Instructions: Create item selection and run the script
@@ -12,6 +12,8 @@
 
 --[[
  * Changelog:
+ * v1.5 (2018-04-10)
+	+ Cleaned deprecated toggle strech items code
  * v1.4 (2018-03-19)
 	+ Wrapping and unwrapping now does not affect label name, group id is used instead
  * v1.3 (2018-03-19)
@@ -265,9 +267,6 @@ function Wrap()
 			reaper.Main_OnCommand(40290,0) --set time selection on group
 			reaper.Main_OnCommand(40142,0) --insert empty item
 			empty = reaper.GetSelectedMediaItem(0,0)
-			reaper.ULT_SetMediaItemNote( empty, "temp")
-			reaper.Main_OnCommand(reaper.NamedCommandLookup("_RSb428746958e98560bf16fdec0d9022a5b13465c0"),0) --toggle notes stretch to fit
-			reaper.ULT_SetMediaItemNote( empty, "")
 			reaper.MoveMediaItemToTrack(empty, title_track)
 
 			--empty midi items
