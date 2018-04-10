@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="nikolalkc_reaper_scripts" commit="56af3d951620873eeae0d3186ae09415d8742bcf">
+<index version="1" name="nikolalkc_reaper_scripts" commit="79e4401ae111dc34fa5c7e878e815a40357f053c">
   <category name="GameAudioEditing">
     <reapack name="nikolalkc - Hand Tool (GUI).lua" type="script" desc="Hand Tool With GUI">
       <version name="1.0" author="nikolalkc" time="2018-03-22T12:03:35Z">
@@ -347,6 +347,10 @@ Check it out
       <version name="1.4" author="nikolalkc" time="2018-03-19T12:30:47Z">
         <changelog><![CDATA[+ Wrapping and unwrapping now does not affect label name, group id is used instead]]></changelog>
         <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/95ab6cf9bcbbf557898b9175c1d2db1f9e4596cd/GameAudioEditing/nikolalkc_wGroup%20-%20Wrap%20Or%20Unwrap%20Selected%20Items.lua</source>
+      </version>
+      <version name="1.5" author="nikolalkc" time="2018-04-10T09:46:01Z">
+        <changelog><![CDATA[+ Cleaned deprecated toggle strech items code]]></changelog>
+        <source main="main">https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/79e4401ae111dc34fa5c7e878e815a40357f053c/GameAudioEditing/nikolalkc_wGroup%20-%20Wrap%20Or%20Unwrap%20Selected%20Items.lua</source>
       </version>
     </reapack>
   </category>
