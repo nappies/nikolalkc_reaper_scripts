@@ -1,4 +1,4 @@
-# nikolaLKC's scripts for game audio in [REAPER](https://www.reaper.fm/)
+# NIKOLALKC's scripts for game audio in [REAPER](https://www.reaper.fm/)
 
 ## WARNING: This repo is not yet completely user-friendly. When I complete Wiki and some other stuff this line will be removed. I will announce this repo on my youtube channel and on REAPER forum.
 
