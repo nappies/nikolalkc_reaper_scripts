@@ -20,7 +20,7 @@ https://github.com/nikolalkc/nikolalkc_reaper_scripts/raw/master/index.xml
   [DONATE IF YOU FIND MY STUFF USEFUL](https://www.paypal.me/reaperandlife)
 
 Summary:
-- [wGroups - Best way to organize and export sounds for games](https://github.com/nikolalkc/nikolalkc_reaper_scripts/wiki/wGroups)
+- wGroups - Best way to organize and export sounds for games
 - Fly editing - Fastest way of editing audio
 - Mousewheel Gain - Quickly change gain on multiple items
 - Envelope Printer - Copy all envelopes at once
